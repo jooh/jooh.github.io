@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="http://johancarlin.com/" rel="alternate"></link><link href="http://johancarlin.com/feeds/all.atom.xml" rel="self"></link><id>http://johancarlin.com/</id><updated>2015-12-11T19:06:58+00:00</updated><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="http://johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"></link><updated>2015-12-11T19:06:58+00:00</updated><author><name>Johan Carlin</name></author><id>tag:johancarlin.com,2015-12-11:reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
+complicated. In this post I describe how I use a conda to keep a
+reproducible record of the packages I&amp;nbsp;use.&lt;/p&gt;
+&lt;p&gt;In the past, I have usually hacked together my own developing environment
+through whatever tools were most convenient (pip, github clones, built-in
+packages from expansive standard python distros). This is a workable
+solution if you&amp;#8217;re only doing it once, but it can be quite challenge to
+achieve the exact same python environment on a new machine. This is
+annoying in lots of contexts, but it&amp;#8217;s especially problematic for
+scientific computing because it means others (or even your future self) may
+not be able to reproduce your published&amp;nbsp;results.&lt;/p&gt;
+&lt;p&gt;My solution to this issue is to use
+&lt;a href="http://conda.pydata.org/docs/index.html"&gt;Conda&lt;/a&gt;, which forms an
+independent part of the Anaconda python distro (I use the lighter
+mini-conda). At its core, Conda is a package manager which tries to be
+smart about managing your python environment. There are many competitors in
+this area (the classic solution is pip combined with virtualenv, brew and
+macports are other possibilities), but Conda has a few useful features that
+collectively make it preferable for scientific&amp;nbsp;computing:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Conda packages are distributed in compiled form, which avoids all
+  build-related issues (e.g., missing dependencies, broken compilers, weird
+  build environments). If the package has been built properly, it is
+  literally plug and play. For a taste of how smoothly this works with
+  complex packages, try &lt;code&gt;conda install mayavi&lt;/code&gt; compared to &lt;code&gt;brew install
+  mayavi&lt;/code&gt; and see what you&amp;nbsp;get.&lt;/li&gt;
+&lt;li&gt;If a conda package is not available, it is surprisingly easy to build one
+  from python libraries.  Most pip packages can be built for conda with two
+  commands: &lt;code&gt;conda skeleton pypi [pip package]&lt;/code&gt; followed by &lt;code&gt;conda build
+  [pip package]&lt;/code&gt;.  Adapting github repos requires a bit more manual
+  editing of a &lt;span class="caps"&gt;YAML&lt;/span&gt; file but even this is simple enough (see e.g. &lt;a href="https://github.com/jooh/neuroconda/tree/master/pycortex"&gt;this
+  pycortex recipe I
+  wrote&lt;/a&gt;). Under
+  the hood, there&amp;#8217;s quite a bit of cleverness going on with e.g. converting
+  absolute paths to relative to enable this to work as smoothly as it&amp;nbsp;does.&lt;/li&gt;
+&lt;li&gt;Conda includes a free package repository at
+  &lt;a href="http://anaconda.org"&gt;anaconda.org&lt;/a&gt;, where users can upload packages.
+  At build time, users are nudged toward setting &lt;code&gt;anaconda_upload: yes&lt;/code&gt; in
+  their .condarc files, which means that any successful build is
+  uploaded to your anaconda.org repo. This option appears to be popular
+  because a huge number of user-built packages are available here. This is
+  useful for quickly checking out more obscure packages that aren&amp;#8217;t in
+  the official conda&amp;nbsp;channel.&lt;/li&gt;
+&lt;li&gt;That being said, for reproducibility it is probably a better idea to
+  build packages yourself and upload them to your own repository since
+  other users can otherwise break your dependencies by removing or altering
+  the package you&amp;#8217;re channeling. Uploading your own builds has the added
+  advantage of solving your deployment issues &amp;#8212; all you have to do on a new
+  machine is add your repository to the set conda will search when
+  installing packages (e.g., &lt;code&gt;conda config --add channels jcarlin&lt;/code&gt;), and
+  the standard conda install command will just&amp;nbsp;work.&lt;/li&gt;
+&lt;li&gt;Conda&amp;#8217;s environment handling is quite good, and seems to err on the side
+  of safety at the expense of disk space (ie, copy everything) compared to
+  e.g. brew. I have yet to bump into any interactions between different
+  environments. Generally, it&amp;#8217;s a good idea to have a different environment
+  for each broad task you use python for (I use one for psychopy, one for
+  neuroimaging analysis and one for web development), since packages
+  sometimes require different versions of the same modules. Conda tries to
+  manage such situations, but often the compromise is to downgrade core
+  packages (e.g. numpy) to fairly old&amp;nbsp;versions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In summary, my entire python environment is now made up of Conda packages,
+which is neat because it means that I can reproduce my python setup
+anywhere. There is a bit of overhead in going this route (especially if you
+want to avoid having dependencies from other anaconda.org users), but this
+should be recouped quickly down the road as the code gets deployed to
+psychophysics test laptops, cloud compute, other lab&amp;nbsp;members&amp;#8230;&lt;/p&gt;</summary><category term="python"></category><category term="data science"></category><category term="conda"></category><category term="anaconda"></category><category term="scientific computing"></category><category term="virtual environment"></category></entry><entry><title>Post 1</title><link href="http://johancarlin.com/post-1.html" rel="alternate"></link><updated>2015-12-11T17:06:59+00:00</updated><author><name>Johan Carlin</name></author><id>tag:johancarlin.com,2015-12-11:post-1.html</id><summary type="html">&lt;p&gt;This is my new&amp;nbsp;website.&lt;/p&gt;</summary></entry></feed>
