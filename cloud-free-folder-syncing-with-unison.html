@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>Post 1 - Johan Carlin</title>
+    <title>Cloud-free folder syncing with Unison - Johan Carlin</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,18 +10,21 @@
 
 
 
-<link rel="canonical" href="/post-1.html">
+<link rel="canonical" href="/cloud-free-folder-syncing-with-unison.html">
 
         <meta name="author" content="Johan Carlin" />
-        <meta name="description" content="This is my new website." />
+        <meta name="keywords" content="shell,scientific computing" />
+        <meta name="description" content="Syncing folders between computers can be surprisingly complicated if you work for an academic institution that takes a dim view of Dropbox and other cloud-based solutions. You are also sure to run out of space fast if you use it to sync e.g. neuroimaging data. Unison is a free ..." />
 
         <meta property="og:site_name" content="Johan Carlin" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Post 1"/>
-        <meta property="og:url" content="/post-1.html"/>
-        <meta property="og:description" content="This is my new website."/>
-        <meta property="article:published_time" content="2015-12-11" />
-            <meta property="article:section" content="personal" />
+        <meta property="og:title" content="Cloud-free folder syncing with Unison"/>
+        <meta property="og:url" content="/cloud-free-folder-syncing-with-unison.html"/>
+        <meta property="og:description" content="Syncing folders between computers can be surprisingly complicated if you work for an academic institution that takes a dim view of Dropbox and other cloud-based solutions. You are also sure to run out of space fast if you use it to sync e.g. neuroimaging data. Unison is a free ..."/>
+        <meta property="article:published_time" content="2016-01-05" />
+            <meta property="article:section" content="code" />
+            <meta property="article:tag" content="shell" />
+            <meta property="article:tag" content="scientific computing" />
             <meta property="article:author" content="Johan Carlin" />
 
 
@@ -54,10 +57,10 @@ Johan Carlin            </a>
                          <li><a href="/pages/about-me.html">
                              About&nbsp;Me
                           </a></li>
-                        <li >
+                        <li class="active">
                             <a href="/category/code.html">Code</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="/category/personal.html">Personal</a>
                         </li>
                         <li >
@@ -81,10 +84,10 @@ Johan Carlin            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/post-1.html"
+                    <a href="/cloud-free-folder-syncing-with-unison.html"
                        rel="bookmark"
-                       title="Permalink to Post 1">
-                        Post&nbsp;1
+                       title="Permalink to Cloud-free folder syncing with Unison">
+                        Cloud-free folder syncing with&nbsp;Unison
                     </a>
                 </h1>
             </header>
@@ -94,15 +97,94 @@ Johan Carlin            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-12-11T17:06:59+00:00"> 11 December 2015</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-01-05T10:49:58+00:00"> 05 January 2016</time>
     </span>
 
 
 
+<span class="label label-default">Tags</span>
+	<a href="/tag/shell.html">shell</a>
+        /
+	<a href="/tag/scientific-computing.html">scientific computing</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>This is my new&nbsp;website.</p>
+                <p>Syncing folders between computers can be surprisingly complicated if you
+work for <a href="http://www.mrc.ac.uk">an academic institution that takes a dim view of Dropbox and
+other cloud-based solutions</a>. You are also sure to
+run out of space fast if you use it to sync e.g. neuroimaging data.
+<a href="https://www.cis.upenn.edu/~bcpierce/unison">Unison</a> is a free command-line
+solution for direct computer-to-computer sync. It is basically a clever
+wrapper around rsync, which takes care of all the niggly details of getting
+two-way sync working properly. It also provides a nice command-line
+interface for resolving sync conflicts (far better than e.g. Evernote&#8217;s <span class="caps">GUI</span>
+for the same&nbsp;thing).</p>
+<p>Getting Unison up and running for your setup can be complicated. Here I
+present a simple shell script that takes care of the standard case of
+syncing two computers over <span class="caps">SSH</span>.</p>
+<p>In general, my solution assumes that one computer is used to issue the
+unison command (the client, which is probably your laptop or home computer)
+which then connects and syncs with another computer (the remote, which is
+probably a server or a desktop computer at your place of work). You could
+set this up to run automatically as a cron or launchd, but I prefer to
+issue the command manually at the end of the workday to make sure that I
+have saved all changes&nbsp;first.</p>
+<h2>Installing&nbsp;unison</h2>
+<p>Unison is available through various package managers, e.g. macports and
+brew. The main stumbling point here is to ensure unison is available on the
+remote (the computer you are syncing to). On my setup (brew with <span class="caps">OS</span> X
+Yosemite), unison returned <code>bash: unison:
+command not found</code>, even though unison was clearly availabe when connecting
+to the remote over <span class="caps">SSH</span>. By contrast, <code>ssh [client] unison</code> returned an
+error, thus revealing that unison was only getting
+added to the path in interactive shells (<a href="http://unix.stackexchange.com/questions/79723/why-do-ssh-host-echo-path-and-printing-the-path-after-sshing-into-the-machi">which are not the same as login
+shells used by scripts</a>). In the end I manually added
+/usr/local/bin to my path in .bashrc to get around this issue
+(.bash_profile wouldn&#8217;t work since this isn&#8217;t sourced by non-interactive&nbsp;shells).</p>
+<h2>Configuring&nbsp;unison</h2>
+<p>The <a href="https://gist.github.com/jooh/bbdf2b311017b3453830">unisync</a> script
+below provides the basic sync functionality for syncing between two folders
+named unibox in the user&#8217;s home directory. The first input argument
+specifies the hostname, while the second provides the username for the
+remote. By default, the username for client and remote as assumed to be the&nbsp;same.</p>
+<div class="gist">
+    <script src='https://gist.github.com/bbdf2b311017b3453830.js'></script>
+    <noscript>
+        <pre><code>#!/bin/tcsh
+#
+#       by: Johan Carlin
+#     date: 8/9/2014
+#  purpose: sync folders between computers. Assumes that both are available
+#   on the local network (ie you are using VPN if the host is behind a
+#   firewall)
+#    usage: unisync [ucl] [j.carlin]
+
+# get optional input
+if ($#argv >= 1) then
+  set hostname="$1"
+else
+  set hostname=ucl
+endif
+
+if ($#argv == 2) then
+  set touser="$2"
+else
+  set touser=$USER
+endif
+
+set fromdir=/Users/$USER/unibox
+set todir=/Users/$touser/unibox
+
+# auto should mean that we get batch mode if there are no conflicts, and
+# interactive mode otherwise
+unison $fromdir "ssh://"$hostname"/"$todir -auto
+</code></pre>
+    </noscript>
+</div>
+<p>So for instance, my standard usage is <code>unisync ucl j.carlin</code>, where ucl is
+an alias or shortcut for my full <span class="caps">SSH</span> connection stored in ssh/.config, and
+j.carlin is my username which is necessary here because it is different
+from my username on the&nbsp;client.</p>
             </div>
             <!-- /.entry-content -->
         </article>
