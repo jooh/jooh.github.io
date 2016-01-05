@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="http://jooh.github.io/" rel="alternate"></link><link href="http://jooh.github.io/feeds/code.atom.xml" rel="self"></link><id>http://jooh.github.io/</id><updated>2015-12-11T19:06:58+00:00</updated><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="http://jooh.github.io/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"></link><updated>2015-12-11T19:06:58+00:00</updated><author><name>Johan Carlin</name></author><id>tag:jooh.github.io,2015-12-11:reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="http://www.johancarlin.com/" rel="alternate"></link><link href="http://www.johancarlin.com/feeds/code.atom.xml" rel="self"></link><id>http://www.johancarlin.com/</id><updated>2016-01-05T10:49:58+00:00</updated><entry><title>Cloud-free folder syncing with Unison</title><link href="http://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"></link><updated>2016-01-05T10:49:58+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
+work for &lt;a href="http://www.mrc.ac.uk"&gt;an academic institution that takes a dim view of Dropbox and
+other cloud-based solutions&lt;/a&gt;. You are also sure to
+run out of space fast if you use it to sync e.g. neuroimaging data.
+&lt;a href="https://www.cis.upenn.edu/~bcpierce/unison"&gt;Unison&lt;/a&gt; is a free command-line
+solution for direct computer-to-computer sync. It is basically a clever
+wrapper around rsync, which takes care of all the niggly details of getting
+two-way sync working properly. It also provides a nice command-line
+interface for resolving sync conflicts (far better than e.g. Evernote&amp;#8217;s &lt;span class="caps"&gt;GUI&lt;/span&gt;
+for the same&amp;nbsp;thing).&lt;/p&gt;
+&lt;p&gt;Getting Unison up and running for your setup can be complicated. Here I
+present a simple shell script that takes care of the standard case of
+syncing two computers over &lt;span class="caps"&gt;SSH&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In general, my solution assumes that one computer is used to issue the
+unison command (the client, which is probably your laptop or home computer)
+which then connects and syncs with another computer (the remote, which is
+probably a server or a desktop computer at your place of work). You could
+set this up to run automatically as a cron or launchd, but I prefer to
+issue the command manually at the end of the workday to make sure that I
+have saved all changes&amp;nbsp;first.&lt;/p&gt;
+&lt;h2&gt;Installing&amp;nbsp;unison&lt;/h2&gt;
+&lt;p&gt;Unison is available through various package managers, e.g. macports and
+brew. The main stumbling point here is to ensure unison is available on the
+remote (the computer you are syncing to). On my setup (brew with &lt;span class="caps"&gt;OS&lt;/span&gt; X
+Yosemite), unison returned &lt;code&gt;bash: unison:
+command not found&lt;/code&gt;, even though unison was clearly availabe when connecting
+to the remote over &lt;span class="caps"&gt;SSH&lt;/span&gt;. By contrast, &lt;code&gt;ssh [client] unison&lt;/code&gt; returned an
+error, thus revealing that unison was only getting
+added to the path in interactive shells (&lt;a href="http://unix.stackexchange.com/questions/79723/why-do-ssh-host-echo-path-and-printing-the-path-after-sshing-into-the-machi"&gt;which are not the same as login
+shells used by scripts&lt;/a&gt;). In the end I manually added
+/usr/local/bin to my path in .bashrc to get around this issue
+(.bash_profile wouldn&amp;#8217;t work since this isn&amp;#8217;t sourced by non-interactive&amp;nbsp;shells).&lt;/p&gt;
+&lt;h2&gt;Configuring&amp;nbsp;unison&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="https://gist.github.com/jooh/bbdf2b311017b3453830"&gt;unisync&lt;/a&gt; script
+below provides the basic sync functionality for syncing between two folders
+named unibox in the user&amp;#8217;s home directory. The first input argument
+specifies the hostname, while the second provides the username for the
+remote. By default, the username for client and remote as assumed to be the&amp;nbsp;same.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/bbdf2b311017b3453830.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;#!/bin/tcsh
+#
+#       by: Johan Carlin
+#     date: 8/9/2014
+#  purpose: sync folders between computers. Assumes that both are available
+#   on the local network (ie you are using VPN if the host is behind a
+#   firewall)
+#    usage: unisync [ucl] [j.carlin]
+
+# get optional input
+if ($#argv &gt;= 1) then
+  set hostname="$1"
+else
+  set hostname=ucl
+endif
+
+if ($#argv == 2) then
+  set touser="$2"
+else
+  set touser=$USER
+endif
+
+set fromdir=/Users/$USER/unibox
+set todir=/Users/$touser/unibox
+
+# auto should mean that we get batch mode if there are no conflicts, and
+# interactive mode otherwise
+unison $fromdir "ssh://"$hostname"/"$todir -auto
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;So for instance, my standard usage is &lt;code&gt;unisync ucl j.carlin&lt;/code&gt;, where ucl is
+an alias or shortcut for my full &lt;span class="caps"&gt;SSH&lt;/span&gt; connection stored in ssh/.config, and
+j.carlin is my username which is necessary here because it is different
+from my username on the&amp;nbsp;client.&lt;/p&gt;</summary><category term="shell"></category><category term="scientific computing"></category></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="http://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"></link><updated>2015-12-11T19:06:58+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
 complicated. In this post I describe how I use a conda to keep a
 reproducible record of the packages I&amp;nbsp;use.&lt;/p&gt;
 &lt;p&gt;In the past, I have usually hacked together my own developing environment
