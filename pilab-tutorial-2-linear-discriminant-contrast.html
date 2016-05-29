@@ -1,0 +1,1987 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>Pilab tutorial 2: linear discriminant contrast - Johan Carlin</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html">
+
+        <meta name="author" content="Johan Carlin" />
+        <meta name="keywords" content="scientific computing,matlab,pilab" />
+        <meta name="description" content="This post is the second of a series of tutorials where I illustrate basic fMRI analyses with pilab. Today we will construct a pseudo-distance matrix with cross-validated linear discriminant contrast. In addition to pilab you will need my figure code and probably my general-purpose utility code to get the example below to run. Have fun!" />
+
+        <meta property="og:site_name" content="Johan Carlin" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Pilab tutorial 2: linear discriminant contrast"/>
+        <meta property="og:url" content="http://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html"/>
+        <meta property="og:description" content="This post is the second of a series of tutorials where I illustrate basic fMRI analyses with pilab. Today we will construct a pseudo-distance matrix with cross-validated linear discriminant contrast. In addition to pilab you will need my figure code and probably my general-purpose utility code to get the example below to run. Have fun!"/>
+        <meta property="article:published_time" content="2016-05-29" />
+            <meta property="article:section" content="code" />
+            <meta property="article:tag" content="scientific computing" />
+            <meta property="article:tag" content="matlab" />
+            <meta property="article:tag" content="pilab" />
+            <meta property="article:author" content="Johan Carlin" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.johancarlin.com/theme/css/bootstrap.lumen.min.css" type="text/css"/>
+    <link href="http://www.johancarlin.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://www.johancarlin.com/theme/css/pygments/borland.css" rel="stylesheet">
+        <link href="http://www.johancarlin.com/theme/css/typogrify.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.johancarlin.com/theme/css/style.css" type="text/css"/>
+
+        <link href="http://www.johancarlin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Johan Carlin ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.johancarlin.com/" class="navbar-brand">
+Johan Carlin            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://www.johancarlin.com/pages/about-me.html">
+                             About&nbsp;Me
+                          </a></li>
+                        <li class="active">
+                            <a href="http://www.johancarlin.com/category/code.html">Code</a>
+                        </li>
+                        <li >
+                            <a href="http://www.johancarlin.com/category/personal.html">Personal</a>
+                        </li>
+                        <li >
+                            <a href="http://www.johancarlin.com/category/science.html">Science</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://www.johancarlin.com/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html"
+                       rel="bookmark"
+                       title="Permalink to Pilab tutorial 2: linear discriminant contrast">
+                        Pilab tutorial 2: linear discriminant&nbsp;contrast
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-05-29T00:00:00+01:00"> 29 May 2016</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://www.johancarlin.com/tag/scientific-computing.html">scientific computing</a>
+        /
+	<a href="http://www.johancarlin.com/tag/matlab.html">matlab</a>
+        /
+	<a href="http://www.johancarlin.com/tag/pilab.html">pilab</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* <span class="caps">CSS</span> font colors for translated <span class="caps">ANSI</span> colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #<span class="caps">90CAF9</span>;
+  border-left-color: #<span class="caps">E3F2FD</span>;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #<span class="caps">E3F2FD</span>;
+  border-right-width: 1px;
+  background: #<span class="caps">E3F2FD</span>;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #<span class="caps">42A5F5</span> -40px, #<span class="caps">42A5F5</span> 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #<span class="caps">42A5F5</span> -40px, #<span class="caps">42A5F5</span> 7px, #<span class="caps">E3F2FD</span> 7px, #<span class="caps">E3F2FD</span> 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #<span class="caps">66BB6A</span>;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #<span class="caps">66BB6A</span> -40px, #<span class="caps">66BB6A</span> 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #<span class="caps">303F9F</span>;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In <span class="caps">CM2</span>, this used to be 0.4em, but in <span class="caps">CM3</span> it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In <span class="caps">CM3</span> this went to 4px from 0 in <span class="caps">CM2</span>. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #<span class="caps">BA2121</span>;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #<span class="caps">AA22FF</span>;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #<span class="caps">AA22FF</span>;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #<span class="caps">AA22FF</span>;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #<span class="caps">BA2121</span>;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #<span class="caps">AA22FF</span>;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but <span class="caps">FF</span> barfs all over that */
+  height: 24em;
+  /* <span class="caps">FF</span> needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/<span class="caps">FF</span> */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #<span class="caps">FF0000</span> } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #<span class="caps">BC7A00</span> } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #<span class="caps">FF0000</span> } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #<span class="caps">0044DD</span> } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #<span class="caps">BA2121</span> } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #<span class="caps">0000FF</span>; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #<span class="caps">AA22FF</span> } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #<span class="caps">D2413A</span>; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #<span class="caps">0000FF</span> } /* Name.Function */
+.highlight .nl { color: #<span class="caps">A0A000</span> } /* Name.Label */
+.highlight .nn { color: #<span class="caps">0000FF</span>; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #<span class="caps">AA22FF</span>; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #<span class="caps">BA2121</span> } /* Literal.String.Backtick */
+.highlight .sc { color: #<span class="caps">BA2121</span> } /* Literal.String.Char */
+.highlight .sd { color: #<span class="caps">BA2121</span>; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #<span class="caps">BA2121</span> } /* Literal.String.Double */
+.highlight .se { color: #<span class="caps">BB6622</span>; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #<span class="caps">BA2121</span> } /* Literal.String.Heredoc */
+.highlight .si { color: #<span class="caps">BB6688</span>; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #<span class="caps">BB6688</span> } /* Literal.String.Regex */
+.highlight .s1 { color: #<span class="caps">BA2121</span> } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #<span class="caps">3E424D</span>; }
+.ansi-black-bg { background-color: #<span class="caps">3E424D</span>; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #<span class="caps">E75C58</span>; }
+.ansi-red-bg { background-color: #<span class="caps">E75C58</span>; }
+.ansi-red-intense-fg { color: #<span class="caps">B22B31</span>; }
+.ansi-red-intense-bg { background-color: #<span class="caps">B22B31</span>; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #<span class="caps">DDB62B</span>; }
+.ansi-yellow-bg { background-color: #<span class="caps">DDB62B</span>; }
+.ansi-yellow-intense-fg { color: #<span class="caps">B27D12</span>; }
+.ansi-yellow-intense-bg { background-color: #<span class="caps">B27D12</span>; }
+.ansi-blue-fg { color: #<span class="caps">208FFB</span>; }
+.ansi-blue-bg { background-color: #<span class="caps">208FFB</span>; }
+.ansi-blue-intense-fg { color: #<span class="caps">0065CA</span>; }
+.ansi-blue-intense-bg { background-color: #<span class="caps">0065CA</span>; }
+.ansi-magenta-fg { color: #<span class="caps">D160C4</span>; }
+.ansi-magenta-bg { background-color: #<span class="caps">D160C4</span>; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #<span class="caps">60C6C8</span>; }
+.ansi-cyan-bg { background-color: #<span class="caps">60C6C8</span>; }
+.ansi-cyan-intense-fg { color: #<span class="caps">258F8F</span>; }
+.ansi-cyan-intense-bg { background-color: #<span class="caps">258F8F</span>; }
+.ansi-white-fg { color: #<span class="caps">C5C1B4</span>; }
+.ansi-white-bg { background-color: #<span class="caps">C5C1B4</span>; }
+.ansi-white-intense-fg { color: #<span class="caps">A1A6B2</span>; }
+.ansi-white-intense-bg { background-color: #<span class="caps">A1A6B2</span>; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This post is the second of a series of tutorials where I illustrate basic fMRI analyses with <a href="https://github.com/jooh/pilab">pilab</a>. Today we will construct a pseudo-distance matrix with cross-validated linear discriminant contrast. In addition to pilab you will need my <a href="https://github.com/jooh/matlab-plotting">figure code</a> and probably my <a href="https://github.com/jooh/johansmatlab">general-purpose utility code</a> to get the example below to run. Have&nbsp;fun!</p>
+<h3 id="Building-simulated-fMRI-data">Building simulated fMRI data<a class="anchor-link" href="#Building-simulated-fMRI-data">&#182;</a></h3><p>To review, we are going to make up some data to model. If you read <a href="{pilab_demo1_rsquare}">part 1</a> in this series you can skip ahead to the next&nbsp;section.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% control variables for the simulation</span>
+<span class="c">% number of volumes (TRs)</span>
+<span class="n">n</span> <span class="p">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="c">% frame period - one volume every tr s</span>
+<span class="n">tr</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="c">% number of onsets to include in each run</span>
+<span class="n">ntrial</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">ncon</span> <span class="p">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">nvox</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>
+<span class="n">nrun</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="c">% true parameters - same across runs. +1 to model variations in constant</span>
+<span class="n">b</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">nvox</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For each run of the experiment, we make up a set of <em>onsets</em> (uniformly distributed over the run), and assign
+each onset to a <em>conind</em> (effectively the column index in the final design matrix). We then convolve the onsets
+with a hemodynamic response function to construct the run-specific design matrix <em>X</em>.</p>
+<p>The signal in this run is simply the design matrix weighted by the true parameters, <em>X</em>*<em>b</em>. To this we add a touch of noise to construct the final&nbsp;data.</p>
+<p>Finally, we plug the convolved design matrix and data into Volume instances. These are container classes that make is easy to index in the sample dimension (e.g. runs) or feature dimension (e.g., regions of interest) while keeping any meta data in&nbsp;register.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="n">designvol</span> <span class="p">=</span> <span class="n">cell</span><span class="p">(</span><span class="n">nrun</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">datavol</span> <span class="p">=</span> <span class="n">cell</span><span class="p">(</span><span class="n">nrun</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">r</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">nrun</span>
+    <span class="c">% different trial order in each run</span>
+    <span class="n">conind</span> <span class="p">=</span> <span class="nb">ceil</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="n">ntrial</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ncon</span><span class="p">);</span>
+    <span class="n">onsets</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="n">ntrial</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">X</span> <span class="p">=</span> <span class="p">[</span><span class="n">convolveonsets</span><span class="p">(</span><span class="n">onsets</span><span class="p">,</span><span class="n">conind</span><span class="p">,</span><span class="n">tr</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;dur&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="nb">ones</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)];</span>
+    <span class="c">% scale design matrix to peak at 1</span>
+    <span class="n">X</span> <span class="p">=</span> <span class="n">X</span> <span class="o">/</span> <span class="n">max</span><span class="p">(</span><span class="n">X</span><span class="p">(:));</span>
+    <span class="c">% construct data as some mixture of gaussian noise and the true parameters</span>
+    <span class="c">% scaled by each predictor</span>
+    <span class="n">data</span> <span class="p">=</span> <span class="nb">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nvox</span><span class="p">)</span><span class="o">*</span><span class="p">.</span><span class="mi">3</span> <span class="o">+</span> <span class="n">X</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+    <span class="c">% build Volume instances for convolved design and data</span>
+    <span class="n">metasamp</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="s">&#39;chunks&#39;</span><span class="p">,</span><span class="nb">ones</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">r</span><span class="p">);</span>
+    <span class="n">designvol</span><span class="p">{</span><span class="n">r</span><span class="p">}</span> <span class="p">=</span> <span class="n">Volume</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="s">&#39;frameperiod&#39;</span><span class="p">,</span><span class="n">tr</span><span class="p">,</span><span class="s">&#39;metasamples&#39;</span><span class="p">,</span><span class="n">metasamp</span><span class="p">,</span><span class="c">...</span>
+        <span class="s">&#39;metafeatures&#39;</span><span class="p">,</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;labels&#39;</span><span class="p">,{{</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">,</span><span class="s">&#39;constant&#39;</span><span class="p">}}));</span>
+    <span class="n">datavol</span><span class="p">{</span><span class="n">r</span><span class="p">}</span> <span class="p">=</span> <span class="n">Volume</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="s">&#39;frameperiod&#39;</span><span class="p">,</span><span class="n">tr</span><span class="p">,</span><span class="s">&#39;metasamples&#39;</span><span class="p">,</span><span class="n">metasamp</span><span class="p">);</span>
+<span class="k">end</span>
+<span class="c">% operator overloading means we can use standard concatenation syntax to combine</span>
+<span class="c">% the Volume instances over runs</span>
+<span class="n">datavol</span> <span class="p">=</span> <span class="nb">cat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">datavol</span><span class="p">{:});</span>
+<span class="n">designvol</span> <span class="p">=</span> <span class="nb">cat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">designvol</span><span class="p">{:});</span>
+
+<span class="p">[</span><span class="n">filtereddatavol</span><span class="p">,</span><span class="n">filtereddesignvol</span><span class="p">]</span> <span class="p">=</span> <span class="n">preprocessvols</span><span class="p">(</span><span class="n">datavol</span><span class="p">,</span><span class="n">designvol</span><span class="p">,</span><span class="c">...</span>
+    <span class="s">&#39;covariatedeg&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="s">&#39;ignorelabels&#39;</span><span class="p">,</span><span class="s">&#39;constant&#39;</span><span class="p">);</span>
+<span class="n">model</span> <span class="p">=</span> <span class="n">vol2glm</span><span class="p">(</span><span class="n">filtereddesignvol</span><span class="p">,</span><span class="n">filtereddatavol</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(preprocessvols) projecting out 1 covariates
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts">Estimating representational distance with cross-validated linear discriminant contrasts<a class="anchor-link" href="#Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts">&#182;</a></h3><p>Representational similarity analysis (<span class="caps">RSA</span>) is a somewhat jargony name for a simple statistical concept: analysing your data at the level of distance matrices rather than at the level of individual response channels (voxels in our case). The beauty of this is that we need not specify an exact mapping of model features to response amplitudes of individual voxels. Beyond this theoretical convenience, there is also often a practical advantage in sensitivity over conventional activation-based brain mapping approaches (although to be precise, the advantage is not exactly in raw sensitivity but rather in testing a less strict hypothesis. You must decide for yourself if your research question is suitable to hypotheses at the distance matrix&nbsp;level).</p>
+<p>It is not always appreciated that the choice of distance metric has a huge effect on what your <span class="caps">RSA</span> results look like (for a more formal discussion of distance metric effects, see <a href="https://dx.doi.org/10.1016/j.neuroimage.2015.12.012">Walther et al., in press, NeuroImage</a>). We generally prefer to use a cross-validated linear discriminant contrast (<span class="caps">LDC</span>) metric. The neat thing about <span class="caps">LDC</span> compared to metrics that aren&#8217;t cross-validated is that the distance estimate is centered on zero under the null hypothesis of no difference between the conditions. In this sense, <span class="caps">LDC</span> has a strong relationship with conventional <span class="caps">LDA</span> classification. This makes it possible to generalise <span class="caps">RSA</span> to  &#8216;decoding&#8217;-like analyses by testing whether different parts of our distance matrices (or averages of parts of the distance matrix) are reliably greater than zero, or differ reliably amongst&nbsp;themselves.</p>
+<p>More popular distance metrics such as Pearson correlation distance tend to produce <em>large</em> distance estimates when response estimates are noisy (intuitively, noise does not correlate, so the correlation distance ends up being 1-0), which can produce misleading impressions of how a given region distinguishes your conditions (ie, stimuli that cannot be distinguished in a classification sense because their estimates are noisy are assigned a large distance). Cross-validated metrics have a closer link to conventional classification and are therefore closer to our intuitive understanding of what it means for conditions to evoke dissimilar&nbsp;responses.</p>
+<p>It is however worth remembering that cross-validated metrics aren&#8217;t strictly speaking distances, since they can take negative values. This can complicate things with real&nbsp;data.</p>
+<p>In any case, let&#8217;s unpack how linear discriminant contrast is calculated. First off, let&#8217;s do it the quick, easy pilab&nbsp;route:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% cross-validated linear discriminant contrast (train on 1, test on 2)</span>
+<span class="n">m</span> <span class="p">=</span> <span class="n">infoc</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">discriminant</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="mi">1</span><span class="p">),[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]),[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>m =
+    2.0239
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What&#8217;s going on here? Linear discriminant contrasts are usually introduced in a cursory or maths-heavy manner in the literature, and consequently they are not often understood (or used, outside a few labs). This is unfortunate because although there are many operations below, none of them are actually that hard to understand if you are familiar with linear regression. Let&#8217;s go through the calculations at a lower&nbsp;level:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% OLS fit of data from run 1</span>
+<span class="n">est1</span> <span class="p">=</span> <span class="n">model</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">X</span> <span class="o">\</span> <span class="n">model</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">data</span><span class="p">;</span>
+<span class="c">% contrast between the conditions of interest</span>
+<span class="n">con1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">est1</span><span class="p">;</span>
+<span class="c">% fitted time course</span>
+<span class="n">predict1</span> <span class="p">=</span> <span class="n">model</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">X</span> <span class="o">*</span> <span class="n">est1</span><span class="p">;</span>
+<span class="c">% residual time courses</span>
+<span class="n">res1</span> <span class="p">=</span> <span class="n">model</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">data</span> <span class="o">-</span> <span class="n">predict1</span><span class="p">;</span>
+<span class="c">% (sparse) covariance of the residuals - see Misaki et al., 2010, NeuroImage. You could use the</span>
+<span class="c">% built-in cov function with very similar results.</span>
+<span class="n">cov1</span> <span class="p">=</span> <span class="n">covdiag</span><span class="p">(</span><span class="n">res1</span><span class="p">);</span>
+<span class="c">% now the linear discriminant weights vector is just the contrast multiplied by the inverse of the</span>
+<span class="c">% covariance estimator - note that so far, nothing we have done differs from bog-standard LDA.</span>
+<span class="n">w1</span> <span class="p">=</span> <span class="n">con1</span> <span class="o">/</span> <span class="n">cov1</span><span class="p">;</span>
+<span class="c">% additionally we scale the weights to unit length, which turns out to be useful for expressing</span>
+<span class="c">% the cross-validated discriminant in the units of the test data.</span>
+<span class="n">w1</span> <span class="p">=</span> <span class="n">unitlen</span><span class="p">(</span><span class="n">w1</span><span class="p">);</span>
+<span class="c">% now we get to the part where the discriminant contrast differs from conventional classification,</span>
+<span class="c">% where you would attempt to predict the label for individual observations in the test data. Instead,</span>
+<span class="c">% our discriminant contrast metric can be thought of as the distance of the (average) test data from</span>
+<span class="c">% the hyperplane defined by w1.</span>
+<span class="c">% OLS fit of data from run 2</span>
+<span class="n">est2</span> <span class="p">=</span> <span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">X</span> <span class="o">\</span> <span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">data</span><span class="p">;</span>
+<span class="c">% contrast between conditions of interest in run 2</span>
+<span class="n">con2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">est2</span><span class="p">;</span>
+<span class="c">% and now the linear discriminant contrast is just the dot product between the weights vector</span>
+<span class="c">% and the contrast estimate from the test data. Intuitively, consistent signed values will sum</span>
+<span class="c">% and inconsistent signs will subtract from the final statistic.</span>
+<span class="n">m</span> <span class="p">=</span> <span class="n">con2</span> <span class="o">*</span> <span class="n">w1</span><span class="o">&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>m =
+    2.0239
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I hope you&#8217;ll agree that the pilab code is easier to work with (and less prone to typos and other user errors) than coding this up yourself&#8230; Note that linear discriminant contrasts can also be thought of as a cross-validated version of the Mahalanobis distance, although I&#8217;ll spare you the details (see <a href="https://dx.doi.org/10.1371/journal.pcbi.1003553">Nili et al., 2014, PloS <span class="caps">CB</span></a>). To be precise, the equivalence doesn&#8217;t quite hold for the pilab implementation above since we use a sparse covariance&nbsp;estimator.</p>
+<h3 id="Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest">Rapidly estimate full distance matrices over multiple regions of interest<a class="anchor-link" href="#Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest">&#182;</a></h3><p>So if we are happy with how <span class="caps">LDC</span> works, let&#8217;s see how we can quickly run a full analysis. Let&#8217;s estimate a full distance matrix over all 4 conditions, with each contrast estimate being the mean over the 2 possible train-test splits of the runs, and with separate summaries for 3 regions of interest. For this we turn to a high-level analysis function, which takes care of all the heavy lifting involved in converting a set of data and design Volumes to a result. This code runs in a highly optimised parallel computing mode if your Matlab install supports it, which can be useful when calculating very large numbers of <span class="caps">ROI</span> results (e.g. in searchlight&nbsp;mapping).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% let&#39;s first build an additional region of interest Volume, which stores the valid</span>
+<span class="c">% features for each ROI</span>
+<span class="n">roivol</span> <span class="p">=</span> <span class="n">Volume</span><span class="p">([</span><span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nvox</span><span class="p">);</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">floor</span><span class="p">(</span><span class="n">nvox</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">ceil</span><span class="p">(</span><span class="n">nvox</span><span class="o">/</span><span class="mi">2</span><span class="p">));</span> <span class="c">...</span>
+    <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">floor</span><span class="p">(</span><span class="n">nvox</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">ceil</span><span class="p">(</span><span class="n">nvox</span><span class="o">/</span><span class="mi">2</span><span class="p">))],</span><span class="s">&#39;metasamples&#39;</span><span class="p">,</span><span class="n">struct</span><span class="p">(</span><span class="c">...</span>
+    <span class="s">&#39;names&#39;</span><span class="p">,{{</span><span class="s">&#39;allfeatures&#39;</span><span class="p">,</span><span class="s">&#39;firsthalf&#39;</span><span class="p">,</span><span class="s">&#39;secondhalf&#39;</span><span class="p">}}));</span>
+<span class="c">% now we can just call this high-level analysis function to obtain the</span>
+<span class="c">% cross-validated linear discriminant contrast for each pair of conditions, and for</span>
+<span class="c">% each region</span>
+<span class="n">disvol</span> <span class="p">=</span> <span class="n">roidata2rdmvol_lindisc_batch</span><span class="p">(</span><span class="n">roivol</span><span class="p">,</span><span class="n">filtereddesignvol</span><span class="p">,</span><span class="n">filtereddatavol</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(rdms_lindisc_configureprocess) testmeth: infoc
+(GLMProcessor.GLMProcessor) detected *SELF* placeholder
+(roidata2rdmvol_lindisc_batch) running ROIProcessing with runrois_serial
+(roidata2rdmvol_lindisc_batch) running all rois... (roidata2rdmvol_lindisc_batch) finished in 0 days, 00:00:00.038
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You guessed it, the result is another Volume instance&#8230; Finally, let&#8217;s visualise the distance matrix we just&nbsp;estimated.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%plot -s 700,700 -r 300 -f svg</span>
+<span class="n">fh</span> <span class="p">=</span> <span class="n">gcf</span><span class="p">;</span>
+<span class="c">% round to 1 decimal place</span>
+<span class="n">maxd</span> <span class="p">=</span> <span class="n">reduceprecision</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">disvol</span><span class="p">.</span><span class="n">data</span><span class="p">(:))),</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">[</span><span class="n">fh</span><span class="p">,</span><span class="n">ax</span><span class="p">,</span><span class="n">intmap</span><span class="p">,</span><span class="n">cmap</span><span class="p">]</span> <span class="p">=</span> <span class="n">rdmfig</span><span class="p">(</span><span class="n">disvol</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="n">disvol</span><span class="p">.</span><span class="n">meta</span><span class="p">.</span><span class="n">features</span><span class="p">.</span><span class="n">names</span><span class="p">,[],</span><span class="n">fh</span><span class="p">,</span><span class="c">...</span>
+    <span class="s">&#39;limits&#39;</span><span class="p">,[</span><span class="o">-</span><span class="n">maxd</span> <span class="n">maxd</span><span class="p">]);</span>
+<span class="n">cbax</span> <span class="p">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">c</span> <span class="p">=</span> <span class="n">colorbarbetter</span><span class="p">(</span><span class="n">cbax</span><span class="p">,</span><span class="n">intmap</span><span class="p">{</span><span class="k">end</span><span class="p">},</span><span class="n">cmap</span><span class="p">{</span><span class="k">end</span><span class="p">},</span><span class="s">&#39;label&#39;</span><span class="p">,</span><span class="s">&#39;linear discriminant contrast&#39;</span><span class="p">,</span><span class="s">&#39;scale&#39;</span><span class="p">,.</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-about-linear-discriminant-T-statistics?">What about linear discriminant T statistics?<a class="anchor-link" href="#What-about-linear-discriminant-T-statistics?">&#182;</a></h3><p>The first papers to use something like <span class="caps">LDC</span> tended to report a related but distinct metric - a linear discriminant T statistic or <span class="caps">LDT</span> (<a href="http://dx.doi.org/10.1073/pnas.0705654104">Kriegeskorte et al. 2007, <span class="caps">PNAS</span></a>). In a way it&#8217;s unfortunate that this method appeared first because it is more complex to calculate and understand than <span class="caps">LDC</span>. Let&#8217;s return to the example to understand how it differs. To start with, here is the high level pilab implementation for&nbsp;reference:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% to get from infoc to infot, just call a different GLM class method</span>
+<span class="n">t</span> <span class="p">=</span> <span class="n">infot</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">discriminant</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="mi">1</span><span class="p">),[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]),[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>t =
+    4.9786
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first thing to note is that the calculation of the weights vector remains similar to standard <span class="caps">LDA</span>, just like with <span class="caps">LDC</span>. However, whereas in <span class="caps">LDC</span> the test statistic is estimated by projecting the contrast estimate onto the discriminant dimension (ie, the weights vector), for <span class="caps">LDT</span> this won&#8217;t do the job since we need an estimate of the <em>variance</em> of the discriminant to calculate T. Instead, we&#8217;re going to project the full time courses onto the discriminant, like&nbsp;so:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% we go from one feature per voxel to one feature per discriminant</span>
+<span class="n">disctime</span> <span class="p">=</span> <span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">data</span> <span class="o">*</span> <span class="n">w1</span><span class="o">&#39;</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It took me a long time to work out the consequences of doing this. Let&#8217;s visualise what the discriminant time courses look like to help guide our&nbsp;intuition.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">%plot -s 700,700 -r 300 -f svg</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">disctime</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">X</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;regressors of interest&#39;</span><span class="p">);</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">X</span><span class="p">(:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&#39;</span><span class="p">);</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;contrast time course&#39;</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+RK5CYII=
+">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice how the discriminant goes up whenever a stimulus belonging to condition 1 appears, and down whenever a stimulus belonging to condition 2 appears. Indeed, the discriminant time course looks a lot like the time course you get if you contrast the two predicted time&nbsp;courses.</p>
+<p>So now that we have a discriminant time course we can just fit it to the design matrix and estimate the same contrast that went into the calculation of the weights vector. And once we have that, standard errors and T statistics can be calculated like any multiple regression model. Neat. I won&#8217;t belabour the point by coding out the full T statistic code, but basically we just build a new <span class="caps">GLM</span> instance and estimate contrasts and t statistics just like with any other&nbsp;model.</p>
+<p>By the way, what do you think that discriminant time course contrast estimate looks&nbsp;like?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-matlab"><pre><span></span><span class="c">% parameter estimates for the test design matrix fitted to the discriminant time course</span>
+<span class="n">discest</span> <span class="p">=</span> <span class="n">model</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">X</span> <span class="o">\</span> <span class="n">disctime</span><span class="p">;</span>
+<span class="c">% contrast estimate</span>
+<span class="n">disccon</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">discest</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>disccon =
+    2.0239
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That&#8217;s right, it&#8217;s the <span class="caps">LDC</span> again. The dot-product-of-the-contrast approach above is an equivalent (and more computationally efficient) way to arrive at the same result. But by going about it in this roundabout way we have shown that <span class="caps">LDC</span> and <span class="caps">LDT</span> really differ only in whether you scale by the standard error estimate or&nbsp;not.</p>
+<h3 id="Why-is-LDC-preferable-to-LDT?">Why is <span class="caps">LDC</span> preferable to <span class="caps">LDT</span>?<a class="anchor-link" href="#Why-is-LDC-preferable-to-LDT?">&#182;</a></h3><p>The appealing thing about <span class="caps">LDT</span> is that because it is expressed in standard error units, it provides a somewhat intuitive idea about effect size (well, technically we might prefer <em><span class="caps">LDZ</span></em> instead to avoid the dependence on degrees of freedom, but to my knowledge no one has reported using this). But this interpretability advantage breaks down when you consider cross-validation. If you run standard N-fold validation over say 5 runs, you will end up with 5 separate LDTs that you will average. That average is no longer a T statistic, and in fact you now run the risk of confusing your readers by reporting tiny, tiny &#8216;T&#8217; statistics that are nevertheless highly significant. In my view, <span class="caps">LDT</span> is best suited to cases where you only plan to test your model on a single validation set,&nbsp;once.</p>
+<p>That&#8217;s it for today. Stay tuned for future posts, where we will cover how pilab implements non-parametric statistical inference and random effects group analysis for <span class="caps">RSA</span> and standard univariate&nbsp;models.</p>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'johancarlin'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'pilab-tutorial-2-linear-discriminant-contrast';
+                var disqus_url = 'http://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://github.com/jooh"><i class="fa fa-code-square fa-lg"></i> code</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/johancarlin"><i class="fa fa-rants-square fa-lg"></i> rants</a></li>
+                <li class="list-group-item"><a href="https://anaconda.org/jcarlin"><i class="fa fa-python-packages-square fa-lg"></i> python packages</a></li>
+                <li class="list-group-item"><a href="https://www.mendeley.com/profiles/johan-carlin"><i class="fa fa-publications-square fa-lg"></i> publications</a></li>
+                <li class="list-group-item"><a href="https://getpocket.com/@idoru"><i class="fa fa-long-reads-square fa-lg"></i> long reads</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="list-group-item"><a href="http://www.johancarlin.com/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://www.ucl.ac.uk/lovelab" target="_blank">
+                Love lab
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://www.mrc-cbu.cam.ac.uk/our-research/kriegeskorte" target="_blank">
+                Kriegeskorte lab
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://gru.stanford.edu" target="_blank">
+                Gardner lab
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Johan Carlin
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://www.johancarlin.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://www.johancarlin.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://www.johancarlin.com/theme/js/respond.min.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'johancarlin'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-33066815-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
