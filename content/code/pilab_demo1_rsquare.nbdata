@@ -1,0 +1,8 @@
+Title: Pilab tutorial 1: model fit and cross-validation
+Slug:
+Date: 2016-05-22
+Modified: 2016-05-30
+Category:
+Tags: scientific computing,matlab,pilab
+Author:
+Summary: We simulate a basic fMRI dataset, and estimate cross-validated prediction performance for a convolved design.

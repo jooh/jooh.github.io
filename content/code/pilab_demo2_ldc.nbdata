@@ -1,0 +1,10 @@
+Title: Pilab tutorial 2: linear discriminant contrast
+Slug:
+Date: 2016-05-29
+Modified: 2019-09-18
+Category:
+Tags: scientific computing,matlab,pilab
+Author:
+Summary: We estimate multivariate discriminability with linear discriminant contrast (also known as cross-validated Mahalanobis distance, crossnobis).
+Status: published
+
