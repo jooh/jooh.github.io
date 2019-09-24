@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="http://www.johancarlin.com/" rel="alternate"></link><link href="http://www.johancarlin.com/feeds/science.atom.xml" rel="self"></link><id>http://www.johancarlin.com/</id><updated>2015-12-15T00:00:00+00:00</updated><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="http://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"></link><updated>2015-12-15T00:00:00+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It&amp;#8217;s a bit of a cliche that the best papers are the ones that raise more
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin's blog - science</title><link href="https://www.johancarlin.com/" rel="alternate"></link><link href="https://www.johancarlin.com/feeds/science.atom.xml" rel="self"></link><id>https://www.johancarlin.com/</id><updated>2015-12-15T00:00:00+00:00</updated><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="https://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"></link><published>2015-12-15T00:00:00+00:00</published><updated>2015-12-15T00:00:00+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It&amp;#8217;s a bit of a cliche that the best papers are the ones that raise more
+questions than they answer (in fact, many papers seem to answer hardly
+anything at all on close inspection and it doesn&amp;#8217;t mean they&amp;#8217;re great). But
+I think this might be one …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It&amp;#8217;s a bit of a cliche that the best papers are the ones that raise more
 questions than they answer (in fact, many papers seem to answer hardly
 anything at all on close inspection and it doesn&amp;#8217;t mean they&amp;#8217;re great). But
 I think this might be one of those papers for which the cliche holds true
@@ -43,7 +46,7 @@ intuitively, this one arguably task-relevant dimension does not distinguish
 correct and error trials, while the total count over many discriminants
 does, even though a good number of these splits would have very
 little behavioural relevance. This is&amp;nbsp;puzzling.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Figure 5, Rigotti et al. (2013)" src="http://www.johancarlin.com/images/rigotti2013.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Figure 5, Rigotti et al. (2013)" src="https://www.johancarlin.com/images/rigotti2013.png"&gt;&lt;/p&gt;
 &lt;p&gt;A final few notes on&amp;nbsp;this:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The paper has a strong spin on the topic of &amp;#8216;non-linear mixed
@@ -73,4 +76,4 @@ little behavioural relevance. This is&amp;nbsp;puzzling.&lt;/p&gt;
   doesn&amp;#8217;t seem to follow if the code were this&amp;nbsp;high-dimensional.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;Reference&lt;/h1&gt;
-&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</summary><category term="pfc"></category><category term="electrophysiology"></category><category term="single-unit recording"></category><category term="low-rank matrix approximation"></category><category term="classification"></category><category term="post-publication peer review"></category></entry></feed>
+&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</content><category term="pfc"></category><category term="electrophysiology"></category><category term="single-unit recording"></category><category term="low-rank matrix approximation"></category><category term="classification"></category><category term="post-publication peer review"></category></entry></feed>

@@ -1,12 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="http://www.johancarlin.com/" rel="alternate"></link><link href="http://www.johancarlin.com/feeds/code.atom.xml" rel="self"></link><id>http://www.johancarlin.com/</id><updated>2016-08-03T00:00:00+01:00</updated><entry><title>Pilab tutorial 3: importing fMRI data and ROIs, searchlight mapping</title><link href="http://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html" rel="alternate"></link><updated>2016-08-03T00:00:00+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-08-03:pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin's blog - code</title><link href="https://www.johancarlin.com/" rel="alternate"></link><link href="https://www.johancarlin.com/feeds/code.atom.xml" rel="self"></link><id>https://www.johancarlin.com/</id><updated>2019-09-18T00:00:00+01:00</updated><entry><title>Pilab tutorial 3: importing fMRI data and ROIs, searchlight mapping</title><link href="https://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html" rel="alternate"></link><published>2016-08-03T00:00:00+01:00</published><updated>2016-08-03T00:00:00+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-08-03:/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html</id><summary type="html">&lt;p&gt;We demonstrate how to apply pilab linear discriminant contrast methods to a real fMRI dataset, including searchlight mapping over the full&amp;nbsp;volume.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
 */
-/* &lt;span class="caps"&gt;CSS&lt;/span&gt; font colors for translated &lt;span class="caps"&gt;ANSI&lt;/span&gt; colors. */
+/* &lt;span class="caps"&gt;CSS&lt;/span&gt; font colors for translated &lt;span class="caps"&gt;ANSI&lt;/span&gt; escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;;
+}
+.ansi-black-bg {
+  background-color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;;
+}
+.ansi-red-bg {
+  background-color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;;
+}
+.ansi-red-intense-fg {
+  color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;;
+}
+.ansi-red-intense-bg {
+  background-color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;;
+}
+.ansi-yellow-bg {
+  background-color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;;
+}
+.ansi-yellow-intense-fg {
+  color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;;
+}
+.ansi-yellow-intense-bg {
+  background-color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;;
+}
+.ansi-blue-fg {
+  color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;;
+}
+.ansi-blue-bg {
+  background-color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;;
+}
+.ansi-blue-intense-fg {
+  color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;;
+}
+.ansi-blue-intense-bg {
+  background-color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;;
+}
+.ansi-magenta-fg {
+  color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;;
+}
+.ansi-magenta-bg {
+  background-color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;;
+}
+.ansi-cyan-bg {
+  background-color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;;
+}
+.ansi-cyan-intense-fg {
+  color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;;
+}
+.ansi-cyan-intense-bg {
+  background-color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;;
+}
+.ansi-white-fg {
+  color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;;
+}
+.ansi-white-bg {
+  background-color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;;
+}
+.ansi-white-intense-fg {
+  color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;;
+}
+.ansi-white-intense-bg {
+  background-color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;;
+}
+.ansi-default-inverse-fg {
+  color: #&lt;span class="caps"&gt;FFFFFF&lt;/span&gt;;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -85,12 +200,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #&lt;span class="caps"&gt;90CAF9&lt;/span&gt;;
   border-left-color: #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt;;
   border-left-width: 1px;
   padding-left: 5px;
@@ -103,27 +226,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; -40px, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #&lt;span class="caps"&gt;42A5F5&lt;/span&gt;;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; -40px, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; 7px, #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt; 7px, #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt; 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #&lt;span class="caps"&gt;66BB6A&lt;/span&gt;;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;66BB6A&lt;/span&gt; -40px, #&lt;span class="caps"&gt;66BB6A&lt;/span&gt; 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #&lt;span class="caps"&gt;66BB6A&lt;/span&gt;;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -156,6 +291,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -176,11 +312,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -323,7 +454,9 @@ div.input_area &gt; div.highlight &gt; pre {
 .CodeMirror-lines {
   /* In &lt;span class="caps"&gt;CM2&lt;/span&gt;, this used to be 0.4em, but in &lt;span class="caps"&gt;CM3&lt;/span&gt; it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -333,11 +466,24 @@ div.input_area &gt; div.highlight &gt; pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In &lt;span class="caps"&gt;CM3&lt;/span&gt; this went to 4px from 0 in &lt;span class="caps"&gt;CM2&lt;/span&gt;. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In &lt;span class="caps"&gt;CM3&lt;/span&gt; this went to 4px from 0 in &lt;span class="caps"&gt;CM2&lt;/span&gt;. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -585,6 +731,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -623,7 +772,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -745,6 +894,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -761,16 +914,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -786,6 +947,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -836,8 +1002,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -918,8 +1091,10 @@ h6:hover .anchor-link {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Affix */
 .highlight .sb { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Backtick */
 .highlight .sc { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Char */
+.highlight .dl { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Delimiter */
 .highlight .sd { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt;; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Double */
 .highlight .se { color: #&lt;span class="caps"&gt;BB6622&lt;/span&gt;; font-weight: bold } /* Literal.String.Escape */
@@ -930,54 +1105,16 @@ h6:hover .anchor-link {
 .highlight .s1 { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #&lt;span class="caps"&gt;0000FF&lt;/span&gt; } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
-&lt;style type="text/css"&gt;
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;; }
-.ansi-black-bg { background-color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;; }
-.ansi-red-bg { background-color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;; }
-.ansi-red-intense-fg { color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;; }
-.ansi-red-intense-bg { background-color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;; }
-.ansi-yellow-bg { background-color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;; }
-.ansi-yellow-intense-fg { color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;; }
-.ansi-yellow-intense-bg { background-color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;; }
-.ansi-blue-fg { color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;; }
-.ansi-blue-bg { background-color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;; }
-.ansi-blue-intense-fg { color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;; }
-.ansi-blue-intense-bg { background-color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;; }
-.ansi-magenta-fg { color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;; }
-.ansi-magenta-bg { background-color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;; }
-.ansi-cyan-bg { background-color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;; }
-.ansi-cyan-intense-fg { color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;; }
-.ansi-cyan-intense-bg { background-color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;; }
-.ansi-white-fg { color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;; }
-.ansi-white-bg { background-color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;; }
-.ansi-white-intense-fg { color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;; }
-.ansi-white-intense-bg { background-color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;; }
-
-.ansi-bold { font-weight: bold; }
-&lt;/style&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This post is the third in a series of brief &lt;a href="https://github.com/jooh/pilab"&gt;pilab&lt;/a&gt; tutorials. Today we will tackle the main stumbling block for any new analysis software - converting your existing data to the correct format. In pilab this can be done fairly easily through a series of converter functions - &lt;a href="https://github.com/jooh/pilab/blob/master/containers/spm2vol.m"&gt;spm2vol&lt;/a&gt;, &lt;a href="https://github.com/jooh/pilab/blob/master/containers/mrtools2vol.m"&gt;mrtools2vol&lt;/a&gt;, and &lt;a href="https://github.com/jooh/pilab/blob/master/containers/mreyelink2vol.m"&gt;mreyelink2vol&lt;/a&gt;. Additional data converters will be added, but in the meantime you may find that converting at least fMRI data isn&amp;#8217;t too hard by calling the &lt;a href="https://github.com/jooh/pilab/blob/master/containers/MriVolume.m"&gt;MriVolume&lt;/a&gt; class constructor&amp;nbsp;directly.&lt;/p&gt;
-&lt;p&gt;I will also assume you are somewhat familiar with pilab Volume instances at this point. To catch up, see &lt;a href="pilab-tutorial-1-model-fit-and-cross-validation.html"&gt;part 1&lt;/a&gt; of this&amp;nbsp;series.&lt;/p&gt;
+&lt;p&gt;I will also assume you are somewhat familiar with pilab Volume instances at this point. To catch up, see &lt;a href="https://www.johancarlin.com/pilab-tutorial-1-model-fit-and-cross-validation.html"&gt;part 1&lt;/a&gt; of this&amp;nbsp;series.&lt;/p&gt;
 &lt;h3 id="Import-SPM-fMRI-data-to-pilab"&gt;Import &lt;span class="caps"&gt;SPM&lt;/span&gt; fMRI data to pilab&lt;a class="anchor-link" href="#Import-SPM-fMRI-data-to-pilab"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;For the purposes of this tutorial, I will assume that there is a &lt;span class="caps"&gt;SPM&lt;/span&gt;.mat file in the directory &lt;code&gt;resdir&lt;/code&gt;, which contains a configured &lt;span class="caps"&gt;SPM&lt;/span&gt; first level model generated by convolution with the standard &lt;span class="caps"&gt;SPM&lt;/span&gt; &lt;span class="caps"&gt;HRF&lt;/span&gt; (the key function is spm_fmri_spm_ui). If you use &lt;a href="https://github.com/jooh/automaticanalysis"&gt;my fork&lt;/a&gt; of the Automatic Analysis batch processing package (&lt;a href="http://dx.doi.org/10.3389/fninf.2014.00090"&gt;Cusack et al., 2015&lt;/a&gt;, Front Neuroinform), you would want the &lt;span class="caps"&gt;SPM&lt;/span&gt;.mat that is generated by &lt;a href="https://github.com/jooh/automaticanalysis/blob/master/aa_modules/aamod_firstlevel_design.m"&gt;aamod_firstlevel_design&lt;/a&gt;. I will also assume that you have a brain mask (&lt;code&gt;pilab_mask.nii&lt;/code&gt;) and two regions of interest (&lt;code&gt;FFA.nii, PPA.nii&lt;/code&gt;), which reside in a sub-directory &lt;code&gt;ROIs&lt;/code&gt;.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -998,7 +1135,7 @@ h6:hover .anchor-link {
 &lt;span class="n"&gt;epivol&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1006,7 +1143,11 @@ h6:hover .anchor-link {
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;(loadmaskedvolumes) removed 280 voxels ( 1% of total)
 epivol = 
@@ -1032,10 +1173,8 @@ epivol =
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Notice that epivol contains a &lt;code&gt;mask&lt;/code&gt; and a set of linear indices (&lt;code&gt;linind&lt;/code&gt;). These are used to enable mapping
 between 2D samples by voxels representation stored in the data field and volumetric 3D data. Let&amp;#8217;s apply that to update our mask. You may have noticed above that a few voxels got removed due to NaNs, so let&amp;#8217;s write out a new &lt;span class="caps"&gt;NIFTI&lt;/span&gt; that reflects this&amp;nbsp;change:&lt;/p&gt;
@@ -1053,15 +1192,13 @@ between 2D samples by voxels representation stored in the data field and volumet
 &lt;span class="n"&gt;data2file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epivol&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;ones&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;epivol&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nfeatures&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;fullfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;pilab_mask_updated.nii&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We can also visualise the data from a single&amp;nbsp;timepoint:&lt;/p&gt;
 
@@ -1084,7 +1221,7 @@ between 2D samples by voxels representation stored in the data field and volumet
 &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chandle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;position&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chandle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;position&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;.*&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;1.1&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1092,7 +1229,11 @@ between 2D samples by voxels representation stored in the data field and volumet
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -2133,7 +2274,8 @@ hUKhUDgLiiAVCoVC4SwoglQoFAqFs6AIUqFQKBTOgiJIhUKhUDgLiiAVCoVC4SwoglQoFAqFs6AI
 UqFQKBTOgiJIhUKhUDgLiiAVCoVC4SwoglQoFAqFs6AIUqFQKBTOgiJIhUKhUDgLiiAVCoVC4Swo
 glQoFAqFs6AIUqFQKBTOgiJIhUKhUDgLiiAVCoVC4SwoglQoFAqFs6AIUqFQKBTOgiJIhUKhUDgL
 iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
-"&gt;
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2142,10 +2284,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Import-regions-of-interest-to-pilab"&gt;Import regions of interest to pilab&lt;a class="anchor-link" href="#Import-regions-of-interest-to-pilab"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Suppose you have some &lt;span class="caps"&gt;ROI&lt;/span&gt; masks saved as nifti. Let&amp;#8217;s import those to&amp;nbsp;pilab.&lt;/p&gt;
 
@@ -2161,7 +2301,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;span class="n"&gt;roivol&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;roidir2vol&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fullfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ROIs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2169,7 +2309,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;roivol = 
   SPMVolume with properties:
@@ -2194,10 +2338,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;We have two ROIs in rows with voxels in columns as before, but what about the feature dimension? It doesn&amp;#8217;t seem to match epivol. If we want to make sure the two are in register we can do something&amp;nbsp;like:&lt;/p&gt;
 
@@ -2213,7 +2355,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;span class="n"&gt;rfepi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2221,7 +2363,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;rfepi = 
   SPMVolume with properties:
@@ -2246,10 +2392,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;And now indexing &lt;span class="caps"&gt;EPI&lt;/span&gt; data for a particular &lt;span class="caps"&gt;ROI&lt;/span&gt; is pretty&amp;nbsp;easy:&lt;/p&gt;
 
@@ -2264,7 +2408,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;div class=" highlight hl-matlab"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;roiepi&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rfepi&lt;/span&gt;&lt;span class="p"&gt;(:,&lt;/span&gt;&lt;span class="n"&gt;rfroi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,:)&lt;/span&gt;&lt;span class="o"&gt;~=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2272,7 +2416,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;roiepi = 
   SPMVolume with properties:
@@ -2297,10 +2445,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Notice how the returned volume keeps track of the headers and volumetric registration, so we can still map back to 3D volume at any time. For example, let&amp;#8217;s verify that the &lt;span class="caps"&gt;ROI&lt;/span&gt; matches what we expect for &lt;span class="caps"&gt;FFA&lt;/span&gt;.&lt;/p&gt;
 
@@ -2317,7 +2463,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gca&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;dataaspectratio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="n"&gt;epivol&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;voxsize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2325,7 +2471,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -2371,7 +2521,8 @@ FiQAEjyyAyBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABI
 ECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBB
 kABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARB
 AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
-"&gt;
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2380,10 +2531,8 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Searchlight-mapping"&gt;Searchlight mapping&lt;a class="anchor-link" href="#Searchlight-mapping"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Keeping the 2D data in register with the 3D volume also makes it easy to do searchlight mapping, where a spherical &lt;span class="caps"&gt;ROI&lt;/span&gt; is swept through the brain. The pilab approach to searchlight mapping is to precompute all searchlight &lt;span class="caps"&gt;ROI&lt;/span&gt; masks, which can then be entered into the analysis code like any other&amp;nbsp;roivol.&lt;/p&gt;
 &lt;p&gt;Below we perform searchlight mapping with a fixed &lt;span class="caps"&gt;ROI&lt;/span&gt; size, which means that the searchlight radius is tuned to achieve a given number of voxels in each &lt;span class="caps"&gt;ROI&lt;/span&gt;. An alternative approach is to simply fix the radius and allow the number of voxels to vary over&amp;nbsp;searchlights.&lt;/p&gt;
@@ -2405,7 +2554,7 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;searchrois&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;diagnostic&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mask2searchrois&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epivol&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;nvox&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2413,7 +2562,11 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Starting matlabpool using the &amp;#39;local&amp;#39; profile ... connected to 4 workers.
 (mask2searchrois) mapping 54080 searchlights...
@@ -2426,13 +2579,11 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Notice the time taken above (about 12 minutes on an i7 processor). The good news is that running the searchlight mapping itself will be considerably faster now that the ROIs have been pre-computed. Radius-based mapping would also be&amp;nbsp;faster.&lt;/p&gt;
-&lt;p&gt;From this point on, analysis proceeds exactly as with any other pilab &lt;span class="caps"&gt;ROI&lt;/span&gt; analysis. For instance, roidata2rdmvol_lindisc_batch can be called with searchrois to obtain one distance matrix per searchlight (see &lt;a href="pilab-tutorial-2-linear-discriminant-contrast.html"&gt;part 2&lt;/a&gt; of this series), and the result of some comparison between each searchlight and a model &lt;span class="caps"&gt;RDM&lt;/span&gt; can be mapped out to a nifti using the data2file method as&amp;nbsp;above.&lt;/p&gt;
+&lt;p&gt;From this point on, analysis proceeds exactly as with any other pilab &lt;span class="caps"&gt;ROI&lt;/span&gt; analysis. For instance, roidata2rdmvol_lindisc_batch can be called with searchrois to obtain one distance matrix per searchlight (see &lt;a href="https://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html"&gt;part 2&lt;/a&gt; of this series), and the result of some comparison between each searchlight and a model &lt;span class="caps"&gt;RDM&lt;/span&gt; can be mapped out to a nifti using the data2file method as&amp;nbsp;above.&lt;/p&gt;
 &lt;h3 id="A-few-searchlight-mapping-quirks-to-be-aware-of"&gt;A few searchlight mapping quirks to be aware of&lt;a class="anchor-link" href="#A-few-searchlight-mapping-quirks-to-be-aware-of"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Finally, let&amp;#8217;s take a look at the &lt;code&gt;diagnostic&lt;/code&gt; output, which reveals some interesting properties of searchlight&amp;nbsp;mapping.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -2453,7 +2604,7 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diagnostic&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2461,7 +2612,11 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -2742,12 +2897,17 @@ BSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIoMCEREVEUmJCIiCgKTEhERBQFJiQiIooCExIR
 EUWBCYmIiKLAhERERFFgQiIioigwIRERURSYkIiIKApMSEREFAUmJCIiigITEhERRYEJiYiIosCE
 REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 /H+WnDmgDTI2OgAAAABJRU5ErkJggg==
-"&gt;
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;ans =
      9
@@ -2759,10 +2919,8 @@ REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Although the modal radius is 9mm here, we need bigger spheres close to the edge of the brain since a larger part of each sphere falls outside the brain mask. If we had used a grey-matter mask the pattern would have been more complex (for this and other reasons I no longer recommend volumetric searchlight mapping on grey-matter masked&amp;nbsp;data).&lt;/p&gt;
 
@@ -2784,7 +2942,7 @@ REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diagnostic&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nsampled&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2792,7 +2950,11 @@ REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -3315,12 +3477,17 @@ giAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCc
 BCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQI
 giCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkg
 giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
-"&gt;
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;ans =
    100
@@ -3332,10 +3499,8 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;One consequence of that expanding radius is that voxels close to the border of the brain end up sampled by more searchlight ROIs than voxels on the interior. If larger ROIs tend to show more effect (assuming broadly distributed effects and a method that is tolerant to &lt;span class="caps"&gt;ROI&lt;/span&gt; size), this will tend to produce maps that show more effects on the edge of the brain than in the interior. Conversely, radius-based mapping will tend to favour the interior. So there is bias either way. Don&amp;#8217;t think this is issue is specific to searchlight mapping though. Similar issues arise with standard univariate fMRI analysis, where Gaussian smoothing will have different effects on the edge of the brain (where you are smoothing in mostly low image-intensity nothing) and on the interior (where you are likely smoothing in high image-intensity white matter&amp;nbsp;noise).&lt;/p&gt;
 &lt;p&gt;I tend to fix &lt;span class="caps"&gt;ROI&lt;/span&gt; size rather than radius since this makes searchlight results somewhat more comparable to functional &lt;span class="caps"&gt;ROI&lt;/span&gt; analyses (which can be fixed to similar&amp;nbsp;sizes).&lt;/p&gt;
@@ -3344,11 +3509,14 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+ 
+
+
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -3365,20 +3533,136 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
         "    } " +
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="scientific computing"></category><category term="matlab"></category><category term="pilab"></category></entry><entry><title>Pilab tutorial 2: linear discriminant contrast</title><link href="http://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html" rel="alternate"></link><updated>2016-05-30T00:00:00+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-05-29:pilab-tutorial-2-linear-discriminant-contrast.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+</content><category term="scientific computing"></category><category term="matlab"></category><category term="pilab"></category></entry><entry><title>Pilab tutorial 2: linear discriminant contrast</title><link href="https://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html" rel="alternate"></link><published>2016-05-29T00:00:00+01:00</published><updated>2019-09-18T00:00:00+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-05-29:/pilab-tutorial-2-linear-discriminant-contrast.html</id><summary type="html">&lt;p&gt;We estimate multivariate discriminability with linear discriminant contrast (also known as cross-validated Mahalanobis distance,&amp;nbsp;crossnobis).&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
 */
-/* &lt;span class="caps"&gt;CSS&lt;/span&gt; font colors for translated &lt;span class="caps"&gt;ANSI&lt;/span&gt; colors. */
+/* &lt;span class="caps"&gt;CSS&lt;/span&gt; font colors for translated &lt;span class="caps"&gt;ANSI&lt;/span&gt; escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;;
+}
+.ansi-black-bg {
+  background-color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;;
+}
+.ansi-red-bg {
+  background-color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;;
+}
+.ansi-red-intense-fg {
+  color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;;
+}
+.ansi-red-intense-bg {
+  background-color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;;
+}
+.ansi-yellow-bg {
+  background-color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;;
+}
+.ansi-yellow-intense-fg {
+  color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;;
+}
+.ansi-yellow-intense-bg {
+  background-color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;;
+}
+.ansi-blue-fg {
+  color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;;
+}
+.ansi-blue-bg {
+  background-color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;;
+}
+.ansi-blue-intense-fg {
+  color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;;
+}
+.ansi-blue-intense-bg {
+  background-color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;;
+}
+.ansi-magenta-fg {
+  color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;;
+}
+.ansi-magenta-bg {
+  background-color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;;
+}
+.ansi-cyan-bg {
+  background-color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;;
+}
+.ansi-cyan-intense-fg {
+  color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;;
+}
+.ansi-cyan-intense-bg {
+  background-color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;;
+}
+.ansi-white-fg {
+  color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;;
+}
+.ansi-white-bg {
+  background-color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;;
+}
+.ansi-white-intense-fg {
+  color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;;
+}
+.ansi-white-intense-bg {
+  background-color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;;
+}
+.ansi-default-inverse-fg {
+  color: #&lt;span class="caps"&gt;FFFFFF&lt;/span&gt;;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -3457,12 +3741,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #&lt;span class="caps"&gt;90CAF9&lt;/span&gt;;
   border-left-color: #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt;;
   border-left-width: 1px;
   padding-left: 5px;
@@ -3475,27 +3767,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; -40px, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #&lt;span class="caps"&gt;42A5F5&lt;/span&gt;;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; -40px, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; 7px, #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt; 7px, #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt; 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #&lt;span class="caps"&gt;66BB6A&lt;/span&gt;;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;66BB6A&lt;/span&gt; -40px, #&lt;span class="caps"&gt;66BB6A&lt;/span&gt; 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #&lt;span class="caps"&gt;66BB6A&lt;/span&gt;;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -3528,6 +3832,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -3548,11 +3853,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -3695,7 +3995,9 @@ div.input_area &gt; div.highlight &gt; pre {
 .CodeMirror-lines {
   /* In &lt;span class="caps"&gt;CM2&lt;/span&gt;, this used to be 0.4em, but in &lt;span class="caps"&gt;CM3&lt;/span&gt; it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -3705,11 +4007,24 @@ div.input_area &gt; div.highlight &gt; pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In &lt;span class="caps"&gt;CM3&lt;/span&gt; this went to 4px from 0 in &lt;span class="caps"&gt;CM2&lt;/span&gt;. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In &lt;span class="caps"&gt;CM3&lt;/span&gt; this went to 4px from 0 in &lt;span class="caps"&gt;CM2&lt;/span&gt;. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -3957,6 +4272,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -3995,7 +4313,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -4117,6 +4435,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -4133,16 +4455,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -4158,6 +4488,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -4208,8 +4543,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -4290,8 +4632,10 @@ h6:hover .anchor-link {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Affix */
 .highlight .sb { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Backtick */
 .highlight .sc { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Char */
+.highlight .dl { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Delimiter */
 .highlight .sd { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt;; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Double */
 .highlight .se { color: #&lt;span class="caps"&gt;BB6622&lt;/span&gt;; font-weight: bold } /* Literal.String.Escape */
@@ -4302,54 +4646,16 @@ h6:hover .anchor-link {
 .highlight .s1 { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #&lt;span class="caps"&gt;0000FF&lt;/span&gt; } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
-&lt;style type="text/css"&gt;
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;; }
-.ansi-black-bg { background-color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;; }
-.ansi-red-bg { background-color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;; }
-.ansi-red-intense-fg { color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;; }
-.ansi-red-intense-bg { background-color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;; }
-.ansi-yellow-bg { background-color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;; }
-.ansi-yellow-intense-fg { color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;; }
-.ansi-yellow-intense-bg { background-color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;; }
-.ansi-blue-fg { color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;; }
-.ansi-blue-bg { background-color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;; }
-.ansi-blue-intense-fg { color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;; }
-.ansi-blue-intense-bg { background-color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;; }
-.ansi-magenta-fg { color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;; }
-.ansi-magenta-bg { background-color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;; }
-.ansi-cyan-bg { background-color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;; }
-.ansi-cyan-intense-fg { color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;; }
-.ansi-cyan-intense-bg { background-color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;; }
-.ansi-white-fg { color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;; }
-.ansi-white-bg { background-color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;; }
-.ansi-white-intense-fg { color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;; }
-.ansi-white-intense-bg { background-color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;; }
-
-.ansi-bold { font-weight: bold; }
-&lt;/style&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This post is the second of a series of tutorials where I illustrate basic fMRI analyses with &lt;a href="https://github.com/jooh/pilab"&gt;pilab&lt;/a&gt;. Today we will construct a pseudo-distance matrix with cross-validated linear discriminant contrast. In addition to pilab you will need my &lt;a href="https://github.com/jooh/matlab-plotting"&gt;figure code&lt;/a&gt; and probably my &lt;a href="https://github.com/jooh/johansmatlab"&gt;general-purpose utility code&lt;/a&gt; to get the example below to run. Have&amp;nbsp;fun!&lt;/p&gt;
-&lt;h3 id="Building-simulated-fMRI-data"&gt;Building simulated fMRI data&lt;a class="anchor-link" href="#Building-simulated-fMRI-data"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;To review, we are going to make up some data to model. If you read &lt;a href="pilab-tutorial-1-model-fit-and-cross-validation.html"&gt;part 1&lt;/a&gt; in this series you can skip ahead to the next&amp;nbsp;section.&lt;/p&gt;
+&lt;h3 id="Building-simulated-fMRI-data"&gt;Building simulated fMRI data&lt;a class="anchor-link" href="#Building-simulated-fMRI-data"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;To review, we are going to make up some data to model. If you read &lt;a href="https://www.johancarlin.com/pilab-tutorial-1-model-fit-and-cross-validation.html"&gt;part 1&lt;/a&gt; in this series you can skip ahead to the next&amp;nbsp;section.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4359,7 +4665,8 @@ h6:hover .anchor-link {
 &lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-matlab"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;% shuffle the random number generator&lt;/span&gt;
+&lt;div class=" highlight hl-matlab"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;%config InlineBackend.figure_format = &amp;#39;retina&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;% shuffle the random number generator&lt;/span&gt;
 &lt;span class="n"&gt;rng&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;shuffle&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="c"&gt;% control variables for the simulation&lt;/span&gt;
 &lt;span class="c"&gt;% number of volumes (TRs)&lt;/span&gt;
@@ -4375,15 +4682,13 @@ h6:hover .anchor-link {
 &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ncon&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nvox&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;For each run of the experiment, we make up a set of &lt;em&gt;onsets&lt;/em&gt; (uniformly distributed over the run), and assign
 each onset to a &lt;em&gt;conind&lt;/em&gt; (effectively the column index in the final design matrix). We then convolve the onsets
@@ -4427,7 +4732,7 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;vol2glm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filtereddesignvol&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;filtereddatavol&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4435,9 +4740,13 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;(preprocessvols) projecting out 1 covariates
+&lt;pre&gt;15:59 2019/09/18 (preprocessvols) projecting out 1 covariates
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4446,13 +4755,11 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts"&gt;Estimating representational distance with cross-validated linear discriminant contrasts&lt;a class="anchor-link" href="#Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Representational similarity analysis (&lt;span class="caps"&gt;RSA&lt;/span&gt;) is a somewhat jargony name for a simple statistical concept: analysing your data at the level of distance matrices rather than at the level of individual response channels (voxels in our case). The beauty of this is that we need not specify an exact mapping of model features to response amplitudes of individual voxels. Beyond this theoretical convenience, there is also often a practical advantage in sensitivity over conventional activation-based brain mapping approaches (although to be precise, the advantage is not exactly in raw sensitivity but rather in testing a less strict hypothesis. You must decide for yourself if your research question is suitable to hypotheses at the distance matrix&amp;nbsp;level).&lt;/p&gt;
-&lt;p&gt;It is not always appreciated that the choice of distance metric has a huge effect on what your &lt;span class="caps"&gt;RSA&lt;/span&gt; results look like (for a more formal discussion of distance metric effects, see &lt;a href="https://dx.doi.org/10.1016/j.neuroimage.2015.12.012"&gt;Walther et al., in press, NeuroImage&lt;/a&gt;). We generally prefer to use a cross-validated linear discriminant contrast (&lt;span class="caps"&gt;LDC&lt;/span&gt;) metric. The neat thing about &lt;span class="caps"&gt;LDC&lt;/span&gt; compared to metrics that aren&amp;#8217;t cross-validated is that the distance estimate is centered on zero under the null hypothesis of no difference between the conditions. In this sense, &lt;span class="caps"&gt;LDC&lt;/span&gt; has a strong relationship with conventional &lt;span class="caps"&gt;LDA&lt;/span&gt; classification. This makes it possible to generalise &lt;span class="caps"&gt;RSA&lt;/span&gt; to  &amp;#8216;decoding&amp;#8217;-like analyses by testing whether different parts of our distance matrices (or averages of parts of the distance matrix) are reliably greater than zero, or differ reliably amongst&amp;nbsp;themselves.&lt;/p&gt;
+&lt;p&gt;It is not always appreciated that the choice of distance metric has a huge effect on what your &lt;span class="caps"&gt;RSA&lt;/span&gt; results look like (for a more formal discussion of distance metric effects, see &lt;a href="https://dx.doi.org/10.1016/j.neuroimage.2015.12.012"&gt;Walther et al., 2016, NeuroImage&lt;/a&gt;). We generally prefer to use a cross-validated linear discriminant contrast (&lt;span class="caps"&gt;LDC&lt;/span&gt;) metric. The neat thing about &lt;span class="caps"&gt;LDC&lt;/span&gt; compared to metrics that aren&amp;#8217;t cross-validated is that the distance estimate is centered on zero under the null hypothesis of no difference between the conditions. In this sense, &lt;span class="caps"&gt;LDC&lt;/span&gt; has a strong relationship with conventional &lt;span class="caps"&gt;LDA&lt;/span&gt; classification. This makes it possible to generalise &lt;span class="caps"&gt;RSA&lt;/span&gt; to  &amp;#8216;decoding&amp;#8217;-like analyses by testing whether different parts of our distance matrices (or averages of parts of the distance matrix) are reliably greater than zero, or differ reliably amongst&amp;nbsp;themselves.&lt;/p&gt;
 &lt;p&gt;More popular distance metrics such as Pearson correlation distance tend to produce &lt;em&gt;large&lt;/em&gt; distance estimates when response estimates are noisy (intuitively, noise does not correlate, so the correlation distance ends up being 1-0), which can produce misleading impressions of how a given region distinguishes your conditions (ie, stimuli that cannot be distinguished in a classification sense because their estimates are noisy are assigned a large distance). Cross-validated metrics have a closer link to conventional classification and are therefore closer to our intuitive understanding of what it means for conditions to evoke dissimilar&amp;nbsp;responses.&lt;/p&gt;
 &lt;p&gt;It is however worth remembering that cross-validated metrics aren&amp;#8217;t strictly speaking distances, since they can take negative values. This can complicate things with real&amp;nbsp;data.&lt;/p&gt;
 &lt;p&gt;In any case, let&amp;#8217;s unpack how linear discriminant contrast is calculated. First off, let&amp;#8217;s do it the quick, easy pilab&amp;nbsp;route:&lt;/p&gt;
@@ -4469,7 +4776,7 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;infoc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;discriminant&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]),[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4477,10 +4784,14 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;m =
-    2.5290
+   85.6759
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4489,10 +4800,8 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;What&amp;#8217;s going on here? Linear discriminant contrasts are usually introduced in a cursory or maths-heavy manner in the literature, and consequently they are not often understood (or used, outside a few labs). This is unfortunate because although there are many operations below, none of them are actually that hard to understand if you are familiar with linear regression. Let&amp;#8217;s go through the calculations at a lower&amp;nbsp;level:&lt;/p&gt;
 
@@ -4518,9 +4827,6 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;span class="c"&gt;% now the linear discriminant weights vector is just the contrast multiplied by the inverse of the&lt;/span&gt;
 &lt;span class="c"&gt;% covariance estimator - note that so far, nothing we have done differs from bog-standard LDA.&lt;/span&gt;
 &lt;span class="n"&gt;w1&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;con1&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;cov1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="c"&gt;% additionally we scale the weights to unit length, which turns out to be useful for expressing&lt;/span&gt;
-&lt;span class="c"&gt;% the cross-validated discriminant in the units of the test data.&lt;/span&gt;
-&lt;span class="n"&gt;w1&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;unitlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;w1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="c"&gt;% now we get to the part where the discriminant contrast differs from conventional classification,&lt;/span&gt;
 &lt;span class="c"&gt;% where you would attempt to predict the label for individual observations in the test data. Instead,&lt;/span&gt;
 &lt;span class="c"&gt;% our discriminant contrast metric can be thought of as the distance of the (average) test data from&lt;/span&gt;
@@ -4535,7 +4841,7 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;con2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;w1&lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4543,10 +4849,14 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;m =
-    2.5290
+   85.6759
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4555,10 +4865,8 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;I hope you&amp;#8217;ll agree that the pilab code is easier to work with (and less prone to typos and other user errors) than coding this up yourself&amp;#8230; Note that linear discriminant contrasts can also be thought of as a cross-validated version of the Mahalanobis distance, although I&amp;#8217;ll spare you the details (see &lt;a href="https://dx.doi.org/10.1371/journal.pcbi.1003553"&gt;Nili et al., 2014, PloS &lt;span class="caps"&gt;CB&lt;/span&gt;&lt;/a&gt;). To be precise, the equivalence doesn&amp;#8217;t quite hold for the pilab implementation above since we use a sparse covariance&amp;nbsp;estimator.&lt;/p&gt;
 &lt;h3 id="Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest"&gt;Rapidly estimate full distance matrices over multiple regions of interest&lt;a class="anchor-link" href="#Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;So if we are happy with how &lt;span class="caps"&gt;LDC&lt;/span&gt; works, let&amp;#8217;s see how we can quickly run a full analysis. Let&amp;#8217;s estimate a full distance matrix over all 4 conditions, with each contrast estimate being the mean over the 2 possible train-test splits of the runs, and with separate summaries for 3 regions of interest. For this we turn to a high-level analysis function, which takes care of all the heavy lifting involved in converting a set of data and design Volumes to a result. This code runs in a highly optimised parallel computing mode if your Matlab install supports it, which can be useful when calculating very large numbers of &lt;span class="caps"&gt;ROI&lt;/span&gt; results (e.g. in searchlight&amp;nbsp;mapping).&lt;/p&gt;
@@ -4582,7 +4890,7 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;span class="n"&gt;disvol&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;roidata2rdmvol_lindisc_batch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;roivol&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;filtereddesignvol&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;filtereddatavol&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4590,12 +4898,16 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;(rdms_lindisc_configureprocess) testmeth: infoc
-(GLMProcessor.GLMProcessor) detected *SELF* placeholder
-(roidata2rdmvol_lindisc_batch) running ROIProcessing with runrois_serial
-(roidata2rdmvol_lindisc_batch) running all rois... (roidata2rdmvol_lindisc_batch) finished in 0 days, 00:00:00.065
+&lt;pre&gt;15:59 2019/09/18 (rdms_lindisc_configureprocess) testmeth: infoc
+15:59 2019/09/18 (GLMProcessor.GLMProcessor) detected *SELF* placeholder
+15:59 2019/09/18 (roidata2rdmvol_lindisc_batch) running ROIProcessing with runrois_serial
+15:59 2019/09/18 (roidata2rdmvol_lindisc_batch) running all rois... 15:59 2019/09/18 (roidata2rdmvol_lindisc_batch) finished in 0 days, 00:00:00.124
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4604,10 +4916,8 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;You guessed it, the result is another Volume instance&amp;#8230; Finally, let&amp;#8217;s visualise the distance matrix we just&amp;nbsp;estimated.&lt;/p&gt;
 
@@ -4620,16 +4930,16 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-matlab"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;%plot -s 700,700 -r 300 -f svg&lt;/span&gt;
-&lt;span class="n"&gt;fh&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;gcf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;fh&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;figurebetter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 &lt;span class="c"&gt;% round to 1 decimal place&lt;/span&gt;
 &lt;span class="n"&gt;maxd&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reduceprecision&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;disvol&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;(:))),&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;fh&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;intmap&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cmap&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rdmfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;disvol&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;disvol&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;meta&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;features&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="p"&gt;,[],&lt;/span&gt;&lt;span class="n"&gt;fh&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="c"&gt;...&lt;/span&gt;
     &lt;span class="s"&gt;&amp;#39;limits&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;maxd&lt;/span&gt; &lt;span class="n"&gt;maxd&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 &lt;span class="n"&gt;cbax&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;colorbarbetter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cbax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;intmap&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="n"&gt;cmap&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;label&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;linear discriminant contrast&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;scale&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;colorbarbetter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cbax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;intmap&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="n"&gt;cmap&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;label&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ldc&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;scale&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4637,109 +4947,179 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
-&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArwAAAK8CAIAAACC2PsUAAAACXBIWXMAABcSAAAXEgFnn9JSAAAA
-B3RJTUUH4AUeDgErHY/79QAAACR0RVh0U29mdHdhcmUATUFUTEFCLCBUaGUgTWF0aFdvcmtzLCBJ
-bmMuPFjdGAAAACJ0RVh0Q3JlYXRpb24gVGltZQAzMC1NYXktMjAxNiAxNTowMTo0M/zpoAQAABUO
-SURBVHic7d29jiv3fcdhDsndNVwY6ezScJFOEFxYRQrDUBXLd6ALcBFfgAFfQIDcQBLoAtyljOIm
-QpDChV0ZqtwESWvAhk9h6xy+7KSgvaKGM8Pv8GX/w+HzQBBWe2aHPw4PZz4czlJVXdczAIBj5qUH
-AABug2gAACKiAQCIiAYAICIaAICIaAAAIqIBAIiIBgAgIhoAgIhoAAAiogEAiIgGACAiGgCAiGgA
-ACKiAQCIiAYAICIaAICIaAAAIqIBAIiIBgAgIhoAgIhoAAAiy9IDANCnqqrdF3Vdv/zn7usLrv/M
-FTZW0piZyRAN92v/Se4JD+P08mS87Aqv+tS++MyMh2ig6XpP+FfYW8Ek7T9rbuUZdCtzMohooJ0n
-PAANogFgpF5O+3W9mfjyddc7jDuH3+867df/1uT+arteVxy9CW6aaJi45EneunzrE37QLqOxzNHd
-X2PJ/n1iMkzXfhMmpvFX/fAdxqqqjv79P1xJz9M/XCfTIxqm7IJP8tbd0Ky3Ks68xf7VHh3mtP0m
-jEprLnctufui64m5+/vfv8LGSvafModnIF7WefLM3CLRMFn5k3xfuE+ZdR+5u27xzF1J676pa5j+
-/eYJtw5jlidFuMzLs/WE9TBtPtxp4i74Qr+xqv23Dy5+iz3rHDRMYxm7PO5E9VeXWqGnDzvONEzW
-xZ/hR3dAr7lPSfaGPm2CO9QI6As+C3z6AjPRMG2v/yQfyW7levtNuAmHJ+cue0lT1/sXTJ5omKZr
-PMn79zivvFsZ+h7t+ftNuAmH799d6pnoucNMNEzbtZ/krbunq95iOMz19ptwE1p/8eGy67/4OrkJ
-LoS8F+c8yVsvMzz6qxD5Le4vGV45Ef66xAnDwE1r/O5S13tzJ1wmWe3Z/+Z583JjnGmYstbn82Xf
-2jzhFvcP8C8nAE7Y9fT8SNdqnV/lHhyeVzvzrFvjR656DoOR8xbvZPU8yXs+jHbWewqhdZ35Le4v
-0/opCxccZqYYAC5NNAAAEdc0AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEA
-AEREAwAQEQ0AQEQ0AAAR0QAAREQDABBZlh6As/z04TulRxjmzea59AgDvPeNp9IjDPOTN78tPQJf
-+uz9D0qPMMCffvfn0iMM863vfrP0CMN879P/LD3CBTjTAABERAMAEBENAEBENAAAEdEAAEREAwAQ
-EQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0
-AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAA
-REQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAAREQDABAR
-DQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAARJalBxidnz58p/QI
-A/zT+n9KjzDML3/w/dIjDPDFH96WHoEvffb+B6VHGObD3/yq9AgDfP7xR6VHGGbzxab0CPfImQYA
-ICIaAICIaAAAIqIBAIiIBgAgIhoAgIhoAAAiogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAICI
-aAAAIqIBAIiIBgAgIhoAgIhoAAAiogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAICIaAAAIqIB
-AIiIBgAgIhoAgIhoAAAiogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAICIaAAAIqIBAIiIBgAg
-IhoAgIhoAAAiogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAICIaAAAIqIBAIiIBgAgIhoAgIho
-AAAiogEAiIgGACAiGgCAyLL0AKPzZvNceoQBfvmD75ceYZi/+6//Lj3CAJ9++/3SI/ClP/3uz6VH
-GObzjz8qPcIA7/3809IjDPPrH35YeoR75EwDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEA
-AEREAwAQEQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQ
-EQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0
-AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAA
-REQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQWZYeYHTe+8ZT6REG+OIPb0uP
-MMyn336/9AgDfPS/vyk9AsCIiAbgNnzru98sPcIwmy82pUcY4Nc//LD0CMN87z8+Kz3CPfL2BAAQ
-EQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0
-AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAA
-REQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAAREQDABAR
-DQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAAREQDABARDQBARDQA
-ABHRAABERAMAEFmWHmB0fvLmt6VHAIAxquq6Lj0DAHADvD0BAEREAwAQEQ0AQEQ0AAAR0QAAREQD
-ABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAAREQDABARDQBA
-RDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHR
-AABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHRAABERAMA
-EBENAEBENAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBE
-NAAAEdEAAEREAwAQEQ0AQEQ0AAAR0QAARJalB4CvqKpqNpvVdd34+iIrfPnP81cLcIecaeCOvBQD
-ACdwpoG74xwDwGmcaQAAIs40TFPjPHzra+v9ZbpefPcv0/Onh5cmnDPGRVbyssxFLpUAuEOVXef0
-tL5zv/9Ad721f3SZw8sJ+xeo67onX3quMGjURs+crYsd3kr/JAAknGmYmtaX0VVVVVUzEAdlxG6B
-xkqOrmF/+dY1nD/G4RmI1js72+sGuQBwGtc03IW6rg/PATQWmPWewG997d6zhsOf6nn/omuZoys5
-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
-"&gt;
+&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdgAAAFiCAIAAADa6l7dAAAACXBIWXMAABcSAAAXEgFnn9JSAAAA
+B3RJTUUH4wkSDwACTlYY+AAAACR0RVh0U29mdHdhcmUATUFUTEFCLCBUaGUgTWF0aFdvcmtzLCBJ
+bmMuPFjdGAAAACJ0RVh0Q3JlYXRpb24gVGltZQAxOC1TZXAtMjAxOSAxNjowMDowMqCEIukAACAA
+SURBVHic7d17VFT1/v/xzwzDVRFCRUABQbRQc6ViooDVyuxiLi+lSdoRxWuWx1XHtPW1TO2Hdvml
+djp1rCgvx8pb5lFP6S/QjIQOpBKKFzBDZBAFUbkMt5n9+2N/zz4TN0cd+KDzfCyXa89nPvOez2bv
+ebHnM3sPOkVRBABAHr3sAQCAoyOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOI
+AUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyg+wB3AaWLFmSl5cnhBgwYMC8
+efMabRFCGI3GzZs35+bmVldX9+vXT2sHblrDnUrb9+69996XX3655Z56wYIFly5dEkI8+OCDcXFx
+t16QV01zFFzPgAED1J/VY4891lRLUlKSp6en9lONjo62+zBqa2vH/8fu3bvtXh9tTaM7VcN97xY1
+tV8FBASoTxQXF2eXJ5LyqrldcERsHzNmzCgrK9Nu6nQ6uz+FxWLZunWruty3b9+RI0fa/SnQprTC
+TiWk7lets4K3BYLYDoxG42+//aYuP/nkk++8807Hjh3lDgm3u6Z2qtWrVxcXFwshunTpInN8t4xX
+jTWCWAghMjMzc3JyioqK3N3dfX19o6Ojvb29bXmgoij5+fnZ2dlaS0xMTLt27Zydna27VVZWZmZm
+ZmVldevWLTIy0sfH50aHkZ+fX1tbq/W8fPlyfn6+q6urr6+v0Wg0m81CiLvuuqt9+/bawM6fP68u
+e3l5dejQQQhRVFRUU1MjhOjYsaOHh8f58+cPHjxYWVk5ffr0GxpqcXFxWlrahQsXzGazn59fRERE
+165dbflxwRZms9loNDa1U/Xq1at79+5CCG1bN79Zm99YzexX9UZVVFT0ww8/FBcX9+7de/Dgwe7u
+7vU62P4isvFV41gkT43ItmfPnvDw8Ho/E4PBMHXq1KqqKrVPM3PEw4YNa/SnOnfuXLVndXX1okWL
+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
+sykdu1/nkiq0spqDX9ilTtH3yXapI4Rw8fSwS51OM99w8mr8T+7eGTgiBgDJCGIAkIwgBgDJCGIA
+kIwgBgDJCGIAkIwgBgDJCGIAkIwgBgDJCGIAkIwgBgDJCGIAkIwgBgDJCGIAkIwgBgDJCGIAkIwg
+BgDJCGIAkIwgBgDJCGIAkIwgBgDJCGIAkIwgBgDJDLIH0Obk/9/XTaeP26VUr7Xb7VIn6Nu1dqkj
+hLj43Bq71HHV6+xSB3Wn0ixFv9mllMuwZ+1Sp2tAqF3qCCEKv1hnn0KKYp86bRVHxAAgGUEMAJIR
+xAAgGUEMAJIRxAAgGUEMAJIRxAAgGUEMAJIRxAAgGUEMAJIRxAAgGUEMAJIRxAAgGUEMAJIRxAAg
+GUEMAJIRxAAgGUEMAJIRxAAgGUEMAJIRxAAgGUEMAJIRxAAgGUEMAJIZZA+gzblwpPDyz2ftUiro
+27V2qeP2+Cy71BFCeDv/1S519Dq7lIG4lp1dceSQXUp1DQi1Sx19WKRd6gghPIP+ZZc6OoOTXeq0
+WRwRA4BkBDEASEYQA4BkBDEASEYQA4BkBDEASEYQA4BkBDEASEYQA4BkBDEASEYQA4BkBDEASEYQ
+A4BkBDEASEYQA4BkBDEASEYQA4BkBDEASEYQA4BkBDEASEYQA4BkBDEASEYQA4BkOkVRZI+hbXnv
+oYmnD6TZpVRURw+71PF2ttvvy1GFx+xVCnZx7dtNpmM/26VUnanGLnU8g3ztUkcI0SFumb1K3dk4
+IgYAyQhiAJCMIAYAyQhiAJCMIAYAyQhiAJCMIAYAyQhiAJCMIAYAyQhiAJCMIAYAyQhiAJCMIAYA
+yQhiAJCMIAYAyQhiAJCMIAYAyQhiAJCMIAYAyQhiAJCMIAYAyQhiAJCMIAYAyQhiAJBMpyiK7DEA
+gEPjiBgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAy
+ghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgA
+JCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOIAUAyghgAJCOI
+AUAyghgAJCOIAUAyghgAJCOIAUAyghgAJDPIHgDsbPPmzd9++60Qon379h988IEQYsGCBZcuXRJC
+PPjgg3FxcbdYf8mSJXl5eUKIAQMGzJs3T2s3Go2bN2/Ozc2trq7u16+f9V0ArkPBnWXmzJnqlu3U
+qZPaEhAQoLbExcXdev0BAwao1R577DGtMSkpydPTU9upoqOjb/2JAMfB1ATsYMaMGWVlZdpNnU4n
+cTDAbYcgxq0yGo2//fabuvzkk0+eOHFi+/btcocE3F4cd464uLg4LS3twoULZrPZz88vIiKia9eu
+DbtVVlZmZmZmZWV169YtMjLSx8en0Wo1NTXHjx/PzMzU6XShoaEDBw708PBo2K2qqurEiRNZWVk6
+na5v3769e/d2dXW17lBUVFRTUyOE6Nixo4eHx/nz53/66aeSkpLevXsPHjzY3d29Yc2zZ8+mpqbq
+9frIyMju3btfd8WLiop++OGH4uLipmpmZmbm5OQUFRW5u7v7+vpGR0d7e3s3WspsNhuNxuzsbK0l
+JiamXbt2zs7O1x0GgP+SPTciQVVV1aRJkwyGP/wS0uv1o0ePLi0t1bpVV1cvWrSoXrfo6Gij0Whd
+zWKxvPfee25ubtbdOnfuvGLFCovFonUzm82rVq2ql84eHh6rVq0ym81at27duql3rVixIj4+3rpz
+aGhoRkaG9VOfPXv2vvvus+4TGxs7ZcoUdbnROeI333yzmZp79uwJDw+vt4cYDIapU6dWVVWpfazn
+iM+cOdPoTjV37lz7bS7gzueIQTxx4sRG40MIMXjwYLVPVVVVREREo30CAwNPnjypVRs7dmxT1ebP
+n691GzVqVFPdRo0apXXTQrN9+/YNe4aGhmqpffbs2c6dOzdVUzQWxO3atWum5p49e5o5kn3++efV
+atZBrM1I1EMQAzfE4YK4urpaezMeGxtbXFx8+vTp6dOnayFy+PBhRVFef/119aZOp5s5c+ann34a
+GxurHfaOHj1arbZt2zbtgX369Fm9evXixYuDg4O1xiNHjiiKsnHjRq2lX79+q1evXrVq1b333qs1
+bty4US2ohaYQwtnZefz48ePGjXNyctIav//+e7Wn9fHysGHDPvrooxUrVvj7+2uNDYO4+ZojRozQ
++mzZsuXSpUtHjx7V5jqCgoLUatZBXFlZuXXr1hUrVmilXnrppa1bt6prDcBGDhfE1hOaI0eOVOci
+rl69OmPGjPj4+Pj4+EOHDl25csXFxUXts3TpUu2xy5cv19I5OztbUZTevXurLV27dr106ZLa7eDB
+g9pTrFy5UlGUsLAw9WZISMiVK1fUbleuXAkNDVXbw8LC1EYtNA0GQ05Ojtr4/vvvawU/+eQTRVFK
+Skq0OZMhQ4ZUV1erPU+dOqUd1TYM4uZrxsTEREREREREvPLKK9oqT548WeumzrQ0PH3t6NGjWp8t
+W7bYd3sBjsDhPqwLCwvz8PCorKwUQuzZs8ff3z8qKioqKio2NjYqKkrN35SUFPUTMyHE5cuX3377
+bXX56tWr6oKiKPv37+/evfuJEyfUlqlTp3bq1EldjomJ2bt3b3l5uRAiODi4oqJCm0uNj4/38vJS
+l728vKZNm7Z48WIhxJkzZyoqKqynDoYOHarF95AhQ7R29dKMU6dO1dXVqS0vvvii9mujV69ejz/+
++D//+c9G1735mtrvj9LS0vT09Nzc3JSUFOtDfgAtxOGC2NnZee3atdOmTautrRVCVFVVJSUlJSUl
+LVu2zNfXd9myZbNmzTp27JjWf82aNY3WKSoqOn36tKIo6s3+/ftb36u9zRf/mZ1Ql++++27rbn36
+9FEXFEXJzs4eNGiQdpf1fIL1B2hms1kIkZub27CIqkePHk2te/M1y8vLV69evX79euviAFqBwwWx
+EGLy5MnDhg1LTEzct29fenq6GkNCiIsXL86ePdvLy0uv/+/p1f7+/o2eNObu7l5dXa3d1KK2oWau
+brBYLNpyvdMzrE/DsJ7PVVmffaH+RrFFMzUtFstTTz21b98+bTDh4eHh4eHnzp1LS0uzsT6Am+Nw
+F3SUlZXl5+frdLq5c+empqYWFxdv377d+syHbdu2WR9j7ty580xjFi1a1KdPHy1kDx8+rD1EUZQn
+nnhi4MCBAwcOTEhIuOeee7Rkz8zMtB7MkSNH1AW9Xn/PPffYvhbaDIMQIjU11fquek9ho6ysLC2F
+J0+eXFxc/Ouvv27evDk6Olrrw/VyQAtxuCDesWNHUFBQUFBQQEBAaWmpt7f3uHHjvv76a+1Uh5qa
+mr59+2rXWXz44Yfa0e7Jkye7devm4+Pj4+OTnJzcrl07LT0///zzwsJCdXnXrl3ffvvt4cOHDx8+
+7O/v7+bmpn2ml5iYaDQa1WWj0ZiYmKgu9+7du9Hj7qb06tVLm2tetWqVOskrhEhLSztw4MAN/1D+
+GN/z5s1TiyuKYl2tmaN+ALfC4YJ4+PDh6oLZbB41atT333+flZW1dOnSc+fOqe3R0dFeXl6LFi1S
+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
+DZYN86MAAAAASUVORK5CYII=
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -4748,10 +5128,8 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="What-about-linear-discriminant-T-statistics?"&gt;What about linear discriminant T statistics?&lt;a class="anchor-link" href="#What-about-linear-discriminant-T-statistics?"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The first papers to use something like &lt;span class="caps"&gt;LDC&lt;/span&gt; tended to report a related but distinct metric - a linear discriminant T statistic or &lt;span class="caps"&gt;LDT&lt;/span&gt; (&lt;a href="http://dx.doi.org/10.1073/pnas.0705654104"&gt;Kriegeskorte et al. 2007, &lt;span class="caps"&gt;PNAS&lt;/span&gt;&lt;/a&gt;). In a way it&amp;#8217;s unfortunate that this method appeared first because it is more complex to calculate and understand than &lt;span class="caps"&gt;LDC&lt;/span&gt;. Let&amp;#8217;s return to the example to understand how it differs. To start with, here is the high level pilab implementation for&amp;nbsp;reference:&lt;/p&gt;
 
@@ -4767,7 +5145,7 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;infot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;discriminant&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]),[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4775,10 +5153,14 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;t =
-   21.0993
+   11.1587
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4787,10 +5169,8 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The first thing to note is that the calculation of the weights vector remains similar to standard &lt;span class="caps"&gt;LDA&lt;/span&gt;, just like with &lt;span class="caps"&gt;LDC&lt;/span&gt;. However, whereas in &lt;span class="caps"&gt;LDC&lt;/span&gt; the test statistic is estimated by projecting the contrast estimate onto the discriminant dimension (ie, the weights vector), for &lt;span class="caps"&gt;LDT&lt;/span&gt; this won&amp;#8217;t do the job since we need an estimate of the &lt;em&gt;variance&lt;/em&gt; of the discriminant to calculate T. Instead, we&amp;#8217;re going to project the full time courses onto the discriminant, like&amp;nbsp;so:&lt;/p&gt;
 
@@ -4806,15 +5186,13 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;span class="n"&gt;disctime&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;w1&lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;It took me a long time to work out the consequences of doing this. Let&amp;#8217;s visualise what the discriminant time courses look like to help guide our&amp;nbsp;intuition.&lt;/p&gt;
 
@@ -4826,7 +5204,7 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[9]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-matlab"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;%plot -s 700,700 -r 300 -f svg&lt;/span&gt;
+&lt;div class=" highlight hl-matlab"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;figurebetter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 &lt;span class="n"&gt;subplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;disctime&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -4838,7 +5216,7 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;contrast time course&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4846,195 +5224,492 @@ ogEAiIgGACAiGgCAiGgAACKiAQCIiAYAICIaAIDI/wNQaHRy/MH12gAAAABJRU5ErkJggg==
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
-&lt;img src="data:image/png;base64,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
-"&gt;
+&lt;img src="data:image/png;base64,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
+QowgCCIw/wfMXUg0KNzS9AAAAABJRU5ErkJggg==
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -5043,10 +5718,8 @@ AECI0AAAhAgNAECI0AAAhAgNAEDI/wM1n3rmMTjWxAAAAABJRU5ErkJggg==
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Notice how the discriminant goes up whenever a stimulus belonging to condition 1 appears, and down whenever a stimulus belonging to condition 2 appears. Indeed, the discriminant time course looks a lot like the time course you get if you contrast the two predicted time&amp;nbsp;courses.&lt;/p&gt;
 &lt;p&gt;So now that we have a discriminant time course we can just fit it to the design matrix and estimate the same contrast that went into the calculation of the weights vector. And once we have that, standard errors and T statistics can be calculated like any multiple regression model. Neat. I won&amp;#8217;t belabour the point by coding out the full T statistic code, but basically we just build a new &lt;span class="caps"&gt;GLM&lt;/span&gt; instance and estimate contrasts and t statistics just like with any other&amp;nbsp;model.&lt;/p&gt;
@@ -5066,7 +5739,7 @@ AECI0AAAhAgNAECI0AAAhAgNAEDI/wM1n3rmMTjWxAAAAABJRU5ErkJggg==
 &lt;span class="n"&gt;disccon&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;discest&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5074,10 +5747,14 @@ AECI0AAAhAgNAECI0AAAhAgNAEDI/wM1n3rmMTjWxAAAAABJRU5ErkJggg==
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;disccon =
-    2.5290
+   85.6759
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5086,26 +5763,28 @@ AECI0AAAhAgNAECI0AAAhAgNAEDI/wM1n3rmMTjWxAAAAABJRU5ErkJggg==
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;That&amp;#8217;s right, it&amp;#8217;s the &lt;span class="caps"&gt;LDC&lt;/span&gt; again. The dot-product-of-the-contrast approach above is an equivalent (and more computationally efficient) way to arrive at the same result. But by going about it in this roundabout way we have shown that &lt;span class="caps"&gt;LDC&lt;/span&gt; and &lt;span class="caps"&gt;LDT&lt;/span&gt; really differ only in whether you scale by the standard error estimate or&amp;nbsp;not.&lt;/p&gt;
 &lt;h3 id="Why-is-LDC-preferable-to-LDT?"&gt;Why is &lt;span class="caps"&gt;LDC&lt;/span&gt; preferable to &lt;span class="caps"&gt;LDT&lt;/span&gt;?&lt;a class="anchor-link" href="#Why-is-LDC-preferable-to-LDT?"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The appealing thing about &lt;span class="caps"&gt;LDT&lt;/span&gt; is that because it is expressed in standard error units, it provides a somewhat intuitive idea about effect size (well, technically we might prefer &lt;em&gt;&lt;span class="caps"&gt;LDZ&lt;/span&gt;&lt;/em&gt; instead to avoid the dependence on degrees of freedom, but to my knowledge no one has reported using this). But this interpretability advantage breaks down when you consider cross-validation. If you run standard N-fold validation over say 5 runs, you will end up with 5 separate LDTs that you will average. That average is no longer a T statistic, and in fact you now run the risk of confusing your readers by reporting tiny, tiny &amp;#8216;T&amp;#8217; statistics that are nevertheless highly significant. In my view, &lt;span class="caps"&gt;LDT&lt;/span&gt; is best suited to cases where you only plan to test your model on a single validation set,&amp;nbsp;once.&lt;/p&gt;
 &lt;p&gt;That&amp;#8217;s it for today. Stay tuned for future posts, where we will cover how pilab implements non-parametric statistical inference and random effects group analysis for &lt;span class="caps"&gt;RSA&lt;/span&gt; and standard univariate&amp;nbsp;models.&lt;/p&gt;
 &lt;h4 id="Updates"&gt;Updates&lt;a class="anchor-link" href="#Updates"&gt;&amp;#182;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;30 May 2016: reran simulation after fixing indexing error in&amp;nbsp;preprocessvols&lt;/li&gt;
+&lt;li&gt;18 September 2019: removed unit-length scaling of weights vector, to match the current version of pilab. This scaling turns out to reduce cross-validation performance. Why? The magnitude of the weights vector contains useful information - it will be greater if the training data contains more signal. When you test such a smaller weights vector against data, the test &lt;span class="caps"&gt;LDC&lt;/span&gt; on that split will be smaller, so it will contribute less to the mean &lt;span class="caps"&gt;LDC&lt;/span&gt; over splits. As it should. In summary, normalising this information away comes at a cost if your data varies in signal over splits (as will almost always be the case in fMRI data, where subjects get drowsy over&amp;nbsp;time).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+ 
+
+
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -5122,20 +5801,136 @@ AECI0AAAhAgNAECI0AAAhAgNAEDI/wM1n3rmMTjWxAAAAABJRU5ErkJggg==
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
         "    } " +
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="scientific computing"></category><category term="matlab"></category><category term="pilab"></category></entry><entry><title>Pilab tutorial 1: model fit and cross-validation</title><link href="http://www.johancarlin.com/pilab-tutorial-1-model-fit-and-cross-validation.html" rel="alternate"></link><updated>2016-05-30T00:00:00+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-05-22:pilab-tutorial-1-model-fit-and-cross-validation.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+</content><category term="scientific computing"></category><category term="matlab"></category><category term="pilab"></category></entry><entry><title>Pilab tutorial 1: model fit and cross-validation</title><link href="https://www.johancarlin.com/pilab-tutorial-1-model-fit-and-cross-validation.html" rel="alternate"></link><published>2016-05-22T00:00:00+01:00</published><updated>2016-05-30T00:00:00+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-05-22:/pilab-tutorial-1-model-fit-and-cross-validation.html</id><summary type="html">&lt;p&gt;We simulate a basic fMRI dataset, and estimate cross-validated prediction performance for a convolved&amp;nbsp;design.&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
 */
-/* &lt;span class="caps"&gt;CSS&lt;/span&gt; font colors for translated &lt;span class="caps"&gt;ANSI&lt;/span&gt; colors. */
+/* &lt;span class="caps"&gt;CSS&lt;/span&gt; font colors for translated &lt;span class="caps"&gt;ANSI&lt;/span&gt; escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;;
+}
+.ansi-black-bg {
+  background-color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;;
+}
+.ansi-red-bg {
+  background-color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;;
+}
+.ansi-red-intense-fg {
+  color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;;
+}
+.ansi-red-intense-bg {
+  background-color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;;
+}
+.ansi-yellow-bg {
+  background-color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;;
+}
+.ansi-yellow-intense-fg {
+  color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;;
+}
+.ansi-yellow-intense-bg {
+  background-color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;;
+}
+.ansi-blue-fg {
+  color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;;
+}
+.ansi-blue-bg {
+  background-color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;;
+}
+.ansi-blue-intense-fg {
+  color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;;
+}
+.ansi-blue-intense-bg {
+  background-color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;;
+}
+.ansi-magenta-fg {
+  color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;;
+}
+.ansi-magenta-bg {
+  background-color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;;
+}
+.ansi-cyan-bg {
+  background-color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;;
+}
+.ansi-cyan-intense-fg {
+  color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;;
+}
+.ansi-cyan-intense-bg {
+  background-color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;;
+}
+.ansi-white-fg {
+  color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;;
+}
+.ansi-white-bg {
+  background-color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;;
+}
+.ansi-white-intense-fg {
+  color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;;
+}
+.ansi-white-intense-bg {
+  background-color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;;
+}
+.ansi-default-inverse-fg {
+  color: #&lt;span class="caps"&gt;FFFFFF&lt;/span&gt;;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -5214,12 +6009,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #&lt;span class="caps"&gt;90CAF9&lt;/span&gt;;
   border-left-color: #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt;;
   border-left-width: 1px;
   padding-left: 5px;
@@ -5232,27 +6035,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; -40px, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #&lt;span class="caps"&gt;42A5F5&lt;/span&gt;;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; -40px, #&lt;span class="caps"&gt;42A5F5&lt;/span&gt; 7px, #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt; 7px, #&lt;span class="caps"&gt;E3F2FD&lt;/span&gt; 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #&lt;span class="caps"&gt;66BB6A&lt;/span&gt;;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #&lt;span class="caps"&gt;66BB6A&lt;/span&gt; -40px, #&lt;span class="caps"&gt;66BB6A&lt;/span&gt; 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #&lt;span class="caps"&gt;66BB6A&lt;/span&gt;;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -5285,6 +6100,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -5305,11 +6121,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -5452,7 +6263,9 @@ div.input_area &gt; div.highlight &gt; pre {
 .CodeMirror-lines {
   /* In &lt;span class="caps"&gt;CM2&lt;/span&gt;, this used to be 0.4em, but in &lt;span class="caps"&gt;CM3&lt;/span&gt; it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -5462,11 +6275,24 @@ div.input_area &gt; div.highlight &gt; pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In &lt;span class="caps"&gt;CM3&lt;/span&gt; this went to 4px from 0 in &lt;span class="caps"&gt;CM2&lt;/span&gt;. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In &lt;span class="caps"&gt;CM3&lt;/span&gt; this went to 4px from 0 in &lt;span class="caps"&gt;CM2&lt;/span&gt;. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -5714,6 +6540,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -5752,7 +6581,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -5874,6 +6703,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -5890,16 +6723,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -5915,6 +6756,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -5965,8 +6811,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -6047,8 +6900,10 @@ h6:hover .anchor-link {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Affix */
 .highlight .sb { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Backtick */
 .highlight .sc { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Char */
+.highlight .dl { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Delimiter */
 .highlight .sd { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt;; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Double */
 .highlight .se { color: #&lt;span class="caps"&gt;BB6622&lt;/span&gt;; font-weight: bold } /* Literal.String.Escape */
@@ -6059,51 +6914,13 @@ h6:hover .anchor-link {
 .highlight .s1 { color: #&lt;span class="caps"&gt;BA2121&lt;/span&gt; } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #&lt;span class="caps"&gt;0000FF&lt;/span&gt; } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
-&lt;style type="text/css"&gt;
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;; }
-.ansi-black-bg { background-color: #&lt;span class="caps"&gt;3E424D&lt;/span&gt;; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;; }
-.ansi-red-bg { background-color: #&lt;span class="caps"&gt;E75C58&lt;/span&gt;; }
-.ansi-red-intense-fg { color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;; }
-.ansi-red-intense-bg { background-color: #&lt;span class="caps"&gt;B22B31&lt;/span&gt;; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;; }
-.ansi-yellow-bg { background-color: #&lt;span class="caps"&gt;DDB62B&lt;/span&gt;; }
-.ansi-yellow-intense-fg { color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;; }
-.ansi-yellow-intense-bg { background-color: #&lt;span class="caps"&gt;B27D12&lt;/span&gt;; }
-.ansi-blue-fg { color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;; }
-.ansi-blue-bg { background-color: #&lt;span class="caps"&gt;208FFB&lt;/span&gt;; }
-.ansi-blue-intense-fg { color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;; }
-.ansi-blue-intense-bg { background-color: #&lt;span class="caps"&gt;0065CA&lt;/span&gt;; }
-.ansi-magenta-fg { color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;; }
-.ansi-magenta-bg { background-color: #&lt;span class="caps"&gt;D160C4&lt;/span&gt;; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;; }
-.ansi-cyan-bg { background-color: #&lt;span class="caps"&gt;60C6C8&lt;/span&gt;; }
-.ansi-cyan-intense-fg { color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;; }
-.ansi-cyan-intense-bg { background-color: #&lt;span class="caps"&gt;258F8F&lt;/span&gt;; }
-.ansi-white-fg { color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;; }
-.ansi-white-bg { background-color: #&lt;span class="caps"&gt;C5C1B4&lt;/span&gt;; }
-.ansi-white-intense-fg { color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;; }
-.ansi-white-intense-bg { background-color: #&lt;span class="caps"&gt;A1A6B2&lt;/span&gt;; }
-
-.ansi-bold { font-weight: bold; }
-&lt;/style&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;a href="https://github.com/jooh/pilab"&gt;pilab&lt;/a&gt; is a Matlab package that contains my standard tools for data analysis of functional &lt;span class="caps"&gt;MRI&lt;/span&gt;, behavioural and eye tracking&amp;nbsp;data.&lt;/p&gt;
 &lt;p&gt;This post is the first of a series of tutorials where we run pilab analyses on simulated data. Today we will cover a basic single subject fMRI analysis, including cross-validated prediction of time series. You will need my Matlab &lt;a href="https://github.com/jooh/matlab-plotting"&gt;figure code&lt;/a&gt; and probably my &lt;a href="https://github.com/jooh/johansmatlab"&gt;general-purpose utility code&lt;/a&gt; to get the example below to run. Have&amp;nbsp;fun!&lt;/p&gt;
@@ -6133,15 +6950,13 @@ h6:hover .anchor-link {
 &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ncon&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;nvox&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;For each run of the experiment, we make up a set of &lt;em&gt;onsets&lt;/em&gt; (uniformly distributed over the run), and assign
 each onset to a &lt;em&gt;conind&lt;/em&gt; (effectively the column index in the final design matrix). We then convolve the onsets
@@ -6180,7 +6995,7 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;span class="n"&gt;datavol&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -6188,7 +7003,11 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;datavol = 
   Volume with properties:
@@ -6208,10 +7027,8 @@ with a hemodynamic response function to construct the run-specific design matrix
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Let&amp;#8217;s see what we have so far. Notice how the meta data is used to provide labels for the legend, and the
 frameperiod to express the X axis in&amp;nbsp;seconds.&lt;/p&gt;
@@ -6240,7 +7057,7 @@ frameperiod to express the X axis in&amp;nbsp;seconds.&lt;/p&gt;
 &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;lh&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;box&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;off&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -6248,7 +7065,11 @@ frameperiod to express the X axis in&amp;nbsp;seconds.&lt;/p&gt;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -7098,7 +7919,8 @@ ANyhgKN55BLYYHLvYPJz++rXq0mx88FIYwY4gkkD8Ir8S5a2es4VkkO0dzHa89zUK56hgBUmDcA2
 7QV1cith8oZ2y/5DrL+//rfzoMCE72kAACImDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAERE
 AwAQEQ0AQEQ0AAAR0QAAREQDABARDQBARDQAABHRAABERAMAEBENAEBENAAAEdEAAEREAwAQEQ0A
 QEQ0AAAR0QAAREQDABARDQBARDQAABHRAABE/gFnyVrPwJaF3wAAAABJRU5ErkJggg==
-"&gt;
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -7107,10 +7929,8 @@ QEQ0AAAR0QAAREQDABARDQBARDQAABHRAABE/gFnyVrPwJaF3wAAAABJRU5ErkJggg==
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Time-course-fit-and-out-of-sample-prediction"&gt;Time course fit and out of sample prediction&lt;a class="anchor-link" href="#Time-course-fit-and-out-of-sample-prediction"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The basic design logic of pilab is to have independent classes for storing and analysing data. So now we convert
 the Volume to a &lt;span class="caps"&gt;GLM&lt;/span&gt; instance. Other converters are available for data that doesn&amp;#8217;t come from a volume
@@ -7134,7 +7954,7 @@ ensure that performance is not dominated by trends in the&amp;nbsp;data.&lt;/p&g
 &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -7142,7 +7962,11 @@ ensure that performance is not dominated by trends in the&amp;nbsp;data.&lt;/p&g
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;(preprocessvols) projecting out 1 covariates
 ans = 
@@ -7163,10 +7987,8 @@ ans =
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Let&amp;#8217;s see how well the parameter estimates from run 1 can predict the time courses from run 2. We calculate R2 - the
 &lt;a href="https://en.wikipedia.org/wiki/Coefficient_of_determination"&gt;coefficient of determination&lt;/a&gt;. Which incidentally is &lt;em&gt;not&lt;/em&gt; the same as the squared correlation when tested on independent data - this is why a few r2 estimates below are negative. We plot the first voxel to&amp;nbsp;illustrate.&lt;/p&gt;
@@ -7192,7 +8014,7 @@ ans =
 &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;gca&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;lh&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;box&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;off&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -7200,7 +8022,11 @@ ans =
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -7383,12 +8209,17 @@ FlVSTxt2kwaSvcCe6oMzqKe8en2C84U+Mj+Ezx1BI8LH7bCb+ogXiHmT2bGnykX2C2dQZ/GqPT6M
 xfT5QkvDD0MTck3J3eDeKfDYTRpI9gJ7qjPOILUmO19oaQAAACK0NAAAABFCAwAAECE0AAAAEUID
 AAAQITQAAAARQgMAABAhNAAAABFCAwAAECE0AAAAEUIDAAAQITQAAACR/wNms0KRNvpXvQAAAABJ
 RU5ErkJggg==
-"&gt;
+"
+&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;r2 =
   Columns 1 through 7
@@ -7415,21 +8246,22 @@ RU5ErkJggg==
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;That&amp;#8217;s it for today. Next time we will look at how to calculate linear discriminant contrasts - a pseudo-distance metric that is often used for representational similarity&amp;nbsp;analysis.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+ 
+
+
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -7446,13 +8278,18 @@ RU5ErkJggg==
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
         "    } " +
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="scientific computing"></category><category term="matlab"></category><category term="pilab"></category></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="http://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"></link><updated>2016-01-05T00:00:00+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
+</content><category term="scientific computing"></category><category term="matlab"></category><category term="pilab"></category></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="https://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"></link><published>2016-01-05T00:00:00+00:00</published><updated>2016-01-05T00:00:00+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:/cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
+work for &lt;a href="http://www.mrc.ac.uk"&gt;an academic institution that takes a dim view of Dropbox and
+other cloud-based solutions&lt;/a&gt;. You are also sure to
+run out of space fast if you use it to sync e.g. neuroimaging data.
+&lt;a href="https://www.cis.upenn.edu/~bcpierce/unison"&gt;Unison&lt;/a&gt; is a free …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
 work for &lt;a href="http://www.mrc.ac.uk"&gt;an academic institution that takes a dim view of Dropbox and
 other cloud-based solutions&lt;/a&gt;. You are also sure to
 run out of space fast if you use it to sync e.g. neuroimaging data.
@@ -7527,7 +8364,11 @@ unison $fromdir "ssh://"$hostname"/"$todir -auto
 &lt;p&gt;So for instance, my standard usage is &lt;code&gt;unisync ucl j.carlin&lt;/code&gt;, where ucl is
 an alias or shortcut for my full &lt;span class="caps"&gt;SSH&lt;/span&gt; connection stored in ssh/.config, and
 j.carlin is my username which is necessary here because it is different
-from my username on the&amp;nbsp;client.&lt;/p&gt;</summary><category term="shell"></category><category term="scientific computing"></category></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="http://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"></link><updated>2015-12-11T00:00:00+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
+from my username on the&amp;nbsp;client.&lt;/p&gt;</content><category term="shell"></category><category term="scientific computing"></category></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="https://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"></link><published>2015-12-11T00:00:00+00:00</published><updated>2015-12-11T00:00:00+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:/reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
+complicated. In this post I describe how I use a conda to keep a
+reproducible record of the packages I&amp;nbsp;use.&lt;/p&gt;
+&lt;p&gt;In the past, I have usually hacked together my own developing environment
+through whatever tools were most …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
 complicated. In this post I describe how I use a conda to keep a
 reproducible record of the packages I&amp;nbsp;use.&lt;/p&gt;
 &lt;p&gt;In the past, I have usually hacked together my own developing environment
@@ -7593,4 +8434,4 @@ which is neat because it means that I can reproduce my python setup
 anywhere. There is a bit of overhead in going this route (especially if you
 want to avoid having dependencies from other anaconda.org users), but this
 should be recouped quickly down the road as the code gets deployed to
-psychophysics test laptops, cloud compute, other lab&amp;nbsp;members&amp;#8230;&lt;/p&gt;</summary><category term="python"></category><category term="data science"></category><category term="conda"></category><category term="anaconda"></category><category term="scientific computing"></category><category term="virtual environment"></category></entry></feed>
+psychophysics test laptops, cloud compute, other lab&amp;nbsp;members&amp;#8230;&lt;/p&gt;</content><category term="python"></category><category term="data science"></category><category term="conda"></category><category term="anaconda"></category><category term="scientific computing"></category><category term="virtual environment"></category></entry></feed>

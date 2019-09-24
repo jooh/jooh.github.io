@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Pilab tutorial 3: importing fMRI data and ROIs, searchlight mapping - Johan Carlin</title>
+    <title>Pilab tutorial 3: importing fMRI data and ROIs, searchlight mapping - Johan Carlin's blog</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,17 +9,17 @@
 
 
 
-<link rel="canonical" href="http://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html">
+<link rel="canonical" href="https://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html">
 
         <meta name="author" content="Johan Carlin" />
         <meta name="keywords" content="scientific computing,matlab,pilab" />
-        <meta name="description" content="This post is the third in a series of brief pilab tutorials. Today we will tackle the main stumbling block for any new analysis software - converting your existing data to the correct format. In pilab this can be done fairly easily through a series of converter functions - spm2vol" />
+        <meta name="description" content="We demonstrate how to apply pilab linear discriminant contrast methods to a real fMRI dataset, including searchlight mapping over the full volume." />
 
-        <meta property="og:site_name" content="Johan Carlin" />
+        <meta property="og:site_name" content="Johan Carlin's blog" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Pilab tutorial 3: importing fMRI data and ROIs, searchlight mapping"/>
-        <meta property="og:url" content="http://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html"/>
-        <meta property="og:description" content="This post is the third in a series of brief pilab tutorials. Today we will tackle the main stumbling block for any new analysis software - converting your existing data to the correct format. In pilab this can be done fairly easily through a series of converter functions - spm2vol"/>
+        <meta property="og:url" content="https://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html"/>
+        <meta property="og:description" content="We demonstrate how to apply pilab linear discriminant contrast methods to a real fMRI dataset, including searchlight mapping over the full volume."/>
         <meta property="article:published_time" content="2016-08-03" />
             <meta property="article:section" content="code" />
             <meta property="article:tag" content="scientific computing" />
@@ -28,27 +28,25 @@
             <meta property="article:author" content="Johan Carlin" />
 
 
+
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://www.johancarlin.com/theme/css/bootstrap.lumen.min.css" type="text/css"/>
-    <link href="http://www.johancarlin.com/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.johancarlin.com/theme/css/bootstrap.lumen.min.css" type="text/css"/>
+    <link href="https://www.johancarlin.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://www.johancarlin.com/theme/css/pygments/borland.css" rel="stylesheet">
-        <link href="http://www.johancarlin.com/theme/css/typogrify.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://www.johancarlin.com/theme/css/style.css" type="text/css"/>
+    <link href="https://www.johancarlin.com/theme/css/pygments/borland.css" rel="stylesheet">
+        <link href="https://www.johancarlin.com/theme/css/typogrify.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.johancarlin.com/theme/css/style.css" type="text/css"/>
 
-        <link href="http://www.johancarlin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Johan Carlin ATOM Feed"/>
+        <link href="https://www.johancarlin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Johan Carlin's blog ATOM Feed"/>
 
-
-
-        <link href="http://www.johancarlin.com/feeds/code.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Johan Carlin code ATOM Feed"/>
-
+        <link href="https://www.johancarlin.com/feeds/code.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Johan Carlin's blog code ATOM Feed"/>
 </head>
 <body>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -56,19 +54,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://www.johancarlin.com/" class="navbar-brand">
-Johan Carlin            </a>
+            <a href="https://www.johancarlin.com/" class="navbar-brand">
+Johan Carlin's blog            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="http://www.johancarlin.com/pages/about-me.html">
-                             About&nbsp;Me
-                          </a></li>
                         <li class="active">
-                            <a href="http://www.johancarlin.com/category/code.html">Code</a>
+                            <a href="https://www.johancarlin.com/category/code.html">Code</a>
                         </li>
                         <li >
-                            <a href="http://www.johancarlin.com/category/science.html">Science</a>
+                            <a href="https://www.johancarlin.com/category/science.html">Science</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -77,8 +72,11 @@ Johan Carlin            </a>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
+
 <!-- Banner -->
 <!-- End Banner -->
+
+<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -86,7 +84,7 @@ Johan Carlin            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html"
+                    <a href="https://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html"
                        rel="bookmark"
                        title="Permalink to Pilab tutorial 3: importing fMRI data and ROIs, searchlight mapping">
                         Pilab tutorial 3: importing fMRI data and ROIs, searchlight&nbsp;mapping
@@ -101,17 +99,23 @@ Johan Carlin            </a>
     <span class="published">
         <i class="fa fa-calendar"></i><time datetime="2016-08-03T00:00:00+01:00"> 03 August 2016</time>
     </span>
+          <span class="label label-default">Modified</span>
+            <span class="modified">
+                <i class="fa fa-calendar"></i><time datetime="2016-08-03T00:00:00+01:00"> 03 August 2016</time>
+            </span>
 
 
+            <span class="label label-default">By</span>
+            <a href="https://www.johancarlin.com/author/johan-carlin.html"><i class="fa fa-user"></i> Johan Carlin</a>
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="http://www.johancarlin.com/tag/scientific-computing.html">scientific computing</a>
+	<a href="https://www.johancarlin.com/tag/scientific-computing.html">scientific computing</a>
         /
-	<a href="http://www.johancarlin.com/tag/matlab.html">matlab</a>
+	<a href="https://www.johancarlin.com/tag/matlab.html">matlab</a>
         /
-	<a href="http://www.johancarlin.com/tag/pilab.html">pilab</a>
+	<a href="https://www.johancarlin.com/tag/pilab.html">pilab</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
@@ -120,9 +124,124 @@ Johan Carlin            </a>
 * IPython notebook
 *
 */
-/* <span class="caps">CSS</span> font colors for translated <span class="caps">ANSI</span> colors. */
+/* <span class="caps">CSS</span> font colors for translated <span class="caps">ANSI</span> escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #<span class="caps">3E424D</span>;
+}
+.ansi-black-bg {
+  background-color: #<span class="caps">3E424D</span>;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #<span class="caps">E75C58</span>;
+}
+.ansi-red-bg {
+  background-color: #<span class="caps">E75C58</span>;
+}
+.ansi-red-intense-fg {
+  color: #<span class="caps">B22B31</span>;
+}
+.ansi-red-intense-bg {
+  background-color: #<span class="caps">B22B31</span>;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #<span class="caps">DDB62B</span>;
+}
+.ansi-yellow-bg {
+  background-color: #<span class="caps">DDB62B</span>;
+}
+.ansi-yellow-intense-fg {
+  color: #<span class="caps">B27D12</span>;
+}
+.ansi-yellow-intense-bg {
+  background-color: #<span class="caps">B27D12</span>;
+}
+.ansi-blue-fg {
+  color: #<span class="caps">208FFB</span>;
+}
+.ansi-blue-bg {
+  background-color: #<span class="caps">208FFB</span>;
+}
+.ansi-blue-intense-fg {
+  color: #<span class="caps">0065CA</span>;
+}
+.ansi-blue-intense-bg {
+  background-color: #<span class="caps">0065CA</span>;
+}
+.ansi-magenta-fg {
+  color: #<span class="caps">D160C4</span>;
+}
+.ansi-magenta-bg {
+  background-color: #<span class="caps">D160C4</span>;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #<span class="caps">60C6C8</span>;
+}
+.ansi-cyan-bg {
+  background-color: #<span class="caps">60C6C8</span>;
+}
+.ansi-cyan-intense-fg {
+  color: #<span class="caps">258F8F</span>;
+}
+.ansi-cyan-intense-bg {
+  background-color: #<span class="caps">258F8F</span>;
+}
+.ansi-white-fg {
+  color: #<span class="caps">C5C1B4</span>;
+}
+.ansi-white-bg {
+  background-color: #<span class="caps">C5C1B4</span>;
+}
+.ansi-white-intense-fg {
+  color: #<span class="caps">A1A6B2</span>;
+}
+.ansi-white-intense-bg {
+  background-color: #<span class="caps">A1A6B2</span>;
+}
+.ansi-default-inverse-fg {
+  color: #<span class="caps">FFFFFF</span>;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -201,12 +320,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #<span class="caps">90CAF9</span>;
   border-left-color: #<span class="caps">E3F2FD</span>;
   border-left-width: 1px;
   padding-left: 5px;
@@ -219,27 +346,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #<span class="caps">42A5F5</span> -40px, #<span class="caps">42A5F5</span> 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #<span class="caps">42A5F5</span>;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #<span class="caps">42A5F5</span> -40px, #<span class="caps">42A5F5</span> 7px, #<span class="caps">E3F2FD</span> 7px, #<span class="caps">E3F2FD</span> 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #<span class="caps">66BB6A</span>;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #<span class="caps">66BB6A</span> -40px, #<span class="caps">66BB6A</span> 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #<span class="caps">66BB6A</span>;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -272,6 +411,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -292,11 +432,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -439,7 +574,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In <span class="caps">CM2</span>, this used to be 0.4em, but in <span class="caps">CM3</span> it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -449,11 +586,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In <span class="caps">CM3</span> this went to 4px from 0 in <span class="caps">CM2</span>. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In <span class="caps">CM3</span> this went to 4px from 0 in <span class="caps">CM2</span>. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -701,6 +851,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -739,7 +892,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -861,6 +1014,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -877,16 +1034,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -902,6 +1067,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -952,8 +1122,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1034,8 +1211,10 @@ h6:hover .anchor-link {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #<span class="caps">BA2121</span> } /* Literal.String.Affix */
 .highlight .sb { color: #<span class="caps">BA2121</span> } /* Literal.String.Backtick */
 .highlight .sc { color: #<span class="caps">BA2121</span> } /* Literal.String.Char */
+.highlight .dl { color: #<span class="caps">BA2121</span> } /* Literal.String.Delimiter */
 .highlight .sd { color: #<span class="caps">BA2121</span>; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #<span class="caps">BA2121</span> } /* Literal.String.Double */
 .highlight .se { color: #<span class="caps">BB6622</span>; font-weight: bold } /* Literal.String.Escape */
@@ -1046,54 +1225,16 @@ h6:hover .anchor-link {
 .highlight .s1 { color: #<span class="caps">BA2121</span> } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #<span class="caps">0000FF</span> } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
-<style type="text/css">
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #<span class="caps">3E424D</span>; }
-.ansi-black-bg { background-color: #<span class="caps">3E424D</span>; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #<span class="caps">E75C58</span>; }
-.ansi-red-bg { background-color: #<span class="caps">E75C58</span>; }
-.ansi-red-intense-fg { color: #<span class="caps">B22B31</span>; }
-.ansi-red-intense-bg { background-color: #<span class="caps">B22B31</span>; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #<span class="caps">DDB62B</span>; }
-.ansi-yellow-bg { background-color: #<span class="caps">DDB62B</span>; }
-.ansi-yellow-intense-fg { color: #<span class="caps">B27D12</span>; }
-.ansi-yellow-intense-bg { background-color: #<span class="caps">B27D12</span>; }
-.ansi-blue-fg { color: #<span class="caps">208FFB</span>; }
-.ansi-blue-bg { background-color: #<span class="caps">208FFB</span>; }
-.ansi-blue-intense-fg { color: #<span class="caps">0065CA</span>; }
-.ansi-blue-intense-bg { background-color: #<span class="caps">0065CA</span>; }
-.ansi-magenta-fg { color: #<span class="caps">D160C4</span>; }
-.ansi-magenta-bg { background-color: #<span class="caps">D160C4</span>; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #<span class="caps">60C6C8</span>; }
-.ansi-cyan-bg { background-color: #<span class="caps">60C6C8</span>; }
-.ansi-cyan-intense-fg { color: #<span class="caps">258F8F</span>; }
-.ansi-cyan-intense-bg { background-color: #<span class="caps">258F8F</span>; }
-.ansi-white-fg { color: #<span class="caps">C5C1B4</span>; }
-.ansi-white-bg { background-color: #<span class="caps">C5C1B4</span>; }
-.ansi-white-intense-fg { color: #<span class="caps">A1A6B2</span>; }
-.ansi-white-intense-bg { background-color: #<span class="caps">A1A6B2</span>; }
-
-.ansi-bold { font-weight: bold; }
-</style>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This post is the third in a series of brief <a href="https://github.com/jooh/pilab">pilab</a> tutorials. Today we will tackle the main stumbling block for any new analysis software - converting your existing data to the correct format. In pilab this can be done fairly easily through a series of converter functions - <a href="https://github.com/jooh/pilab/blob/master/containers/spm2vol.m">spm2vol</a>, <a href="https://github.com/jooh/pilab/blob/master/containers/mrtools2vol.m">mrtools2vol</a>, and <a href="https://github.com/jooh/pilab/blob/master/containers/mreyelink2vol.m">mreyelink2vol</a>. Additional data converters will be added, but in the meantime you may find that converting at least fMRI data isn&#8217;t too hard by calling the <a href="https://github.com/jooh/pilab/blob/master/containers/MriVolume.m">MriVolume</a> class constructor&nbsp;directly.</p>
-<p>I will also assume you are somewhat familiar with pilab Volume instances at this point. To catch up, see <a href="pilab-tutorial-1-model-fit-and-cross-validation.html">part 1</a> of this&nbsp;series.</p>
+<p>I will also assume you are somewhat familiar with pilab Volume instances at this point. To catch up, see <a href="https://www.johancarlin.com/pilab-tutorial-1-model-fit-and-cross-validation.html">part 1</a> of this&nbsp;series.</p>
 <h3 id="Import-SPM-fMRI-data-to-pilab">Import <span class="caps">SPM</span> fMRI data to pilab<a class="anchor-link" href="#Import-SPM-fMRI-data-to-pilab">&#182;</a></h3><p>For the purposes of this tutorial, I will assume that there is a <span class="caps">SPM</span>.mat file in the directory <code>resdir</code>, which contains a configured <span class="caps">SPM</span> first level model generated by convolution with the standard <span class="caps">SPM</span> <span class="caps">HRF</span> (the key function is spm_fmri_spm_ui). If you use <a href="https://github.com/jooh/automaticanalysis">my fork</a> of the Automatic Analysis batch processing package (<a href="http://dx.doi.org/10.3389/fninf.2014.00090">Cusack et al., 2015</a>, Front Neuroinform), you would want the <span class="caps">SPM</span>.mat that is generated by <a href="https://github.com/jooh/automaticanalysis/blob/master/aa_modules/aamod_firstlevel_design.m">aamod_firstlevel_design</a>. I will also assume that you have a brain mask (<code>pilab_mask.nii</code>) and two regions of interest (<code>FFA.nii, PPA.nii</code>), which reside in a sub-directory <code>ROIs</code>.</p>
 
 </div>
@@ -1114,7 +1255,7 @@ h6:hover .anchor-link {
 <span class="n">epivol</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1122,7 +1263,11 @@ h6:hover .anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>(loadmaskedvolumes) removed 280 voxels ( 1% of total)
 epivol = 
@@ -1148,10 +1293,8 @@ epivol =
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice that epivol contains a <code>mask</code> and a set of linear indices (<code>linind</code>). These are used to enable mapping
 between 2D samples by voxels representation stored in the data field and volumetric 3D data. Let&#8217;s apply that to update our mask. You may have noticed above that a few voxels got removed due to NaNs, so let&#8217;s write out a new <span class="caps">NIFTI</span> that reflects this&nbsp;change:</p>
@@ -1169,15 +1312,13 @@ between 2D samples by voxels representation stored in the data field and volumet
 <span class="n">data2file</span><span class="p">(</span><span class="n">epivol</span><span class="p">,</span><span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">epivol</span><span class="p">.</span><span class="n">nfeatures</span><span class="p">),</span><span class="n">fullfile</span><span class="p">(</span><span class="n">resdir</span><span class="p">,</span><span class="s">&#39;pilab_mask_updated.nii&#39;</span><span class="p">));</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also visualise the data from a single&nbsp;timepoint:</p>
 
@@ -1200,7 +1341,7 @@ between 2D samples by voxels representation stored in the data field and volumet
 <span class="n">set</span><span class="p">(</span><span class="n">chandle</span><span class="p">,</span><span class="s">&#39;position&#39;</span><span class="p">,</span><span class="n">get</span><span class="p">(</span><span class="n">chandle</span><span class="p">,</span><span class="s">&#39;position&#39;</span><span class="p">)</span> <span class="o">.*</span> <span class="p">[</span><span class="mf">1.1</span> <span class="mi">1</span> <span class="p">.</span><span class="mi">5</span> <span class="p">.</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -1208,7 +1349,11 @@ between 2D samples by voxels representation stored in the data field and volumet
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -2249,7 +2394,8 @@ hUKhUDgLiiAVCoVC4SwoglQoFAqFs6AIUqFQKBTOgiJIhUKhUDgLiiAVCoVC4SwoglQoFAqFs6AI
 UqFQKBTOgiJIhUKhUDgLiiAVCoVC4SwoglQoFAqFs6AIUqFQKBTOgiJIhUKhUDgLiiAVCoVC4Swo
 glQoFAqFs6AIUqFQKBTOgiJIhUKhUDgLiiAVCoVC4SwoglQoFAqFs6AIUqFQKBTOgiJIhUKhUDgL
 iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
-">
+"
+>
 </div>
 
 </div>
@@ -2258,10 +2404,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Import-regions-of-interest-to-pilab">Import regions of interest to pilab<a class="anchor-link" href="#Import-regions-of-interest-to-pilab">&#182;</a></h3><p>Suppose you have some <span class="caps">ROI</span> masks saved as nifti. Let&#8217;s import those to&nbsp;pilab.</p>
 
@@ -2277,7 +2421,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <span class="n">roivol</span> <span class="p">=</span> <span class="n">roidir2vol</span><span class="p">(</span><span class="n">fullfile</span><span class="p">(</span><span class="n">resdir</span><span class="p">,</span><span class="s">&#39;ROIs&#39;</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2285,7 +2429,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>roivol = 
   SPMVolume with properties:
@@ -2310,10 +2458,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We have two ROIs in rows with voxels in columns as before, but what about the feature dimension? It doesn&#8217;t seem to match epivol. If we want to make sure the two are in register we can do something&nbsp;like:</p>
 
@@ -2329,7 +2475,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <span class="n">rfepi</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2337,7 +2483,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>rfepi = 
   SPMVolume with properties:
@@ -2362,10 +2512,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And now indexing <span class="caps">EPI</span> data for a particular <span class="caps">ROI</span> is pretty&nbsp;easy:</p>
 
@@ -2380,7 +2528,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <div class=" highlight hl-matlab"><pre><span></span><span class="n">roiepi</span> <span class="p">=</span> <span class="n">rfepi</span><span class="p">(:,</span><span class="n">rfroi</span><span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="o">~=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2388,7 +2536,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>roiepi = 
   SPMVolume with properties:
@@ -2413,10 +2565,8 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice how the returned volume keeps track of the headers and volumetric registration, so we can still map back to 3D volume at any time. For example, let&#8217;s verify that the <span class="caps">ROI</span> matches what we expect for <span class="caps">FFA</span>.</p>
 
@@ -2433,7 +2583,7 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span><span class="s">&#39;dataaspectratio&#39;</span><span class="p">,[</span><span class="n">epivol</span><span class="p">.</span><span class="n">voxsize</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2441,7 +2591,11 @@ iiAVCoVC4Sz4H8iybbGMks5MAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -2487,7 +2641,8 @@ FiQAEjyyAyBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABI
 ECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBB
 kABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARBAiBBkABIECQAEgQJgARB
 AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
-">
+"
+>
 </div>
 
 </div>
@@ -2496,10 +2651,8 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Searchlight-mapping">Searchlight mapping<a class="anchor-link" href="#Searchlight-mapping">&#182;</a></h3><p>Keeping the 2D data in register with the 3D volume also makes it easy to do searchlight mapping, where a spherical <span class="caps">ROI</span> is swept through the brain. The pilab approach to searchlight mapping is to precompute all searchlight <span class="caps">ROI</span> masks, which can then be entered into the analysis code like any other&nbsp;roivol.</p>
 <p>Below we perform searchlight mapping with a fixed <span class="caps">ROI</span> size, which means that the searchlight radius is tuned to achieve a given number of voxels in each <span class="caps">ROI</span>. An alternative approach is to simply fix the radius and allow the number of voxels to vary over&nbsp;searchlights.</p>
@@ -2521,7 +2674,7 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 <span class="p">[</span><span class="n">searchrois</span><span class="p">,</span><span class="n">diagnostic</span><span class="p">]</span> <span class="p">=</span> <span class="n">mask2searchrois</span><span class="p">(</span><span class="n">epivol</span><span class="p">,</span><span class="s">&#39;nvox&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2529,7 +2682,11 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Starting matlabpool using the &#39;local&#39; profile ... connected to 4 workers.
 (mask2searchrois) mapping 54080 searchlights...
@@ -2542,13 +2699,11 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice the time taken above (about 12 minutes on an i7 processor). The good news is that running the searchlight mapping itself will be considerably faster now that the ROIs have been pre-computed. Radius-based mapping would also be&nbsp;faster.</p>
-<p>From this point on, analysis proceeds exactly as with any other pilab <span class="caps">ROI</span> analysis. For instance, roidata2rdmvol_lindisc_batch can be called with searchrois to obtain one distance matrix per searchlight (see <a href="pilab-tutorial-2-linear-discriminant-contrast.html">part 2</a> of this series), and the result of some comparison between each searchlight and a model <span class="caps">RDM</span> can be mapped out to a nifti using the data2file method as&nbsp;above.</p>
+<p>From this point on, analysis proceeds exactly as with any other pilab <span class="caps">ROI</span> analysis. For instance, roidata2rdmvol_lindisc_batch can be called with searchrois to obtain one distance matrix per searchlight (see <a href="https://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html">part 2</a> of this series), and the result of some comparison between each searchlight and a model <span class="caps">RDM</span> can be mapped out to a nifti using the data2file method as&nbsp;above.</p>
 <h3 id="A-few-searchlight-mapping-quirks-to-be-aware-of">A few searchlight mapping quirks to be aware of<a class="anchor-link" href="#A-few-searchlight-mapping-quirks-to-be-aware-of">&#182;</a></h3><p>Finally, let&#8217;s take a look at the <code>diagnostic</code> output, which reveals some interesting properties of searchlight&nbsp;mapping.</p>
 
 </div>
@@ -2569,7 +2724,7 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 <span class="n">mode</span><span class="p">(</span><span class="n">diagnostic</span><span class="p">.</span><span class="n">r</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2577,7 +2732,11 @@ AiDhH7Akxz3Uq8kNAAAAAElFTkSuQmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -2858,12 +3017,17 @@ BSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIoMCEREVEUmJCIiCgKTEhERBQFJiQiIooCExIR
 EUWBCYmIiKLAhERERFFgQiIioigwIRERURSYkIiIKApMSEREFAUmJCIiigITEhERRYEJiYiIosCE
 REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 /H+WnDmgDTI2OgAAAABJRU5ErkJggg==
-">
+"
+>
 </div>
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>ans =
      9
@@ -2875,10 +3039,8 @@ REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Although the modal radius is 9mm here, we need bigger spheres close to the edge of the brain since a larger part of each sphere falls outside the brain mask. If we had used a grey-matter mask the pattern would have been more complex (for this and other reasons I no longer recommend volumetric searchlight mapping on grey-matter masked&nbsp;data).</p>
 
@@ -2900,7 +3062,7 @@ REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 <span class="n">mode</span><span class="p">(</span><span class="n">diagnostic</span><span class="p">.</span><span class="n">nsampled</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -2908,7 +3070,11 @@ REREUWBCIiKiKDAhERFRFJiQiIgoCkxIREQUBSYkIiKKAhMSERFFgQmJiIiiwIRERERRYEIiIqIo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -3431,12 +3597,17 @@ giAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCc
 BCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQI
 giCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwkkg
 giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
-">
+"
+>
 </div>
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>ans =
    100
@@ -3448,10 +3619,8 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One consequence of that expanding radius is that voxels close to the border of the brain end up sampled by more searchlight ROIs than voxels on the interior. If larger ROIs tend to show more effect (assuming broadly distributed effects and a method that is tolerant to <span class="caps">ROI</span> size), this will tend to produce maps that show more effects on the edge of the brain than in the interior. Conversely, radius-based mapping will tend to favour the interior. So there is bias either way. Don&#8217;t think this is issue is specific to searchlight mapping though. Similar issues arise with standard univariate fMRI analysis, where Gaussian smoothing will have different effects on the edge of the brain (where you are smoothing in mostly low image-intensity nothing) and on the interior (where you are likely smoothing in high image-intensity white matter&nbsp;noise).</p>
 <p>I tend to fix <span class="caps">ROI</span> size rather than radius since this makes searchlight results somewhat more comparable to functional <span class="caps">ROI</span> analyses (which can be fixed to similar&nbsp;sizes).</p>
@@ -3460,11 +3629,14 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+ 
+
+
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -3481,6 +3653,7 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
         "    } " +
         "}); ";
@@ -3499,11 +3672,11 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'johancarlin'; // required: replace example with your forum shortname
 
-                    var disqus_identifier = 'pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping';
-                var disqus_url = 'http://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html';
-
             var disqus_config = function () {
                 this.language = "en";
+
+                        this.page.identifier = '2016-08-03-pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping';
+                        this.page.url = 'https://www.johancarlin.com/pilab-tutorial-3-importing-fmri-data-and-rois-searchlight-mapping.html';
             };
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -3526,48 +3699,42 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
-
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="https://www.johancarlin.com/images/brain.png"/>
+        </p>
+    <p>
+      <strong>About Johan Carlin</strong><br/>
+        I work in human neuroimaging research at the University of Cambridge. I specialise in visual neuroscience, statistical methods, computational modelling, and data engineering. I'm a scientist, but I write a lot of code.
+    </p>
+</div><!-- Sidebar -->
 <section class="well well-sm">
-    <ul class="list-group list-group-flush">
-            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-              <ul class="list-group" id="social">
-                <li class="list-group-item"><a href="https://github.com/jooh"><i class="fa fa-code-square fa-lg"></i> code</a></li>
-                <li class="list-group-item"><a href="https://twitter.com/johancarlin"><i class="fa fa-rants-square fa-lg"></i> rants</a></li>
-                <li class="list-group-item"><a href="https://anaconda.org/jcarlin"><i class="fa fa-python-packages-square fa-lg"></i> python packages</a></li>
-                <li class="list-group-item"><a href="https://www.mendeley.com/profiles/johan-carlin"><i class="fa fa-publications-square fa-lg"></i> publications</a></li>
-                <li class="list-group-item"><a href="https://getpocket.com/@idoru"><i class="fa fa-long-reads-square fa-lg"></i> long reads</a></li>
-              </ul>
-            </li>
+  <ul class="list-group list-group-flush">
 
-
-
-
-
-    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-      <ul class="list-group" id="links">
-        <li class="list-group-item">
-            <a href="http://www.ucl.ac.uk/lovelab" target="_blank">
-                Love lab
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="http://www.mrc-cbu.cam.ac.uk/our-research/kriegeskorte" target="_blank">
-                Kriegeskorte lab
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="http://gru.stanford.edu" target="_blank">
-                Gardner lab
-            </a>
-        </li>
-      </ul>
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://github.com/jooh" target="_blank">code</a>
     </li>
-    </ul>
+    <li class="list-group-item">
+      <a href="https://twitter.com/johancarlin" target="_blank">rants</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://scholar.google.com/citations?user=hybIdeIAAAAJ" target="_blank">publications</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
 </section>
-            </aside>
+<!-- End Sidebar -->            </aside>
         </div>
     </div>
 </div>
+<!-- End Content Container -->
+
 <footer>
    <div class="container">
       <hr>
@@ -3580,13 +3747,14 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
       </div>
    </div>
 </footer>
-<script src="http://www.johancarlin.com/theme/js/jquery.min.js"></script>
+<script src="https://www.johancarlin.com/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://www.johancarlin.com/theme/js/bootstrap.min.js"></script>
+<script src="https://www.johancarlin.com/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://www.johancarlin.com/theme/js/respond.min.js"></script>
+<script src="https://www.johancarlin.com/theme/js/respond.min.js"></script>
+
 
     <!-- Disqus -->
     <script type="text/javascript">
@@ -3620,6 +3788,7 @@ giQIgiCcBCJIgiAIwkkggiQIgiCcBCJIgiAIwknwfzFOw9N9IoYiAAAAAElFTkSuQmCC
         })();
     </script>
     <!-- End Google Analytics Code -->
+
 
 </body>
 </html>
