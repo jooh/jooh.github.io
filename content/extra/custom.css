@@ -1,0 +1,19 @@
+/* ugly fix for table header issues. */
+thead th {
+    display: table-cell !important;
+    padding-right: 15px !important;
+    padding-bottom: 3px !important;
+}
+table td {
+    padding-right: 15px !important;
+    padding-bottom: 3px !important;
+}
+
+/* clean up unnecessary whitespace between cells. */
+div.text_cell_render {
+    padding: 0em 0em 0em 0em !important;
+}
+
+.prompt {
+    padding: 0em !important;
+}
