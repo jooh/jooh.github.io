@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Pilab tutorial 2: linear discriminant contrast - Johan Carlin's blog</title>
+    <title>Pilab tutorial 2: linear discriminant contrast - Johan Carlin's blog</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -13,15 +13,15 @@
 
         <meta name="author" content="Johan Carlin" />
         <meta name="keywords" content="scientific computing,matlab,pilab" />
-        <meta name="description" content="We estimate multivariate discriminability with linear discriminant contrast (also known as cross-validated Mahalanobis distance, crossnobis)." />
+        <meta name="description" content="We estimate multivariate discriminability with linear discriminant contrast (also known as cross-validated Mahalanobis distance, crossnobis)." />
 
         <meta property="og:site_name" content="Johan Carlin's blog" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Pilab tutorial 2: linear discriminant contrast"/>
+        <meta property="og:title" content="Pilab tutorial 2: linear discriminant contrast"/>
         <meta property="og:url" content="https://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html"/>
-        <meta property="og:description" content="We estimate multivariate discriminability with linear discriminant contrast (also known as cross-validated Mahalanobis distance, crossnobis)."/>
+        <meta property="og:description" content="We estimate multivariate discriminability with linear discriminant contrast (also known as cross-validated Mahalanobis distance, crossnobis)."/>
         <meta property="article:published_time" content="2016-05-29" />
-            <meta property="article:section" content="code" />
+            <meta property="article:section" content="data" />
             <meta property="article:tag" content="scientific computing" />
             <meta property="article:tag" content="matlab" />
             <meta property="article:tag" content="pilab" />
@@ -34,14 +34,14 @@
     <link href="https://www.johancarlin.com/theme/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="https://www.johancarlin.com/theme/css/pygments/borland.css" rel="stylesheet">
-        <link href="https://www.johancarlin.com/theme/css/typogrify.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.johancarlin.com/theme/css/style.css" type="text/css"/>
+        <link href="https://www.johancarlin.com/custom.css" rel="stylesheet">
 
         <link href="https://www.johancarlin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="Johan Carlin's blog ATOM Feed"/>
 
-        <link href="https://www.johancarlin.com/feeds/code.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Johan Carlin's blog code ATOM Feed"/>
+        <link href="https://www.johancarlin.com/feeds/data.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Johan Carlin's blog data ATOM Feed"/>
 </head>
 <body>
 
@@ -60,10 +60,13 @@ Johan Carlin's blog            </a>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="https://www.johancarlin.com/category/code.html">Code</a>
+                            <a href="https://www.johancarlin.com/category/data.html">Data</a>
                         </li>
                         <li >
                             <a href="https://www.johancarlin.com/category/science.html">Science</a>
+                        </li>
+                        <li >
+                            <a href="https://www.johancarlin.com/category/systems.html">Systems</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -86,8 +89,8 @@ Johan Carlin's blog            </a>
                 <h1>
                     <a href="https://www.johancarlin.com/pilab-tutorial-2-linear-discriminant-contrast.html"
                        rel="bookmark"
-                       title="Permalink to Pilab tutorial 2: linear discriminant contrast">
-                        Pilab tutorial 2: linear discriminant&nbsp;contrast
+                       title="Permalink to Pilab tutorial 2: linear discriminant contrast">
+                        Pilab tutorial 2: linear discriminant contrast
                     </a>
                 </h1>
             </header>
@@ -124,15 +127,15 @@ Johan Carlin's blog            </a>
 * IPython notebook
 *
 */
-/* <span class="caps">CSS</span> font colors for translated <span class="caps">ANSI</span> escape sequences */
+/* CSS font colors for translated ANSI escape sequences */
 /* The color values are a mix of
    http://www.xcolors.net/dl/baskerville-ivorylight and
    http://www.xcolors.net/dl/euphrasia */
 .ansi-black-fg {
-  color: #<span class="caps">3E424D</span>;
+  color: #3E424D;
 }
 .ansi-black-bg {
-  background-color: #<span class="caps">3E424D</span>;
+  background-color: #3E424D;
 }
 .ansi-black-intense-fg {
   color: #282C36;
@@ -141,16 +144,16 @@ Johan Carlin's blog            </a>
   background-color: #282C36;
 }
 .ansi-red-fg {
-  color: #<span class="caps">E75C58</span>;
+  color: #E75C58;
 }
 .ansi-red-bg {
-  background-color: #<span class="caps">E75C58</span>;
+  background-color: #E75C58;
 }
 .ansi-red-intense-fg {
-  color: #<span class="caps">B22B31</span>;
+  color: #B22B31;
 }
 .ansi-red-intense-bg {
-  background-color: #<span class="caps">B22B31</span>;
+  background-color: #B22B31;
 }
 .ansi-green-fg {
   color: #00A250;
@@ -165,34 +168,34 @@ Johan Carlin's blog            </a>
   background-color: #007427;
 }
 .ansi-yellow-fg {
-  color: #<span class="caps">DDB62B</span>;
+  color: #DDB62B;
 }
 .ansi-yellow-bg {
-  background-color: #<span class="caps">DDB62B</span>;
+  background-color: #DDB62B;
 }
 .ansi-yellow-intense-fg {
-  color: #<span class="caps">B27D12</span>;
+  color: #B27D12;
 }
 .ansi-yellow-intense-bg {
-  background-color: #<span class="caps">B27D12</span>;
+  background-color: #B27D12;
 }
 .ansi-blue-fg {
-  color: #<span class="caps">208FFB</span>;
+  color: #208FFB;
 }
 .ansi-blue-bg {
-  background-color: #<span class="caps">208FFB</span>;
+  background-color: #208FFB;
 }
 .ansi-blue-intense-fg {
-  color: #<span class="caps">0065CA</span>;
+  color: #0065CA;
 }
 .ansi-blue-intense-bg {
-  background-color: #<span class="caps">0065CA</span>;
+  background-color: #0065CA;
 }
 .ansi-magenta-fg {
-  color: #<span class="caps">D160C4</span>;
+  color: #D160C4;
 }
 .ansi-magenta-bg {
-  background-color: #<span class="caps">D160C4</span>;
+  background-color: #D160C4;
 }
 .ansi-magenta-intense-fg {
   color: #A03196;
@@ -201,31 +204,31 @@ Johan Carlin's blog            </a>
   background-color: #A03196;
 }
 .ansi-cyan-fg {
-  color: #<span class="caps">60C6C8</span>;
+  color: #60C6C8;
 }
 .ansi-cyan-bg {
-  background-color: #<span class="caps">60C6C8</span>;
+  background-color: #60C6C8;
 }
 .ansi-cyan-intense-fg {
-  color: #<span class="caps">258F8F</span>;
+  color: #258F8F;
 }
 .ansi-cyan-intense-bg {
-  background-color: #<span class="caps">258F8F</span>;
+  background-color: #258F8F;
 }
 .ansi-white-fg {
-  color: #<span class="caps">C5C1B4</span>;
+  color: #C5C1B4;
 }
 .ansi-white-bg {
-  background-color: #<span class="caps">C5C1B4</span>;
+  background-color: #C5C1B4;
 }
 .ansi-white-intense-fg {
-  color: #<span class="caps">A1A6B2</span>;
+  color: #A1A6B2;
 }
 .ansi-white-intense-bg {
-  background-color: #<span class="caps">A1A6B2</span>;
+  background-color: #A1A6B2;
 }
 .ansi-default-inverse-fg {
-  color: #<span class="caps">FFFFFF</span>;
+  color: #FFFFFF;
 }
 .ansi-default-inverse-bg {
   background-color: #000000;
@@ -334,12 +337,12 @@ div.cell:before {
   background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #<span class="caps">E3F2FD</span>;
+  border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
-  border-right-color: #<span class="caps">E3F2FD</span>;
+  border-right-color: #E3F2FD;
   border-right-width: 1px;
-  background: #<span class="caps">E3F2FD</span>;
+  background: #E3F2FD;
 }
 @media print {
   div.cell.jupyter-soft-selected {
@@ -359,7 +362,7 @@ div.cell.selected.jupyter-soft-selected:before {
   width: 5px;
   height: calc(100% +  2px);
   content: '';
-  background: #<span class="caps">42A5F5</span>;
+  background: #42A5F5;
 }
 @media print {
   div.cell.selected,
@@ -368,7 +371,7 @@ div.cell.selected.jupyter-soft-selected:before {
   }
 }
 .edit_mode div.cell.selected {
-  border-color: #<span class="caps">66BB6A</span>;
+  border-color: #66BB6A;
 }
 .edit_mode div.cell.selected:before {
   position: absolute;
@@ -378,7 +381,7 @@ div.cell.selected.jupyter-soft-selected:before {
   width: 5px;
   height: calc(100% +  2px);
   content: '';
-  background: #<span class="caps">66BB6A</span>;
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -531,7 +534,7 @@ div.input {
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_prompt {
-  color: #<span class="caps">303F9F</span>;
+  color: #303F9F;
   border-top: 1px solid transparent;
 }
 div.input_area > div.highlight {
@@ -572,7 +575,7 @@ div.input_area > div.highlight > pre {
   overflow-x: auto;
 }
 .CodeMirror-lines {
-  /* In <span class="caps">CM2</span>, this used to be 0.4em, but in <span class="caps">CM3</span> it went to 4px. We need the em value because */
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
   /* Note that this should set vertical padding only, since CodeMirror assumes
        that horizontal padding will be set on CodeMirror pre */
@@ -586,7 +589,7 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In <span class="caps">CM3</span> this went to 4px from 0 in <span class="caps">CM2</span>. This sets horizontal padding only,
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
     use .CodeMirror-lines for vertical */
   padding: 0 0.4em;
   border: 0;
@@ -624,7 +627,7 @@ Adapted from GitHub theme
   color: #333333;
 }
 .highlight-string {
-  color: #<span class="caps">BA2121</span>;
+  color: #BA2121;
 }
 .highlight-comment {
   color: #408080;
@@ -647,11 +650,11 @@ Adapted from GitHub theme
   color: #f00;
 }
 .highlight-operator {
-  color: #<span class="caps">AA22FF</span>;
+  color: #AA22FF;
   font-weight: bold;
 }
 .highlight-meta {
-  color: #<span class="caps">AA22FF</span>;
+  color: #AA22FF;
 }
 /* previously not defined, copying from default codemirror */
 .highlight-def {
@@ -699,7 +702,7 @@ Adapted from GitHub theme
   color: #000;
 }
 .cm-s-ipython span.cm-operator {
-  color: #<span class="caps">AA22FF</span>;
+  color: #AA22FF;
   font-weight: bold;
 }
 .cm-s-ipython span.cm-variable-2 {
@@ -713,13 +716,13 @@ Adapted from GitHub theme
   font-style: italic;
 }
 .cm-s-ipython span.cm-string {
-  color: #<span class="caps">BA2121</span>;
+  color: #BA2121;
 }
 .cm-s-ipython span.cm-string-2 {
   color: #f50;
 }
 .cm-s-ipython span.cm-meta {
-  color: #<span class="caps">AA22FF</span>;
+  color: #AA22FF;
 }
 .cm-s-ipython span.cm-qualifier {
   color: #555;
@@ -774,9 +777,9 @@ div.output_wrapper {
 }
 /* class for the output area when it should be height-limited */
 div.output_scroll {
-  /* ideally, this would be max-height, but <span class="caps">FF</span> barfs all over that */
+  /* ideally, this would be max-height, but FF barfs all over that */
   height: 24em;
-  /* <span class="caps">FF</span> needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
   width: 100%;
   overflow: auto;
   border-radius: 2px;
@@ -810,7 +813,7 @@ div.out_prompt_overlay {
   border-radius: 2px;
 }
 div.out_prompt_overlay:hover {
-  /* use inner shadow to get border that is computed the same on WebKit/<span class="caps">FF</span> */
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
   -webkit-box-shadow: inset 0 0 1px #000;
   box-shadow: inset 0 0 1px #000;
   background: rgba(240, 240, 240, 0.5);
@@ -1165,25 +1168,25 @@ h6:hover .anchor-link {
 <style type="text/css">.highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
-.highlight .err { border: 1px solid #<span class="caps">FF0000</span> } /* Error */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
 .highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.highlight .cp { color: #<span class="caps">BC7A00</span> } /* Comment.Preproc */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
 .highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
 .highlight .ge { font-style: italic } /* Generic.Emph */
-.highlight .gr { color: #<span class="caps">FF0000</span> } /* Generic.Error */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
 .highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .highlight .gi { color: #00A000 } /* Generic.Inserted */
 .highlight .go { color: #888888 } /* Generic.Output */
 .highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.highlight .gt { color: #<span class="caps">0044DD</span> } /* Generic.Traceback */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
 .highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
 .highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
 .highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
@@ -1191,41 +1194,41 @@ h6:hover .anchor-link {
 .highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
 .highlight .kt { color: #B00040 } /* Keyword.Type */
 .highlight .m { color: #666666 } /* Literal.Number */
-.highlight .s { color: #<span class="caps">BA2121</span> } /* Literal.String */
+.highlight .s { color: #BA2121 } /* Literal.String */
 .highlight .na { color: #7D9029 } /* Name.Attribute */
 .highlight .nb { color: #008000 } /* Name.Builtin */
-.highlight .nc { color: #<span class="caps">0000FF</span>; font-weight: bold } /* Name.Class */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
 .highlight .no { color: #880000 } /* Name.Constant */
-.highlight .nd { color: #<span class="caps">AA22FF</span> } /* Name.Decorator */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
 .highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.highlight .ne { color: #<span class="caps">D2413A</span>; font-weight: bold } /* Name.Exception */
-.highlight .nf { color: #<span class="caps">0000FF</span> } /* Name.Function */
-.highlight .nl { color: #<span class="caps">A0A000</span> } /* Name.Label */
-.highlight .nn { color: #<span class="caps">0000FF</span>; font-weight: bold } /* Name.Namespace */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
 .highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
 .highlight .nv { color: #19177C } /* Name.Variable */
-.highlight .ow { color: #<span class="caps">AA22FF</span>; font-weight: bold } /* Operator.Word */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
 .highlight .w { color: #bbbbbb } /* Text.Whitespace */
 .highlight .mb { color: #666666 } /* Literal.Number.Bin */
 .highlight .mf { color: #666666 } /* Literal.Number.Float */
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #<span class="caps">BA2121</span> } /* Literal.String.Affix */
-.highlight .sb { color: #<span class="caps">BA2121</span> } /* Literal.String.Backtick */
-.highlight .sc { color: #<span class="caps">BA2121</span> } /* Literal.String.Char */
-.highlight .dl { color: #<span class="caps">BA2121</span> } /* Literal.String.Delimiter */
-.highlight .sd { color: #<span class="caps">BA2121</span>; font-style: italic } /* Literal.String.Doc */
-.highlight .s2 { color: #<span class="caps">BA2121</span> } /* Literal.String.Double */
-.highlight .se { color: #<span class="caps">BB6622</span>; font-weight: bold } /* Literal.String.Escape */
-.highlight .sh { color: #<span class="caps">BA2121</span> } /* Literal.String.Heredoc */
-.highlight .si { color: #<span class="caps">BB6688</span>; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
 .highlight .sx { color: #008000 } /* Literal.String.Other */
-.highlight .sr { color: #<span class="caps">BB6688</span> } /* Literal.String.Regex */
-.highlight .s1 { color: #<span class="caps">BA2121</span> } /* Literal.String.Single */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #<span class="caps">0000FF</span> } /* Name.Function.Magic */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
@@ -1233,8 +1236,8 @@ h6:hover .anchor-link {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This post is the second of a series of tutorials where I illustrate basic fMRI analyses with <a href="https://github.com/jooh/pilab">pilab</a>. Today we will construct a pseudo-distance matrix with cross-validated linear discriminant contrast. In addition to pilab you will need my <a href="https://github.com/jooh/matlab-plotting">figure code</a> and probably my <a href="https://github.com/jooh/johansmatlab">general-purpose utility code</a> to get the example below to run. Have&nbsp;fun!</p>
-<h3 id="Building-simulated-fMRI-data">Building simulated fMRI data<a class="anchor-link" href="#Building-simulated-fMRI-data">&#182;</a></h3><p>To review, we are going to make up some data to model. If you read <a href="https://www.johancarlin.com/pilab-tutorial-1-model-fit-and-cross-validation.html">part 1</a> in this series you can skip ahead to the next&nbsp;section.</p>
+<p>This post is the second of a series of tutorials where I illustrate basic fMRI analyses with <a href="https://github.com/jooh/pilab">pilab</a>. Today we will construct a pseudo-distance matrix with cross-validated linear discriminant contrast. In addition to pilab you will need my <a href="https://github.com/jooh/matlab-plotting">figure code</a> and probably my <a href="https://github.com/jooh/johansmatlab">general-purpose utility code</a> to get the example below to run. Have fun!</p>
+<h3 id="Building-simulated-fMRI-data">Building simulated fMRI data<a class="anchor-link" href="#Building-simulated-fMRI-data">&#182;</a></h3><p>To review, we are going to make up some data to model. If you read <a href="https://www.johancarlin.com/pilab-tutorial-1-model-fit-and-cross-validation.html">part 1</a> in this series you can skip ahead to the next section.</p>
 
 </div>
 </div>
@@ -1272,8 +1275,8 @@ h6:hover .anchor-link {
 <p>For each run of the experiment, we make up a set of <em>onsets</em> (uniformly distributed over the run), and assign
 each onset to a <em>conind</em> (effectively the column index in the final design matrix). We then convolve the onsets
 with a hemodynamic response function to construct the run-specific design matrix <em>X</em>.</p>
-<p>The signal in this run is simply the design matrix weighted by the true parameters, <em>X</em>*<em>b</em>. To this we add a touch of noise to construct the final&nbsp;data.</p>
-<p>Finally, we plug the convolved design matrix and data into Volume instances. These are container classes that make is easy to index in the sample dimension (e.g. runs) or feature dimension (e.g., regions of interest) while keeping any meta data in&nbsp;register.</p>
+<p>The signal in this run is simply the design matrix weighted by the true parameters, <em>X</em>*<em>b</em>. To this we add a touch of noise to construct the final data.</p>
+<p>Finally, we plug the convolved design matrix and data into Volume instances. These are container classes that make is easy to index in the sample dimension (e.g. runs) or feature dimension (e.g., regions of interest) while keeping any meta data in register.</p>
 
 </div>
 </div>
@@ -1337,11 +1340,11 @@ with a hemodynamic response function to construct the run-specific design matrix
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts">Estimating representational distance with cross-validated linear discriminant contrasts<a class="anchor-link" href="#Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts">&#182;</a></h3><p>Representational similarity analysis (<span class="caps">RSA</span>) is a somewhat jargony name for a simple statistical concept: analysing your data at the level of distance matrices rather than at the level of individual response channels (voxels in our case). The beauty of this is that we need not specify an exact mapping of model features to response amplitudes of individual voxels. Beyond this theoretical convenience, there is also often a practical advantage in sensitivity over conventional activation-based brain mapping approaches (although to be precise, the advantage is not exactly in raw sensitivity but rather in testing a less strict hypothesis. You must decide for yourself if your research question is suitable to hypotheses at the distance matrix&nbsp;level).</p>
-<p>It is not always appreciated that the choice of distance metric has a huge effect on what your <span class="caps">RSA</span> results look like (for a more formal discussion of distance metric effects, see <a href="https://dx.doi.org/10.1016/j.neuroimage.2015.12.012">Walther et al., 2016, NeuroImage</a>). We generally prefer to use a cross-validated linear discriminant contrast (<span class="caps">LDC</span>) metric. The neat thing about <span class="caps">LDC</span> compared to metrics that aren&#8217;t cross-validated is that the distance estimate is centered on zero under the null hypothesis of no difference between the conditions. In this sense, <span class="caps">LDC</span> has a strong relationship with conventional <span class="caps">LDA</span> classification. This makes it possible to generalise <span class="caps">RSA</span> to  &#8216;decoding&#8217;-like analyses by testing whether different parts of our distance matrices (or averages of parts of the distance matrix) are reliably greater than zero, or differ reliably amongst&nbsp;themselves.</p>
-<p>More popular distance metrics such as Pearson correlation distance tend to produce <em>large</em> distance estimates when response estimates are noisy (intuitively, noise does not correlate, so the correlation distance ends up being 1-0), which can produce misleading impressions of how a given region distinguishes your conditions (ie, stimuli that cannot be distinguished in a classification sense because their estimates are noisy are assigned a large distance). Cross-validated metrics have a closer link to conventional classification and are therefore closer to our intuitive understanding of what it means for conditions to evoke dissimilar&nbsp;responses.</p>
-<p>It is however worth remembering that cross-validated metrics aren&#8217;t strictly speaking distances, since they can take negative values. This can complicate things with real&nbsp;data.</p>
-<p>In any case, let&#8217;s unpack how linear discriminant contrast is calculated. First off, let&#8217;s do it the quick, easy pilab&nbsp;route:</p>
+<h3 id="Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts">Estimating representational distance with cross-validated linear discriminant contrasts<a class="anchor-link" href="#Estimating-representational-distance-with-cross-validated-linear-discriminant-contrasts">&#182;</a></h3><p>Representational similarity analysis (RSA) is a somewhat jargony name for a simple statistical concept: analysing your data at the level of distance matrices rather than at the level of individual response channels (voxels in our case). The beauty of this is that we need not specify an exact mapping of model features to response amplitudes of individual voxels. Beyond this theoretical convenience, there is also often a practical advantage in sensitivity over conventional activation-based brain mapping approaches (although to be precise, the advantage is not exactly in raw sensitivity but rather in testing a less strict hypothesis. You must decide for yourself if your research question is suitable to hypotheses at the distance matrix level).</p>
+<p>It is not always appreciated that the choice of distance metric has a huge effect on what your RSA results look like (for a more formal discussion of distance metric effects, see <a href="https://dx.doi.org/10.1016/j.neuroimage.2015.12.012">Walther et al., 2016, NeuroImage</a>). We generally prefer to use a cross-validated linear discriminant contrast (LDC) metric. The neat thing about LDC compared to metrics that aren't cross-validated is that the distance estimate is centered on zero under the null hypothesis of no difference between the conditions. In this sense, LDC has a strong relationship with conventional LDA classification. This makes it possible to generalise RSA to  'decoding'-like analyses by testing whether different parts of our distance matrices (or averages of parts of the distance matrix) are reliably greater than zero, or differ reliably amongst themselves.</p>
+<p>More popular distance metrics such as Pearson correlation distance tend to produce <em>large</em> distance estimates when response estimates are noisy (intuitively, noise does not correlate, so the correlation distance ends up being 1-0), which can produce misleading impressions of how a given region distinguishes your conditions (ie, stimuli that cannot be distinguished in a classification sense because their estimates are noisy are assigned a large distance). Cross-validated metrics have a closer link to conventional classification and are therefore closer to our intuitive understanding of what it means for conditions to evoke dissimilar responses.</p>
+<p>It is however worth remembering that cross-validated metrics aren't strictly speaking distances, since they can take negative values. This can complicate things with real data.</p>
+<p>In any case, let's unpack how linear discriminant contrast is calculated. First off, let's do it the quick, easy pilab route:</p>
 
 </div>
 </div>
@@ -1382,7 +1385,7 @@ with a hemodynamic response function to construct the run-specific design matrix
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>What&#8217;s going on here? Linear discriminant contrasts are usually introduced in a cursory or maths-heavy manner in the literature, and consequently they are not often understood (or used, outside a few labs). This is unfortunate because although there are many operations below, none of them are actually that hard to understand if you are familiar with linear regression. Let&#8217;s go through the calculations at a lower&nbsp;level:</p>
+<p>What's going on here? Linear discriminant contrasts are usually introduced in a cursory or maths-heavy manner in the literature, and consequently they are not often understood (or used, outside a few labs). This is unfortunate because although there are many operations below, none of them are actually that hard to understand if you are familiar with linear regression. Let's go through the calculations at a lower level:</p>
 
 </div>
 </div>
@@ -1447,8 +1450,8 @@ with a hemodynamic response function to construct the run-specific design matrix
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I hope you&#8217;ll agree that the pilab code is easier to work with (and less prone to typos and other user errors) than coding this up yourself&#8230; Note that linear discriminant contrasts can also be thought of as a cross-validated version of the Mahalanobis distance, although I&#8217;ll spare you the details (see <a href="https://dx.doi.org/10.1371/journal.pcbi.1003553">Nili et al., 2014, PloS <span class="caps">CB</span></a>). To be precise, the equivalence doesn&#8217;t quite hold for the pilab implementation above since we use a sparse covariance&nbsp;estimator.</p>
-<h3 id="Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest">Rapidly estimate full distance matrices over multiple regions of interest<a class="anchor-link" href="#Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest">&#182;</a></h3><p>So if we are happy with how <span class="caps">LDC</span> works, let&#8217;s see how we can quickly run a full analysis. Let&#8217;s estimate a full distance matrix over all 4 conditions, with each contrast estimate being the mean over the 2 possible train-test splits of the runs, and with separate summaries for 3 regions of interest. For this we turn to a high-level analysis function, which takes care of all the heavy lifting involved in converting a set of data and design Volumes to a result. This code runs in a highly optimised parallel computing mode if your Matlab install supports it, which can be useful when calculating very large numbers of <span class="caps">ROI</span> results (e.g. in searchlight&nbsp;mapping).</p>
+<p>I hope you'll agree that the pilab code is easier to work with (and less prone to typos and other user errors) than coding this up yourself... Note that linear discriminant contrasts can also be thought of as a cross-validated version of the Mahalanobis distance, although I'll spare you the details (see <a href="https://dx.doi.org/10.1371/journal.pcbi.1003553">Nili et al., 2014, PloS CB</a>). To be precise, the equivalence doesn't quite hold for the pilab implementation above since we use a sparse covariance estimator.</p>
+<h3 id="Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest">Rapidly estimate full distance matrices over multiple regions of interest<a class="anchor-link" href="#Rapidly-estimate-full-distance-matrices-over-multiple-regions-of-interest">&#182;</a></h3><p>So if we are happy with how LDC works, let's see how we can quickly run a full analysis. Let's estimate a full distance matrix over all 4 conditions, with each contrast estimate being the mean over the 2 possible train-test splits of the runs, and with separate summaries for 3 regions of interest. For this we turn to a high-level analysis function, which takes care of all the heavy lifting involved in converting a set of data and design Volumes to a result. This code runs in a highly optimised parallel computing mode if your Matlab install supports it, which can be useful when calculating very large numbers of ROI results (e.g. in searchlight mapping).</p>
 
 </div>
 </div>
@@ -1498,7 +1501,7 @@ with a hemodynamic response function to construct the run-specific design matrix
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You guessed it, the result is another Volume instance&#8230; Finally, let&#8217;s visualise the distance matrix we just&nbsp;estimated.</p>
+<p>You guessed it, the result is another Volume instance... Finally, let's visualise the distance matrix we just estimated.</p>
 
 </div>
 </div>
@@ -1710,7 +1713,7 @@ DZYN86MAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="What-about-linear-discriminant-T-statistics?">What about linear discriminant T statistics?<a class="anchor-link" href="#What-about-linear-discriminant-T-statistics?">&#182;</a></h3><p>The first papers to use something like <span class="caps">LDC</span> tended to report a related but distinct metric - a linear discriminant T statistic or <span class="caps">LDT</span> (<a href="http://dx.doi.org/10.1073/pnas.0705654104">Kriegeskorte et al. 2007, <span class="caps">PNAS</span></a>). In a way it&#8217;s unfortunate that this method appeared first because it is more complex to calculate and understand than <span class="caps">LDC</span>. Let&#8217;s return to the example to understand how it differs. To start with, here is the high level pilab implementation for&nbsp;reference:</p>
+<h3 id="What-about-linear-discriminant-T-statistics?">What about linear discriminant T statistics?<a class="anchor-link" href="#What-about-linear-discriminant-T-statistics?">&#182;</a></h3><p>The first papers to use something like LDC tended to report a related but distinct metric - a linear discriminant T statistic or LDT (<a href="http://dx.doi.org/10.1073/pnas.0705654104">Kriegeskorte et al. 2007, PNAS</a>). In a way it's unfortunate that this method appeared first because it is more complex to calculate and understand than LDC. Let's return to the example to understand how it differs. To start with, here is the high level pilab implementation for reference:</p>
 
 </div>
 </div>
@@ -1751,7 +1754,7 @@ DZYN86MAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first thing to note is that the calculation of the weights vector remains similar to standard <span class="caps">LDA</span>, just like with <span class="caps">LDC</span>. However, whereas in <span class="caps">LDC</span> the test statistic is estimated by projecting the contrast estimate onto the discriminant dimension (ie, the weights vector), for <span class="caps">LDT</span> this won&#8217;t do the job since we need an estimate of the <em>variance</em> of the discriminant to calculate T. Instead, we&#8217;re going to project the full time courses onto the discriminant, like&nbsp;so:</p>
+<p>The first thing to note is that the calculation of the weights vector remains similar to standard LDA, just like with LDC. However, whereas in LDC the test statistic is estimated by projecting the contrast estimate onto the discriminant dimension (ie, the weights vector), for LDT this won't do the job since we need an estimate of the <em>variance</em> of the discriminant to calculate T. Instead, we're going to project the full time courses onto the discriminant, like so:</p>
 
 </div>
 </div>
@@ -1773,7 +1776,7 @@ DZYN86MAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It took me a long time to work out the consequences of doing this. Let&#8217;s visualise what the discriminant time courses look like to help guide our&nbsp;intuition.</p>
+<p>It took me a long time to work out the consequences of doing this. Let's visualise what the discriminant time courses look like to help guide our intuition.</p>
 
 </div>
 </div>
@@ -2300,9 +2303,9 @@ QowgCCIw/wfMXUg0KNzS9AAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Notice how the discriminant goes up whenever a stimulus belonging to condition 1 appears, and down whenever a stimulus belonging to condition 2 appears. Indeed, the discriminant time course looks a lot like the time course you get if you contrast the two predicted time&nbsp;courses.</p>
-<p>So now that we have a discriminant time course we can just fit it to the design matrix and estimate the same contrast that went into the calculation of the weights vector. And once we have that, standard errors and T statistics can be calculated like any multiple regression model. Neat. I won&#8217;t belabour the point by coding out the full T statistic code, but basically we just build a new <span class="caps">GLM</span> instance and estimate contrasts and t statistics just like with any other&nbsp;model.</p>
-<p>By the way, what do you think that discriminant time course contrast estimate looks&nbsp;like?</p>
+<p>Notice how the discriminant goes up whenever a stimulus belonging to condition 1 appears, and down whenever a stimulus belonging to condition 2 appears. Indeed, the discriminant time course looks a lot like the time course you get if you contrast the two predicted time courses.</p>
+<p>So now that we have a discriminant time course we can just fit it to the design matrix and estimate the same contrast that went into the calculation of the weights vector. And once we have that, standard errors and T statistics can be calculated like any multiple regression model. Neat. I won't belabour the point by coding out the full T statistic code, but basically we just build a new GLM instance and estimate contrasts and t statistics just like with any other model.</p>
+<p>By the way, what do you think that discriminant time course contrast estimate looks like?</p>
 
 </div>
 </div>
@@ -2345,12 +2348,12 @@ QowgCCIw/wfMXUg0KNzS9AAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>That&#8217;s right, it&#8217;s the <span class="caps">LDC</span> again. The dot-product-of-the-contrast approach above is an equivalent (and more computationally efficient) way to arrive at the same result. But by going about it in this roundabout way we have shown that <span class="caps">LDC</span> and <span class="caps">LDT</span> really differ only in whether you scale by the standard error estimate or&nbsp;not.</p>
-<h3 id="Why-is-LDC-preferable-to-LDT?">Why is <span class="caps">LDC</span> preferable to <span class="caps">LDT</span>?<a class="anchor-link" href="#Why-is-LDC-preferable-to-LDT?">&#182;</a></h3><p>The appealing thing about <span class="caps">LDT</span> is that because it is expressed in standard error units, it provides a somewhat intuitive idea about effect size (well, technically we might prefer <em><span class="caps">LDZ</span></em> instead to avoid the dependence on degrees of freedom, but to my knowledge no one has reported using this). But this interpretability advantage breaks down when you consider cross-validation. If you run standard N-fold validation over say 5 runs, you will end up with 5 separate LDTs that you will average. That average is no longer a T statistic, and in fact you now run the risk of confusing your readers by reporting tiny, tiny &#8216;T&#8217; statistics that are nevertheless highly significant. In my view, <span class="caps">LDT</span> is best suited to cases where you only plan to test your model on a single validation set,&nbsp;once.</p>
-<p>That&#8217;s it for today. Stay tuned for future posts, where we will cover how pilab implements non-parametric statistical inference and random effects group analysis for <span class="caps">RSA</span> and standard univariate&nbsp;models.</p>
+<p>That's right, it's the LDC again. The dot-product-of-the-contrast approach above is an equivalent (and more computationally efficient) way to arrive at the same result. But by going about it in this roundabout way we have shown that LDC and LDT really differ only in whether you scale by the standard error estimate or not.</p>
+<h3 id="Why-is-LDC-preferable-to-LDT?">Why is LDC preferable to LDT?<a class="anchor-link" href="#Why-is-LDC-preferable-to-LDT?">&#182;</a></h3><p>The appealing thing about LDT is that because it is expressed in standard error units, it provides a somewhat intuitive idea about effect size (well, technically we might prefer <em>LDZ</em> instead to avoid the dependence on degrees of freedom, but to my knowledge no one has reported using this). But this interpretability advantage breaks down when you consider cross-validation. If you run standard N-fold validation over say 5 runs, you will end up with 5 separate LDTs that you will average. That average is no longer a T statistic, and in fact you now run the risk of confusing your readers by reporting tiny, tiny 'T' statistics that are nevertheless highly significant. In my view, LDT is best suited to cases where you only plan to test your model on a single validation set, once.</p>
+<p>That's it for today. Stay tuned for future posts, where we will cover how pilab implements non-parametric statistical inference and random effects group analysis for RSA and standard univariate models.</p>
 <h4 id="Updates">Updates<a class="anchor-link" href="#Updates">&#182;</a></h4><ul>
-<li>30 May 2016: reran simulation after fixing indexing error in&nbsp;preprocessvols</li>
-<li>18 September 2019: removed unit-length scaling of weights vector, to match the current version of pilab. This scaling turns out to reduce cross-validation performance. Why? The magnitude of the weights vector contains useful information - it will be greater if the training data contains more signal. When you test such a smaller weights vector against data, the test <span class="caps">LDC</span> on that split will be smaller, so it will contribute less to the mean <span class="caps">LDC</span> over splits. As it should. In summary, normalising this information away comes at a cost if your data varies in signal over splits (as will almost always be the case in fMRI data, where subjects get drowsy over&nbsp;time).</li>
+<li>30 May 2016: reran simulation after fixing indexing error in preprocessvols</li>
+<li>18 September 2019: removed unit-length scaling of weights vector, to match the current version of pilab. This scaling turns out to reduce cross-validation performance. Why? The magnitude of the weights vector contains useful information - it will be greater if the training data contains more signal. When you test such a smaller weights vector against data, the test LDC on that split will be smaller, so it will contribute less to the mean LDC over splits. As it should. In summary, normalising this information away comes at a cost if your data varies in signal over splits (as will almost always be the case in fMRI data, where subjects get drowsy over time).</li>
 </ul>
 
 </div>
@@ -2466,7 +2469,7 @@ QowgCCIw/wfMXUg0KNzS9AAAAABJRU5ErkJggg==
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2016 Johan Carlin
+         <div class="col-xs-10">&copy; 2020 Johan Carlin
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
