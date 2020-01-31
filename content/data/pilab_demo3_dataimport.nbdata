@@ -3,7 +3,7 @@ Slug:
 Date: 2016-08-03
 Modified: 2016-08-03
 Category:
-Tags: scientific computing,matlab,pilab
+Tags: scientific computing,matlab,pilab,rsa
 Author:
 Summary: We demonstrate how to apply pilab linear discriminant contrast methods to a real fMRI dataset, including searchlight mapping over the full volume.
 Status: published
