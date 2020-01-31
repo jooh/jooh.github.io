@@ -5,6 +5,7 @@ Modified: 2020-01-31
 Category:
 Tags: scientific computing,python,statistics,rsa
 Author:
-Summary: In which we study how statistical power and significance thresholding influences reproducibility by relating it to positive and negative predictive values.
+Summary: How do you calculate a noise ceiling? What is the difference between the
+estimates calculated in RSA and those reported in the encoding model literature?
 Status: published
 
