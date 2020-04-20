@@ -9,14 +9,14 @@ SITEURL = ""
 DEFAULT_DATE_FORMAT = "%d %B %Y"
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_DATE = "fs"
-THEME = "pelican-themes/pelican-bootstrap3"
+THEME = "./pelican-themes/pelican-bootstrap3"
 SHOW_ARTICLE_AUTHOR = True
 SHOW_DATE_MODIFIED = True
 # could be fun
 # SITELOGO = 'TODO.png'
 # or BANNER
 BOOTSTRAP_THEME = "lumen"
-PLUGIN_PATHS = ["./plugins", "../pelican-plugins"]
+PLUGIN_PATHS = ["./plugins", "./pelican-plugins"]
 PLUGINS = ["pelican_gist", "ipynb.markup", "i18n_subsites", "render_math"]
 MARKUP = ("md", "ipynb")
 PYGMENTS_STYLE = "borland"
