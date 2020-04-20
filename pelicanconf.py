@@ -9,7 +9,7 @@ SITEURL = ""
 DEFAULT_DATE_FORMAT = "%d %B %Y"
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_DATE = "fs"
-THEME = "/Users/jc01/webdev/pelican-themes/pelican-bootstrap3"
+THEME = "pelican-themes/pelican-bootstrap3"
 SHOW_ARTICLE_AUTHOR = True
 SHOW_DATE_MODIFIED = True
 # could be fun
