@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 IGNORE_FILES = [".ipynb_checkpoints"]
 AUTHOR = "Johan Carlin"
-SITENAME = "Johan Carlin's blog"
+SITENAME = "Johan Carlin"
 SITEURL = ""
 DEFAULT_DATE_FORMAT = "%d %B %Y"
 USE_FOLDER_AS_CATEGORY = True
