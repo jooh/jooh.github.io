@@ -16,10 +16,11 @@ SHOW_DATE_MODIFIED = True
 # SITELOGO = 'TODO.png'
 # or BANNER
 BOOTSTRAP_THEME = "lumen"
-PLUGIN_PATHS = ["./plugins", "./pelican-plugins"]
-PLUGINS = ["pelican_gist", "ipynb.markup", "i18n_subsites", "render_math"]
+PLUGIN_PATHS = ["./pelican-plugins"]
+from pelican_jupyter import markup as nb_markup
+PLUGINS = ["pelican_gist", nb_markup, "i18n_subsites", "render_math"]
 MARKUP = ("md", "ipynb")
-PYGMENTS_STYLE = "borland"
+PYGMENTS_STYLE = "solarized-light"
 ABOUT_ME = "I work in human neuroimaging research at the University of Cambridge. I specialise in visual neuroscience, statistical methods, computational modelling, and data engineering. I'm a scientist, but I write a lot of code."
 AVATAR = "images/brain.png"
 DISPLAY_TAGS_ON_SIDEBAR = False
