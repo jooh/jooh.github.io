@@ -14,6 +14,17 @@ div.text_cell_render {
     padding: 0em 0em 0em 0em !important;
 }
 
+/* hide prompt to bring code cells in line with text */
 .prompt {
     padding: 0em !important;
+    display: none !important;
+}
+
+/* remove second underline on hyperlinks */
+a:link {
+    text-decoration: none !important;
+}
+
+a:visited {
+    text-decoration: none !important;
 }
