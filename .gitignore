@@ -1,0 +1,5 @@
+output/
+*.pid
+__pycache__/
+.env
+.DS_Store
