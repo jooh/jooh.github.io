@@ -15,7 +15,7 @@ requires-python = ">=3.11"
     "jupyterlab==2.1.0",
     "matplotlib==3.2.1",
     "nbdime==2.0.0",
-    "notebook==6.0.3",
+    "notebook==6.4.12",
     "pandas==1.0.3",
     "pelican==4.2.0",
     "pelican-gist==0.3.4",
