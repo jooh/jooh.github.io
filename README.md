@@ -1,8 +1,14 @@
 My personal website.
 
 # Install notes
-* The conda environment.yml is a bit bloated, but should work with recent python
-  notebooks
+* This project uses [uv](https://github.com/astral-sh/uv) for Python environments.
+  Bootstrap the virtual environment and install dependencies with:
+  ```bash
+  uv sync
+  ```
+* When running the Makefile targets with uv, set `USE_UV=1` (for example,
+  `make USE_UV=1 html`).
+* The dependency list is intentionally broad to support notebooks and site builds.
 * [Altair Saver](https://github.com/altair-viz/altair_saver) is *essential* for stopping
   Altair figures from blowing up the webpage size. But conda install is broken as of
   0.5.0 (you get incompatible versions of [some NPM
