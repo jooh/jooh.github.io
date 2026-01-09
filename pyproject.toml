@@ -12,7 +12,7 @@ requires-python = ">=3.11"
     "black==19.10b0",
     "cairosvg==2.4.2",
     "ghp-import>=2.1.0",
-    "jupyterlab==2.1.0",
+    "jupyterlab==4.4.8",
     "matplotlib==3.2.1",
     "nbdime==2.0.0",
     "notebook==6.0.3",
