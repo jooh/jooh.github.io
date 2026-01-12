@@ -1,4 +1,5 @@
 [![CI](https://github.com/jooh/jooh.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/jooh/jooh.github.io/actions/workflows/ci.yml)
+[![CD](https://github.com/jooh/jooh.github.io/actions/workflows/cd.yml/badge.svg)](https://github.com/jooh/jooh.github.io/actions/workflows/cd.yml)
 
 My personal website.
 
