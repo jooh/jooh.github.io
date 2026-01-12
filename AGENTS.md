@@ -21,3 +21,4 @@
 ## Environment notes
 - The repo expects Python tooling and Pelican. If using `uv`, set `USE_UV=1` when
   invoking Makefile targets so commands run via `uv run`.
+- Testing is run with `uv run pytest` (or `make test` with `USE_UV=1`).
