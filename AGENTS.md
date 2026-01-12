@@ -14,9 +14,9 @@
 - `make github` is the deployment path:
   1. Runs `make publish` to generate `output/` using the production config.
   2. Uses `ghp-import` to take the *current source branch state* and write the
-     generated `output/` tree into the `master` branch (configured as
+     generated `output/` tree into the `main` branch (configured as
      `GITHUB_PAGES_BRANCH`).
-  3. Pushes `master` to origin, which is the branch served by GitHub Pages.
+  3. Pushes `main` to origin, which is the branch served by GitHub Pages.
 
 ## Environment notes
 - The repo expects Python tooling and Pelican. If using `uv`, set `USE_UV=1` when
