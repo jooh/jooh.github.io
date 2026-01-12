@@ -20,6 +20,7 @@ dependencies = [
   "pelican",
   "pelican-gist",
   "pelican-jupyter",
+  "pytest",
   "scipy",
   "seaborn",
   "smartypants",

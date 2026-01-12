@@ -42,6 +42,7 @@ help:
 	@echo '   make ssh_upload                     upload the web site via SSH        '
 	@echo '   make rsync_upload                   upload the web site via rsync+ssh  '
 	@echo '   make github                         upload the web site via gh-pages   '
+	@echo '   make test                           run pytest                          '
 	@echo '                                                                          '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
@@ -86,5 +87,8 @@ github: publish
 	$(RUN) ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
+test:
+	$(RUN) pytest
 
-.PHONY: html help clean regenerate serve serve-global devserver publish github
+
+.PHONY: html help clean regenerate serve serve-global devserver publish github test
