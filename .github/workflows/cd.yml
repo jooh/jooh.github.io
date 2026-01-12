@@ -36,4 +36,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Publish to GitHub Pages branch
-        run: make USE_UV=1 GITHUB_PAGES_BRANCH=main github
+        run: make USE_UV=1 github
