@@ -1,3 +1,5 @@
+[![CI](https://github.com/jooh/jooh.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/jooh/jooh.github.io/actions/workflows/ci.yml)
+
 My personal website.
 
 # Install notes
