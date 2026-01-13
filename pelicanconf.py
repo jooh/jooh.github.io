@@ -40,7 +40,13 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-JINJA_ENVIRONMENT = {"extensions": ["jinja2.ext.i18n"]}
+def _gettext(text: str) -> str:
+    return text
+
+JINJA_ENVIRONMENT = {
+    "extensions": ["jinja2.ext.i18n"],
+    "globals": {"gettext": _gettext},
+}
 
 # Blogroll
 LINKS = (
