@@ -18,7 +18,9 @@ SHOW_DATE_MODIFIED = True
 BOOTSTRAP_THEME = "lumen"
 PLUGIN_PATHS = ["./pelican-plugins"]
 from pelican_jupyter import markup as nb_markup
-PLUGINS = ["pelican_gist", nb_markup, "i18n_subsites", "render_math"]
+from nbconvert.exporters import HTMLExporter
+from pathlib import Path
+PLUGINS = ["pelican_gist", nb_markup]
 MARKUP = ("md", "ipynb")
 PYGMENTS_STYLE = "solarized-light"
 ABOUT_ME = "I am a data engineer based in Stockholm, Sweden. I was once a neuroscientist."
@@ -60,6 +62,9 @@ RELATIVE_URLS = True
 TYPOGRIFY = False
 # IPYNB_FIX_CSS = True
 IPYNB_SKIP_CSS = False
+IPYNB_EXPORT_TEMPLATE = str(
+    Path(HTMLExporter().template_paths[0]) / "index.html.j2"
+)
 
 CUSTOM_CSS = 'custom.css'
 
@@ -69,4 +74,3 @@ EXTRA_PATH_METADATA = {
     "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/custom.css": {"path": "custom.css"},
 }
-
