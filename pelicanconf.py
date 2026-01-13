@@ -45,8 +45,8 @@ def _gettext(text: str) -> str:
 
 JINJA_ENVIRONMENT = {
     "extensions": ["jinja2.ext.i18n"],
-    "globals": {"gettext": _gettext},
 }
+JINJA_GLOBALS = {"gettext": _gettext}
 
 # Blogroll
 LINKS = (
