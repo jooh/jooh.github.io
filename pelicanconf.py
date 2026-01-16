@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+import subprocess
+
 IGNORE_FILES = [".ipynb_checkpoints"]
 AUTHOR = "Johan Carlin"
 SITENAME = "Johan Carlin"
@@ -10,6 +12,7 @@ DEFAULT_DATE_FORMAT = "%d %B %Y"
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_DATE = "fs"
 THEME = "./pelican-themes/pelican-bootstrap3"
+THEME_TEMPLATES_OVERRIDES = ["templates"]
 SHOW_ARTICLE_AUTHOR = True
 SHOW_DATE_MODIFIED = True
 # could be fun
@@ -47,6 +50,20 @@ JINJA_ENVIRONMENT = {
     "extensions": ["jinja2.ext.i18n"],
 }
 JINJA_GLOBALS = {"gettext": _gettext}
+
+def _git_commit_hash() -> str:
+    try:
+        return (
+            subprocess.check_output(["git", "rev-parse", "--short", "HEAD"])
+            .decode("utf-8")
+            .strip()
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "unknown"
+
+GIT_COMMIT_HASH = _git_commit_hash()
+GITHUB_REPO_URL = "https://github.com/jooh/jooh.github.io"
+GIT_COMMIT_URL = f"{GITHUB_REPO_URL}/commit/{GIT_COMMIT_HASH}"
 
 # Blogroll
 LINKS = (

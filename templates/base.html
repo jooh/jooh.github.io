@@ -1,0 +1,12 @@
+{% extends "!base.html" %}
+
+{% block footer %}
+  {{ super() }}
+  {% if GIT_COMMIT_HASH and GIT_COMMIT_HASH != "unknown" %}
+    <div class="container">
+      <p class="text-center">
+        <small>version <a href="{{ GIT_COMMIT_URL }}">{{ GIT_COMMIT_HASH }}</a></small>
+      </p>
+    </div>
+  {% endif %}
+{% endblock %}
