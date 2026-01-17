@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin - admin</title><link href="https://www.johancarlin.com/" rel="alternate"/><link href="https://www.johancarlin.com/feeds/admin.atom.xml" rel="self"/><id>https://www.johancarlin.com/</id><updated>2026-01-17T08:47:58.045593+00:00</updated><entry><title>Sveltia CMS</title><link href="https://www.johancarlin.com/sveltia-cms.html" rel="alternate"/><published>2026-01-17T08:47:58.045593+00:00</published><updated>2026-01-17T08:47:58.045593+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2026-01-17:/sveltia-cms.html</id><content type="html">
-    &lt;script src="https://unpkg.com/sveltia-cms@0.30.0/dist/sveltia-cms.js"&gt;&lt;/script&gt;
-  </content><category term="admin"/></entry></feed>
