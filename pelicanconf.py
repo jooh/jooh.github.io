@@ -74,9 +74,16 @@ IPYNB_EXPORT_TEMPLATE = str(
 
 CUSTOM_CSS = 'custom.css'
 
-STATIC_PATHS = ["extra/CNAME", "extra/favicon.ico", "images", "extra/custom.css"]
+STATIC_PATHS = [
+    "extra/CNAME",
+    "extra/favicon.ico",
+    "images",
+    "extra/custom.css",
+    "extra/admin",
+]
 EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},
     "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/custom.css": {"path": "custom.css"},
+    "extra/admin": {"path": "admin"},
 }
