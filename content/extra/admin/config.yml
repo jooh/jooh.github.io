@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: jooh/jooh.github.io
-  branch: work
+  branch: source
 
 media_folder: "content/images"
 public_folder: "/images"
