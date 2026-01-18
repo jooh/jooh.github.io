@@ -1,15 +1,17 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
 backend:
   name: github
   repo: jooh/jooh.github.io
   branch: source
 
-media_folder: "content/images"
+media_folder: "/content/images"
 public_folder: "/images"
 
 collections:
   - name: "blog"
     label: "Blog"
-    folder: "content/blog"
+    folder: "/content/blog"
     create: true
     slug: "{{slug}}"
     extension: "md"
