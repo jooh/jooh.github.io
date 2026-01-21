@@ -1,6 +1,9 @@
+---
 Title: Vibing My Blog Back to Life with Codex Web
-Date: 2026-01-21 10:20
+Date: 2026-01-21 17:18
 Tags: ai, codex, pelican
+Summary: ''
+---
 
 After a bit of a hiatus, I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.
 
@@ -8,12 +11,9 @@ After a bit of a hiatus, I’ve been rebooting this blog. What started as a vagu
 
 Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quite a bit, without touching a computer keyboard. Pretty much all this work got done on my phone from a sun lounger in Mexico, whenever I had 5 minutes to myself. Here's what changed:
 
-- Replaced a handcrafted dev/build environment on my old laptop with a proper CI/CD pipeline  
-
-- Updated all dependencies to current versions  
-
-- Added a version tag to the footer so I can see which version is live 
-
+- Replaced a handcrafted dev/build environment on my old laptop with a proper CI/CD pipeline
+- Updated all dependencies to current versions
+- Added a version tag to the footer so I can see which version is live
 - Introduced a CMS setup using Svelte
 
 This was a fun exercise. Codex Web is addictive, even with its limitations.
@@ -40,11 +40,10 @@ In practice, this means merge conflicts can arise quite easily if you are iterat
 
 At that point you have two options:
 
-1. Check out the branch locally and resolve the conflicts yourself, or  
+1. Check out the branch locally and resolve the conflicts yourself, or
+2. Start a new Codex task with the same prompt, letting it run again against the updated default branch
 
-2. Start a new Codex task with the same prompt, letting it run again against the updated default branch  
-
-I mostly just used the second approach since I was on a sun lounger, and it worked quiet well since the tasks were small overall.
+I mostly just used the second approach since I was on a sun lounger, and it worked quite well since the tasks were small overall.
 
 This limitation is unfortunate though because a big benefit over native CLI tools is that you can easily spawn off any number of tasks in parallell sessions. I learned not to run too many tasks in parallel to avoid these merge conflicts, and that limits productivity.
 
@@ -66,6 +65,6 @@ Now that the blog is set up with a CMS, the next focus is on making it easier to
 
 With the Svelte-based CMS in place, I no longer need to manually write a Markdown file and commit it to the repository. I can just type directly into the CMS. And I'm hoping to do less typing overall in fact.
 
-The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. The idea is to record posts mostly by audio, have ChatGPT generate the corresponding Markdown including the Pelican front matter, and then copy-paste that straight into the CMS for final manual editing.
+The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. I will record posts by rambling away, have ChatGPT clean up and generate the corresponding Markdown, and then copy-paste that straight into the CMS for final manual editing.
 
 Overall, this has been a lot of fun and I think it's going to mean more updates here! Famous last words.
