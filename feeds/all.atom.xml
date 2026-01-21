@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="https://www.johancarlin.com/" rel="alternate"/><link href="https://www.johancarlin.com/feeds/all.atom.xml" rel="self"/><id>https://www.johancarlin.com/</id><updated>2026-01-21T15:22:54.125745+00:00</updated><entry><title>Vibing My Blog Back to Life with Codex Web</title><link href="https://www.johancarlin.com/vibing-my-blog-back-to-life-with-codex-web.html" rel="alternate"/><published>2026-01-21T10:20:00+00:00</published><updated>2026-01-21T15:22:54.125745+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2026-01-21:/vibing-my-blog-back-to-life-with-codex-web.html</id><summary type="html">&lt;p&gt;After a bit of a hiatus, I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code …&lt;/p&gt;</summary><content type="html">&lt;p&gt;After a bit of a hiatus, I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="https://www.johancarlin.com/" rel="alternate"/><link href="https://www.johancarlin.com/feeds/all.atom.xml" rel="self"/><id>https://www.johancarlin.com/</id><updated>2026-01-21T17:18:00+00:00</updated><entry><title>Vibing My Blog Back to Life with Codex Web</title><link href="https://www.johancarlin.com/vibing-my-blog-back-to-life-with-codex-web.html" rel="alternate"/><published>2026-01-21T17:18:00+00:00</published><updated>2026-01-21T16:18:50.394562+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2026-01-21:/vibing-my-blog-back-to-life-with-codex-web.html</id><summary type="html">&lt;p&gt;''&lt;/p&gt;</summary><content type="html">&lt;p&gt;After a bit of a hiatus, I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.&lt;/p&gt;
 &lt;h2&gt;What’s Changed So Far&lt;/h2&gt;
 &lt;p&gt;Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quite a bit, without touching a computer keyboard. Pretty much all this work got done on my phone from a sun lounger in Mexico, whenever I had 5 minutes to myself. Here's what changed:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Replaced a handcrafted dev/build environment on my old laptop with a proper CI/CD pipeline  &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Updated all dependencies to current versions  &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Added a version tag to the footer so I can see which version is live &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Introduced a CMS setup using Svelte&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Replaced a handcrafted dev/build environment on my old laptop with a proper CI/CD pipeline&lt;/li&gt;
+&lt;li&gt;Updated all dependencies to current versions&lt;/li&gt;
+&lt;li&gt;Added a version tag to the footer so I can see which version is live&lt;/li&gt;
+&lt;li&gt;Introduced a CMS setup using Svelte&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This was a fun exercise. Codex Web is addictive, even with its limitations.&lt;/p&gt;
 &lt;h2&gt;Codex Web and Its Constraints&lt;/h2&gt;
@@ -29,14 +21,10 @@
 &lt;p&gt;In practice, this means merge conflicts can arise quite easily if you are iterating quickly or running multiple tasks in parallel. When that happens, there is no obvious way for Codex Web to resolve those conflicts inside the existing task.&lt;/p&gt;
 &lt;p&gt;At that point you have two options:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Check out the branch locally and resolve the conflicts yourself, or  &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Start a new Codex task with the same prompt, letting it run again against the updated default branch  &lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Check out the branch locally and resolve the conflicts yourself, or&lt;/li&gt;
+&lt;li&gt;Start a new Codex task with the same prompt, letting it run again against the updated default branch&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;I mostly just used the second approach since I was on a sun lounger, and it worked quiet well since the tasks were small overall.&lt;/p&gt;
+&lt;p&gt;I mostly just used the second approach since I was on a sun lounger, and it worked quite well since the tasks were small overall.&lt;/p&gt;
 &lt;p&gt;This limitation is unfortunate though because a big benefit over native CLI tools is that you can easily spawn off any number of tasks in parallell sessions. I learned not to run too many tasks in parallel to avoid these merge conflicts, and that limits productivity.&lt;/p&gt;
 &lt;h2&gt;And Yet, It’s Still Addictive&lt;/h2&gt;
 &lt;p&gt;Despite all of that, I keep coming back to it.&lt;/p&gt;
@@ -47,7 +35,7 @@
 &lt;h2&gt;Where This Is Heading Next&lt;/h2&gt;
 &lt;p&gt;Now that the blog is set up with a CMS, the next focus is on making it easier to actually write and publish posts.&lt;/p&gt;
 &lt;p&gt;With the Svelte-based CMS in place, I no longer need to manually write a Markdown file and commit it to the repository. I can just type directly into the CMS. And I'm hoping to do less typing overall in fact.&lt;/p&gt;
-&lt;p&gt;The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. The idea is to record posts mostly by audio, have ChatGPT generate the corresponding Markdown including the Pelican front matter, and then copy-paste that straight into the CMS for final manual editing.&lt;/p&gt;
+&lt;p&gt;The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. I will record posts by rambling away, have ChatGPT clean up and generate the corresponding Markdown, and then copy-paste that straight into the CMS for final manual editing.&lt;/p&gt;
 &lt;p&gt;Overall, this has been a lot of fun and I think it's going to mean more updates here! Famous last words.&lt;/p&gt;</content><category term="blog"/><category term="ai"/><category term="codex"/><category term="pelican"/></entry><entry><title>Gabor-filter models for visual neuroscience</title><link href="https://www.johancarlin.com/gabor-filter-models-for-visual-neuroscience.html" rel="alternate"/><published>2021-01-29T00:00:00+00:00</published><updated>2021-01-29T00:00:00+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2021-01-29:/gabor-filter-models-for-visual-neuroscience.html</id><summary type="html">&lt;p&gt;Let's use a state of the art machine learning library to build an old-fashioned Gabor wavelet pyramid model&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -68931,7 +68919,7 @@ RU5ErkJggg==
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="blog"/><category term="scientific computing"/><category term="matlab"/><category term="pilab"/></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="https://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"/><published>2016-01-05T00:00:00+00:00</published><updated>2026-01-21T15:22:54.124745+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:/cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
+</content><category term="blog"/><category term="scientific computing"/><category term="matlab"/><category term="pilab"/></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="https://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"/><published>2016-01-05T00:00:00+00:00</published><updated>2026-01-21T16:18:50.394562+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:/cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
 work for &lt;a href="http://www.mrc.ac.uk"&gt;an academic institution that takes a dim view of Dropbox and
 other cloud-based solutions&lt;/a&gt;. You are also sure to
 run out of space fast if you use it to sync e.g. neuroimaging data.
@@ -69012,7 +69000,7 @@ unison $fromdir "ssh://"$hostname"/"$todir -auto
 &lt;p&gt;So for instance, my standard usage is &lt;code&gt;unisync ucl j.carlin&lt;/code&gt;, where ucl is
 an alias or shortcut for my full SSH connection stored in ssh/.config, and
 j.carlin is my username which is necessary here because it is different
-from my username on the client.&lt;/p&gt;</content><category term="blog"/><category term="shell"/><category term="scientific computing"/></entry><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="https://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"/><published>2015-12-15T00:00:00+00:00</published><updated>2026-01-21T15:22:54.124745+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
+from my username on the client.&lt;/p&gt;</content><category term="blog"/><category term="shell"/><category term="scientific computing"/></entry><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="https://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"/><published>2015-12-15T00:00:00+00:00</published><updated>2026-01-21T16:18:50.394562+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
 questions than they answer (in fact, many papers seem to answer hardly
 anything at all on close inspection and it doesn't mean they're great). But
 I think this might be one of those papers …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
@@ -69089,7 +69077,7 @@ little behavioural relevance. This is puzzling.&lt;/p&gt;
   doesn't seem to follow if the code were this high-dimensional.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;Reference&lt;/h1&gt;
-&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &amp;amp; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"/><category term="pfc"/><category term="electrophysiology"/><category term="single-unit recording"/><category term="low-rank matrix approximation"/><category term="classification"/><category term="post-publication peer review"/></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="https://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"/><published>2015-12-11T00:00:00+00:00</published><updated>2026-01-21T15:22:54.106745+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:/reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
+&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &amp;amp; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"/><category term="pfc"/><category term="electrophysiology"/><category term="single-unit recording"/><category term="low-rank matrix approximation"/><category term="classification"/><category term="post-publication peer review"/></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="https://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"/><published>2015-12-11T00:00:00+00:00</published><updated>2026-01-21T16:18:50.376562+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:/reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
 complicated. In this post I describe how I use a conda to keep a
 reproducible record of the packages I use.&lt;/p&gt;
 &lt;p&gt;In the past, I have usually hacked together my own developing environment
