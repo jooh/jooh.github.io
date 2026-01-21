@@ -16,9 +16,10 @@ collections:
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
+    frontmatter_delimiter: ""
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
-      - { label: "Tags", name: "tags", widget: "list", default: [] }
-      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Title", name: "Title", widget: "string" }
+      - { label: "Date", name: "Date", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
+      - { label: "Tags", name: "Tags", widget: "string", required: false, hint: "Comma-separated tags." }
+      - { label: "Summary", name: "Summary", widget: "text", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
