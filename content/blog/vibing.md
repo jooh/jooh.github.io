@@ -5,7 +5,7 @@ Tags: ai, codex, pelican
 Summary: ''
 ---
 
-After a bit of a hiatus, I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.
+I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.
 
 ## What’s Changed So Far
 
@@ -16,7 +16,7 @@ Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quit
 - Added a version tag to the footer so I can see which version is live
 - Introduced a CMS setup using Svelte
 
-This was a fun exercise. Codex Web is addictive, even with its limitations.
+This was an interesting exercise. Codex Web is addictive, even with its limitations.
 
 ## Codex Web and Its Constraints
 
@@ -57,14 +57,12 @@ There is something extremely compelling about being able to fire off a task from
 
 In a way, the small-task model that Codex Web steers you toward helps. You get an idea for something minor, you send it off to Codex, and when you come back later it is usually done. That cadence fits well into real life.
 
-Imperfections and all, it has been a lot of fun.
-
 ## Where This Is Heading Next
 
 Now that the blog is set up with a CMS, the next focus is on making it easier to actually write and publish posts.
 
-With the Svelte-based CMS in place, I no longer need to manually write a Markdown file and commit it to the repository. I can just type directly into the CMS. And I'm hoping to do less typing overall in fact.
+With the Sveltia-based CMS in place, I no longer need to manually write a Markdown file and commit it to the repository. I can just type directly into the CMS. And I'm hoping to do less typing overall in fact.
 
-The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. I will record posts by rambling away, have ChatGPT clean up and generate the corresponding Markdown, and then copy-paste that straight into the CMS for final manual editing.
+The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. I record posts by rambling away, have ChatGPT clean up and generate the corresponding Markdown, and then copy-paste that straight into the CMS for final manual editing.
 
 Overall, this has been a lot of fun and I think it's going to mean more updates here! Famous last words.
