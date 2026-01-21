@@ -1,11 +1,3 @@
----
-title: vibing
-date: 2026-01-21
-tags:
-  - ai, codex, pelican
-summary: ''
----
-
 Title: Vibing My Blog Back to Life with Codex Web
 
 Date: 2026-01-21 10:20
