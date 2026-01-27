@@ -1,5 +1,5 @@
 ---
-Title: Vibing My Blog Back to Life with Codex Web
+Title: Vibing this blog back to life
 Date: 2026-01-21 17:18
 Tags: ai, codex, pelican
 Summary: Codex Web is clunky yet strangely addictive, as I learned when vibing a blog refresh from a sun lounger over the holidays
