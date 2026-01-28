@@ -1,14 +1,14 @@
 ---
 Title: Vibing this blog back to life
 Date: 2026-01-21 17:18
+Status: published
 Tags: ai, codex, pelican
 Summary: Codex Web is clunky yet strangely addictive, as I learned when vibing a blog refresh from a sun lounger over the holidays
-Status: published
 ---
 
 I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.
 
-## What’s Changed So Far
+## What’s changed so far
 
 Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quite a bit, without touching a computer keyboard. Pretty much all this work got done on my phone from a sun lounger in Mexico, whenever I had 5 minutes to myself. Here's what changed:
 
@@ -19,7 +19,7 @@ Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quit
 
 This was an interesting exercise. Codex Web is addictive, even with its limitations.
 
-## Codex Web and Its Constraints
+## Codex Web and its constraints
 
 The first major insight is that Codex Web is meaningfully more constrained than a full agent experience like the Codex CLI application.
 
@@ -48,7 +48,7 @@ I mostly just used the second approach since I was on a sun lounger, and it work
 
 This limitation is unfortunate though because a big benefit over native CLI tools is that you can easily spawn off any number of tasks in parallell sessions. I learned not to run too many tasks in parallel to avoid these merge conflicts, and that limits productivity.
 
-## And Yet, It’s Still Addictive
+## And yet, it’s still addictive
 
 Despite all of that, I keep coming back to it.
 
@@ -58,7 +58,7 @@ There is something extremely compelling about being able to fire off a task from
 
 In a way, the small-task model that Codex Web steers you toward helps. You get an idea for something minor, you send it off to Codex, and when you come back later it is usually done. That cadence fits well into real life.
 
-## Where This Is Heading Next
+## Where this is heading next
 
 Now that the blog is set up with a CMS, the next focus is on making it easier to actually write and publish posts.
 
