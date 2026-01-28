@@ -98,7 +98,7 @@ Johan Carlin            </a>
     </span>
           <span class="label label-default">Modified</span>
             <span class="modified">
-                <i class="fa fa-calendar"></i><time datetime="2026-01-28T18:39:07.171720+00:00"> 28 January 2026</time>
+                <i class="fa fa-calendar"></i><time datetime="2026-01-28T20:15:40.204890+00:00"> 28 January 2026</time>
             </span>
 
 
@@ -117,7 +117,7 @@ Johan Carlin            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.</p>
-<h2>What’s Changed So Far</h2>
+<h2>What’s changed so far</h2>
 <p>Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quite a bit, without touching a computer keyboard. Pretty much all this work got done on my phone from a sun lounger in Mexico, whenever I had 5 minutes to myself. Here's what changed:</p>
 <ul>
 <li>Replaced a handcrafted dev/build environment on my old laptop with a proper CI/CD pipeline</li>
@@ -126,7 +126,7 @@ Johan Carlin            </a>
 <li>Introduced a CMS setup using Svelte</li>
 </ul>
 <p>This was an interesting exercise. Codex Web is addictive, even with its limitations.</p>
-<h2>Codex Web and Its Constraints</h2>
+<h2>Codex Web and its constraints</h2>
 <p>The first major insight is that Codex Web is meaningfully more constrained than a full agent experience like the Codex CLI application.</p>
 <h3>Closing the agentic feedback loop</h3>
 <p>I haven't seen Codex Web successfully deliver large, sweeping changes in a single task. At no point did it <a href="https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/">port a library to a new language</a> or anything in that vein. Instead, each task tends to result in a pull request that is borderline too small. If you look at the commit history, which you can find via the GitHub link on <a href="https://johancarlin.com">johancarlin.com</a>, you will see a long series of small pull requests that collectively make up the refresh. I think we are somewhere around 20 pull requests at this point, rather than a single big one.</p>
@@ -143,12 +143,12 @@ Johan Carlin            </a>
 </ol>
 <p>I mostly just used the second approach since I was on a sun lounger, and it worked quite well since the tasks were small overall.</p>
 <p>This limitation is unfortunate though because a big benefit over native CLI tools is that you can easily spawn off any number of tasks in parallell sessions. I learned not to run too many tasks in parallel to avoid these merge conflicts, and that limits productivity.</p>
-<h2>And Yet, It’s Still Addictive</h2>
+<h2>And yet, it’s still addictive</h2>
 <p>Despite all of that, I keep coming back to it.</p>
 <p>There isn't even an Android app for Codex Web yet (it isn't integrated into ChatGPT on Android). I have been using it through a fairly clunky mobile web interface with noticeable lag. Still, over the holidays, I found myself using it constantly.</p>
 <p>There is something extremely compelling about being able to fire off a task from your phone in between everyday life and just have it execute. That experience is hard to beat, and it makes you surprisingly tolerant of rough edges.</p>
 <p>In a way, the small-task model that Codex Web steers you toward helps. You get an idea for something minor, you send it off to Codex, and when you come back later it is usually done. That cadence fits well into real life.</p>
-<h2>Where This Is Heading Next</h2>
+<h2>Where this is heading next</h2>
 <p>Now that the blog is set up with a CMS, the next focus is on making it easier to actually write and publish posts.</p>
 <p>With the Sveltia-based CMS in place, I no longer need to manually write a Markdown file and commit it to the repository. I can just type directly into the CMS. And I'm hoping to do less typing overall in fact.</p>
 <p>The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. I record posts by rambling away, have ChatGPT clean up and generate the corresponding Markdown, and then copy-paste that straight into the CMS for final manual editing.</p>
@@ -234,7 +234,7 @@ Johan Carlin            </a>
          <div class="col-xs-10">&copy; 2026 Johan Carlin
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/d509680">d509680</a></small></p>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/11bdbea">11bdbea</a></small></p>
          </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
