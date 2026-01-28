@@ -3,6 +3,7 @@ Title: Vibing this blog back to life
 Date: 2026-01-21 17:18
 Tags: ai, codex, pelican
 Summary: Codex Web is clunky yet strangely addictive, as I learned when vibing a blog refresh from a sun lounger over the holidays
+Status: published
 ---
 
 I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.

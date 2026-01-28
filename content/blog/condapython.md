@@ -1,6 +1,7 @@
 Title: Reproducible scientific python setup with (Ana) Conda
 Tags: python, data science, conda, anaconda, scientific computing, virtual environment
 Date: 2015-12-11
+Status: published
 
 Getting a scientific python install up and running is still way too
 complicated. In this post I describe how I use a conda to keep a

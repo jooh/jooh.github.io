@@ -1,6 +1,7 @@
 Title: Cloud-free folder syncing with Unison
 Tags: shell, scientific computing
 Date: 2016-01-05
+Status: published
 
 Syncing folders between computers can be surprisingly complicated if you
 work for [an academic institution that takes a dim view of Dropbox and

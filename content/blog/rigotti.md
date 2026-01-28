@@ -1,6 +1,7 @@
 Title: Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks
 Tags: pfc, electrophysiology, single-unit recording, low-rank matrix approximation, classification, post-publication peer review
 Date: 2015-12-15
+Status: published
 
 It's a bit of a cliche that the best papers are the ones that raise more
 questions than they answer (in fact, many papers seem to answer hardly
