@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 
-ERROR_PATTERN = re.compile(r"\b(ERROR|CRITICAL)\b")
+PELICAN_ERROR_LOG_PATTERN = re.compile(r"\b(ERROR|CRITICAL)\b")
 IGNORED_ERROR_SUBSTRINGS = ("Skipping",)
 
 
@@ -51,8 +51,10 @@ def _run_make_build(
     return output_dir, f"{result.stdout}\n{result.stderr}".strip()
 
 
-def _extract_pelican_errors(output: str) -> list[str]:
-    errors = [line for line in output.splitlines() if ERROR_PATTERN.search(line)]
+def _extract_actionable_pelican_errors(output: str) -> list[str]:
+    errors = [
+        line for line in output.splitlines() if PELICAN_ERROR_LOG_PATTERN.search(line)
+    ]
     return [
         line
         for line in errors
@@ -106,7 +108,7 @@ def test_site_build(build_result: BuildResult) -> None:
 
 
 def test_site_build_has_no_pelican_errors(build_result: BuildResult) -> None:
-    error_lines = _extract_pelican_errors(build_result.output)
+    error_lines = _extract_actionable_pelican_errors(build_result.output)
     assert not error_lines, "Pelican reported errors:\n" + "\n".join(error_lines)
 
 
