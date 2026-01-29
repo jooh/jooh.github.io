@@ -1,7 +1,9 @@
-import os
-import sys
+from __future__ import annotations
 
-sys.path.append(os.curdir)
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from publishconf import *  # noqa: F403, E402
 
