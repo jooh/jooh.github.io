@@ -3,6 +3,10 @@
 from __future__ import unicode_literals
 
 import subprocess
+from pathlib import Path
+
+from nbconvert.exporters import HTMLExporter
+from pelican_jupyter import markup as nb_markup
 
 IGNORE_FILES = [".ipynb_checkpoints"]
 AUTHOR = "Johan Carlin"
@@ -20,9 +24,6 @@ SHOW_DATE_MODIFIED = True
 # or BANNER
 BOOTSTRAP_THEME = "lumen"
 PLUGIN_PATHS = ["./pelican-plugins"]
-from pelican_jupyter import markup as nb_markup
-from nbconvert.exporters import HTMLExporter
-from pathlib import Path
 PLUGINS = ["pelican_gist", nb_markup]
 MARKUP = ("md", "ipynb")
 PYGMENTS_STYLE = "solarized-light"

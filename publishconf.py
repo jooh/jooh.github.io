@@ -5,10 +5,10 @@ from __future__ import unicode_literals
 # This file is only used if you use `make publish` or
 # explicitly specify it as your config file.
 
-import os
 import sys
+from pathlib import Path
 
-sys.path.append(os.curdir)
+sys.path.append(str(Path(__file__).resolve().parent))
 from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
