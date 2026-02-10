@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin - blog</title><link href="https://www.johancarlin.com/" rel="alternate"/><link href="https://www.johancarlin.com/feeds/blog.atom.xml" rel="self"/><id>https://www.johancarlin.com/</id><updated>2026-01-29T18:54:50.228623+00:00</updated><entry><title>Vibing this blog back to life</title><link href="https://www.johancarlin.com/vibing-this-blog-back-to-life.html" rel="alternate"/><published>2026-01-21T17:18:00+00:00</published><updated>2026-01-29T18:54:50.228623+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2026-01-21:/vibing-this-blog-back-to-life.html</id><summary type="html">&lt;p&gt;Codex Web is clunky yet strangely addictive, as I learned when vibing a blog refresh from a sun lounger over the holidays&lt;/p&gt;</summary><content type="html">&lt;p&gt;I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin - blog</title><link href="https://www.johancarlin.com/" rel="alternate"/><link href="https://www.johancarlin.com/feeds/blog.atom.xml" rel="self"/><id>https://www.johancarlin.com/</id><updated>2026-02-10T05:11:41.855345+00:00</updated><entry><title>Vibing this blog back to life</title><link href="https://www.johancarlin.com/vibing-this-blog-back-to-life.html" rel="alternate"/><published>2026-01-21T17:18:00+00:00</published><updated>2026-02-10T05:11:41.855345+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2026-01-21:/vibing-this-blog-back-to-life.html</id><summary type="html">&lt;p&gt;Codex Web is clunky yet strangely addictive, as I learned when vibing a blog refresh from a sun lounger over the holidays&lt;/p&gt;</summary><content type="html">&lt;p&gt;I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.&lt;/p&gt;
 &lt;h2&gt;What’s changed so far&lt;/h2&gt;
 &lt;p&gt;Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quite a bit, without touching a computer keyboard. Pretty much all this work got done on my phone from a sun lounger in Mexico, whenever I had 5 minutes to myself. Here's what changed:&lt;/p&gt;
 &lt;ul&gt;
@@ -7470,7 +7470,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -7567,7 +7572,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -7593,6 +7599,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -15877,7 +16162,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -15974,7 +16264,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -16000,6 +16291,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -23734,7 +24304,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -23831,7 +24406,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -23857,6 +24433,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -32271,7 +33126,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -32368,7 +33228,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -32394,6 +33255,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -40310,7 +41450,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -40407,7 +41552,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -40433,6 +41579,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -48595,7 +50020,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -48692,7 +50122,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -48718,6 +50149,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -58614,7 +60324,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -58711,7 +60426,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -58737,6 +60453,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -67381,7 +69376,12 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
+    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
+    if(elkUrl) {
+      const elkLayouts = (await import(elkUrl)).default;
+      mermaid.registerLayoutLoaders(elkLayouts);
+    }
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -67478,7 +69478,8 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
+      return `${SVG_XML_HEADER}${svg}`;
     }
 
 
@@ -67504,6 +69505,285 @@ a.anchor-link {
       }
       return `&lt;${tag} ${rest}&gt;`;
     }
+
+
+  /**
+   * Named HTML entities with their decimal equivalent codes.
+   *
+   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
+   * */
+  const HTML_ENTITIES = `&lt;!ENTITY Aacute "&amp;#193;"&gt;
+&lt;!ENTITY aacute "&amp;#225;"&gt;
+&lt;!ENTITY Acirc "&amp;#194;"&gt;
+&lt;!ENTITY acirc "&amp;#226;"&gt;
+&lt;!ENTITY acute "&amp;#180;"&gt;
+&lt;!ENTITY AElig "&amp;#198;"&gt;
+&lt;!ENTITY aelig "&amp;#230;"&gt;
+&lt;!ENTITY Agrave "&amp;#192;"&gt;
+&lt;!ENTITY agrave "&amp;#224;"&gt;
+&lt;!ENTITY alefsym "&amp;#8501;"&gt;
+&lt;!ENTITY Alpha "&amp;#913;"&gt;
+&lt;!ENTITY alpha "&amp;#945;"&gt;
+&lt;!ENTITY amp "&amp;#38;"&gt;
+&lt;!ENTITY and "&amp;#8869;"&gt;
+&lt;!ENTITY ang "&amp;#8736;"&gt;
+&lt;!ENTITY Aring "&amp;#197;"&gt;
+&lt;!ENTITY aring "&amp;#229;"&gt;
+&lt;!ENTITY asymp "&amp;#8776;"&gt;
+&lt;!ENTITY Atilde "&amp;#195;"&gt;
+&lt;!ENTITY atilde "&amp;#227;"&gt;
+&lt;!ENTITY Auml "&amp;#196;"&gt;
+&lt;!ENTITY auml "&amp;#228;"&gt;
+&lt;!ENTITY bdquo "&amp;#8222;"&gt;
+&lt;!ENTITY Beta "&amp;#914;"&gt;
+&lt;!ENTITY beta "&amp;#946;"&gt;
+&lt;!ENTITY brvbar "&amp;#166;"&gt;
+&lt;!ENTITY bull "&amp;#8226;"&gt;
+&lt;!ENTITY cap "&amp;#8745;"&gt;
+&lt;!ENTITY Ccedil "&amp;#199;"&gt;
+&lt;!ENTITY ccedil "&amp;#231;"&gt;
+&lt;!ENTITY cedil "&amp;#184;"&gt;
+&lt;!ENTITY cent "&amp;#162;"&gt;
+&lt;!ENTITY Chi "&amp;#935;"&gt;
+&lt;!ENTITY chi "&amp;#967;"&gt;
+&lt;!ENTITY circ "&amp;#710;"&gt;
+&lt;!ENTITY clubs "&amp;#9827;"&gt;
+&lt;!ENTITY cong "&amp;#8773;"&gt;
+&lt;!ENTITY copy "&amp;#169;"&gt;
+&lt;!ENTITY crarr "&amp;#8629;"&gt;
+&lt;!ENTITY cup "&amp;#8746;"&gt;
+&lt;!ENTITY curren "&amp;#164;"&gt;
+&lt;!ENTITY dagger "&amp;#8224;"&gt;
+&lt;!ENTITY Dagger "&amp;#8225;"&gt;
+&lt;!ENTITY darr "&amp;#8595;"&gt;
+&lt;!ENTITY dArr "&amp;#8659;"&gt;
+&lt;!ENTITY deg "&amp;#176;"&gt;
+&lt;!ENTITY Delta "&amp;#916;"&gt;
+&lt;!ENTITY delta "&amp;#948;"&gt;
+&lt;!ENTITY diams "&amp;#9830;"&gt;
+&lt;!ENTITY divide "&amp;#247;"&gt;
+&lt;!ENTITY Eacute "&amp;#201;"&gt;
+&lt;!ENTITY eacute "&amp;#233;"&gt;
+&lt;!ENTITY Ecirc "&amp;#202;"&gt;
+&lt;!ENTITY ecirc "&amp;#234;"&gt;
+&lt;!ENTITY Egrave "&amp;#200;"&gt;
+&lt;!ENTITY egrave "&amp;#232;"&gt;
+&lt;!ENTITY empty "&amp;#8709;"&gt;
+&lt;!ENTITY emsp "&amp;#8195;"&gt;
+&lt;!ENTITY ensp "&amp;#8194;"&gt;
+&lt;!ENTITY epsilon "&amp;#949;"&gt;
+&lt;!ENTITY Epsilon "&amp;#917;"&gt;
+&lt;!ENTITY equiv "&amp;#8801;"&gt;
+&lt;!ENTITY Eta "&amp;#919;"&gt;
+&lt;!ENTITY eta "&amp;#951;"&gt;
+&lt;!ENTITY ETH "&amp;#208;"&gt;
+&lt;!ENTITY eth "&amp;#240;"&gt;
+&lt;!ENTITY Euml "&amp;#203;"&gt;
+&lt;!ENTITY euml "&amp;#235;"&gt;
+&lt;!ENTITY exist "&amp;#8707;"&gt;
+&lt;!ENTITY fnof "&amp;#402;"&gt;
+&lt;!ENTITY forall "&amp;#8704;"&gt;
+&lt;!ENTITY frac12 "&amp;#189;"&gt;
+&lt;!ENTITY frac14 "&amp;#188;"&gt;
+&lt;!ENTITY frac34 "&amp;#190;"&gt;
+&lt;!ENTITY frasl "&amp;#8260;"&gt;
+&lt;!ENTITY Gamma "&amp;#915;"&gt;
+&lt;!ENTITY gamma "&amp;#947;"&gt;
+&lt;!ENTITY ge "&amp;#8805;"&gt;
+&lt;!ENTITY gt "&amp;#62;"&gt;
+&lt;!ENTITY harr "&amp;#8596;"&gt;
+&lt;!ENTITY hArr "&amp;#8660;"&gt;
+&lt;!ENTITY hearts "&amp;#9829;"&gt;
+&lt;!ENTITY hellip "&amp;#8230;"&gt;
+&lt;!ENTITY Iacute "&amp;#205;"&gt;
+&lt;!ENTITY iacute "&amp;#237;"&gt;
+&lt;!ENTITY Icirc "&amp;#206;"&gt;
+&lt;!ENTITY icirc "&amp;#238;"&gt;
+&lt;!ENTITY iexcl "&amp;#161;"&gt;
+&lt;!ENTITY Igrave "&amp;#204;"&gt;
+&lt;!ENTITY igrave "&amp;#236;"&gt;
+&lt;!ENTITY image "&amp;#8465;"&gt;
+&lt;!ENTITY infin "&amp;#8734;"&gt;
+&lt;!ENTITY int "&amp;#8747;"&gt;
+&lt;!ENTITY Iota "&amp;#921;"&gt;
+&lt;!ENTITY iota "&amp;#953;"&gt;
+&lt;!ENTITY iquest "&amp;#191;"&gt;
+&lt;!ENTITY isin "&amp;#8712;"&gt;
+&lt;!ENTITY Iuml "&amp;#207;"&gt;
+&lt;!ENTITY iuml "&amp;#239;"&gt;
+&lt;!ENTITY Kappa "&amp;#922;"&gt;
+&lt;!ENTITY kappa "&amp;#954;"&gt;
+&lt;!ENTITY Lambda "&amp;#923;"&gt;
+&lt;!ENTITY lambda "&amp;#955;"&gt;
+&lt;!ENTITY lang "&amp;#9001;"&gt;
+&lt;!ENTITY laquo "&amp;#171;"&gt;
+&lt;!ENTITY larr "&amp;#8592;"&gt;
+&lt;!ENTITY lArr "&amp;#8656;"&gt;
+&lt;!ENTITY lceil "&amp;#8968;"&gt;
+&lt;!ENTITY ldquo "&amp;#8220;"&gt;
+&lt;!ENTITY le "&amp;#8804;"&gt;
+&lt;!ENTITY lfloor "&amp;#8970;"&gt;
+&lt;!ENTITY lowast "&amp;#8727;"&gt;
+&lt;!ENTITY loz "&amp;#9674;"&gt;
+&lt;!ENTITY lrm "&amp;#8206;"&gt;
+&lt;!ENTITY lsaquo "&amp;#8249;"&gt;
+&lt;!ENTITY lsquo "&amp;#8216;"&gt;
+&lt;!ENTITY lt "&amp;#60;"&gt;
+&lt;!ENTITY macr "&amp;#175;"&gt;
+&lt;!ENTITY mdash "&amp;#8212;"&gt;
+&lt;!ENTITY micro "&amp;#181;"&gt;
+&lt;!ENTITY middot "&amp;#183;"&gt;
+&lt;!ENTITY minus "&amp;#8722;"&gt;
+&lt;!ENTITY Mu "&amp;#924;"&gt;
+&lt;!ENTITY mu "&amp;#956;"&gt;
+&lt;!ENTITY nabla "&amp;#8711;"&gt;
+&lt;!ENTITY nbsp "&amp;#160;"&gt;
+&lt;!ENTITY ndash "&amp;#8211;"&gt;
+&lt;!ENTITY ne "&amp;#8800;"&gt;
+&lt;!ENTITY ni "&amp;#8715;"&gt;
+&lt;!ENTITY not "&amp;#172;"&gt;
+&lt;!ENTITY notin "&amp;#8713;"&gt;
+&lt;!ENTITY nsub "&amp;#8836;"&gt;
+&lt;!ENTITY Ntilde "&amp;#209;"&gt;
+&lt;!ENTITY ntilde "&amp;#241;"&gt;
+&lt;!ENTITY Nu "&amp;#925;"&gt;
+&lt;!ENTITY nu "&amp;#957;"&gt;
+&lt;!ENTITY Oacute "&amp;#211;"&gt;
+&lt;!ENTITY oacute "&amp;#243;"&gt;
+&lt;!ENTITY Ocirc "&amp;#212;"&gt;
+&lt;!ENTITY ocirc "&amp;#244;"&gt;
+&lt;!ENTITY OElig "&amp;#338;"&gt;
+&lt;!ENTITY oelig "&amp;#339;"&gt;
+&lt;!ENTITY Ograve "&amp;#210;"&gt;
+&lt;!ENTITY ograve "&amp;#242;"&gt;
+&lt;!ENTITY oline "&amp;#8254;"&gt;
+&lt;!ENTITY Omega "&amp;#937;"&gt;
+&lt;!ENTITY omega "&amp;#969;"&gt;
+&lt;!ENTITY Omicron "&amp;#927;"&gt;
+&lt;!ENTITY omicron "&amp;#959;"&gt;
+&lt;!ENTITY oplus "&amp;#8853;"&gt;
+&lt;!ENTITY or "&amp;#8870;"&gt;
+&lt;!ENTITY ordf "&amp;#170;"&gt;
+&lt;!ENTITY ordm "&amp;#186;"&gt;
+&lt;!ENTITY Oslash "&amp;#216;"&gt;
+&lt;!ENTITY oslash "&amp;#248;"&gt;
+&lt;!ENTITY Otilde "&amp;#213;"&gt;
+&lt;!ENTITY otilde "&amp;#245;"&gt;
+&lt;!ENTITY otimes "&amp;#8855;"&gt;
+&lt;!ENTITY Ouml "&amp;#214;"&gt;
+&lt;!ENTITY ouml "&amp;#246;"&gt;
+&lt;!ENTITY para "&amp;#182;"&gt;
+&lt;!ENTITY part "&amp;#8706;"&gt;
+&lt;!ENTITY permil "&amp;#8240;"&gt;
+&lt;!ENTITY perp "&amp;#8869;"&gt;
+&lt;!ENTITY Phi "&amp;#934;"&gt;
+&lt;!ENTITY phi "&amp;#966;"&gt;
+&lt;!ENTITY Pi "&amp;#928;"&gt;
+&lt;!ENTITY pi "&amp;#960;"&gt;
+&lt;!ENTITY piv "&amp;#982;"&gt;
+&lt;!ENTITY plusmn "&amp;#177;"&gt;
+&lt;!ENTITY pound "&amp;#163;"&gt;
+&lt;!ENTITY prime "&amp;#8242;"&gt;
+&lt;!ENTITY Prime "&amp;#8243;"&gt;
+&lt;!ENTITY prod "&amp;#8719;"&gt;
+&lt;!ENTITY prop "&amp;#8733;"&gt;
+&lt;!ENTITY Psi "&amp;#936;"&gt;
+&lt;!ENTITY psi "&amp;#968;"&gt;
+&lt;!ENTITY quot "&amp;#34;"&gt;
+&lt;!ENTITY radic "&amp;#8730;"&gt;
+&lt;!ENTITY rang "&amp;#9002;"&gt;
+&lt;!ENTITY raquo "&amp;#187;"&gt;
+&lt;!ENTITY rarr "&amp;#8594;"&gt;
+&lt;!ENTITY rArr "&amp;#8658;"&gt;
+&lt;!ENTITY rceil "&amp;#8969;"&gt;
+&lt;!ENTITY rdquo "&amp;#8221;"&gt;
+&lt;!ENTITY real "&amp;#8476;"&gt;
+&lt;!ENTITY reg "&amp;#174;"&gt;
+&lt;!ENTITY rfloor "&amp;#8971;"&gt;
+&lt;!ENTITY Rho "&amp;#929;"&gt;
+&lt;!ENTITY rho "&amp;#961;"&gt;
+&lt;!ENTITY rlm "&amp;#8207;"&gt;
+&lt;!ENTITY rsaquo "&amp;#8250;"&gt;
+&lt;!ENTITY rsquo "&amp;#8217;"&gt;
+&lt;!ENTITY sbquo "&amp;#8218;"&gt;
+&lt;!ENTITY Scaron "&amp;#352;"&gt;
+&lt;!ENTITY scaron "&amp;#353;"&gt;
+&lt;!ENTITY sdot "&amp;#8901;"&gt;
+&lt;!ENTITY sect "&amp;#167;"&gt;
+&lt;!ENTITY shy "&amp;#173;"&gt;
+&lt;!ENTITY Sigma "&amp;#931;"&gt;
+&lt;!ENTITY sigma "&amp;#963;"&gt;
+&lt;!ENTITY sigmaf "&amp;#962;"&gt;
+&lt;!ENTITY sim "&amp;#8764;"&gt;
+&lt;!ENTITY spades "&amp;#9824;"&gt;
+&lt;!ENTITY sub "&amp;#8834;"&gt;
+&lt;!ENTITY sube "&amp;#8838;"&gt;
+&lt;!ENTITY sum "&amp;#8721;"&gt;
+&lt;!ENTITY sup "&amp;#8835;"&gt;
+&lt;!ENTITY sup1 "&amp;#185;"&gt;
+&lt;!ENTITY sup2 "&amp;#178;"&gt;
+&lt;!ENTITY sup3 "&amp;#179;"&gt;
+&lt;!ENTITY supe "&amp;#8839;"&gt;
+&lt;!ENTITY szlig "&amp;#223;"&gt;
+&lt;!ENTITY Tau "&amp;#932;"&gt;
+&lt;!ENTITY tau "&amp;#964;"&gt;
+&lt;!ENTITY there4 "&amp;#8756;"&gt;
+&lt;!ENTITY Theta "&amp;#920;"&gt;
+&lt;!ENTITY theta "&amp;#952;"&gt;
+&lt;!ENTITY thetasym "&amp;#977;"&gt;
+&lt;!ENTITY thinsp "&amp;#8201;"&gt;
+&lt;!ENTITY THORN "&amp;#222;"&gt;
+&lt;!ENTITY thorn "&amp;#254;"&gt;
+&lt;!ENTITY tilde "&amp;#732;"&gt;
+&lt;!ENTITY times "&amp;#215;"&gt;
+&lt;!ENTITY trade "&amp;#8482;"&gt;
+&lt;!ENTITY Uacute "&amp;#218;"&gt;
+&lt;!ENTITY uacute "&amp;#250;"&gt;
+&lt;!ENTITY uarr "&amp;#8593;"&gt;
+&lt;!ENTITY uArr "&amp;#8657;"&gt;
+&lt;!ENTITY Ucirc "&amp;#219;"&gt;
+&lt;!ENTITY ucirc "&amp;#251;"&gt;
+&lt;!ENTITY Ugrave "&amp;#217;"&gt;
+&lt;!ENTITY ugrave "&amp;#249;"&gt;
+&lt;!ENTITY uml "&amp;#168;"&gt;
+&lt;!ENTITY upsih "&amp;#978;"&gt;
+&lt;!ENTITY Upsilon "&amp;#933;"&gt;
+&lt;!ENTITY upsilon "&amp;#965;"&gt;
+&lt;!ENTITY Uuml "&amp;#220;"&gt;
+&lt;!ENTITY uuml "&amp;#252;"&gt;
+&lt;!ENTITY weierp "&amp;#8472;"&gt;
+&lt;!ENTITY Xi "&amp;#926;"&gt;
+&lt;!ENTITY xi "&amp;#958;"&gt;
+&lt;!ENTITY Yacute "&amp;#221;"&gt;
+&lt;!ENTITY yacute "&amp;#253;"&gt;
+&lt;!ENTITY yen "&amp;#165;"&gt;
+&lt;!ENTITY Yuml "&amp;#376;"&gt;
+&lt;!ENTITY yuml "&amp;#255;"&gt;
+&lt;!ENTITY Zeta "&amp;#918;"&gt;
+&lt;!ENTITY zeta "&amp;#950;"&gt;
+&lt;!ENTITY zwj "&amp;#8205;"&gt;
+&lt;!ENTITY zwnj "&amp;#8204;"&gt;`.replace(/\n/g, ' ');
+
+  /**
+   * A reasonably strict xml declaration.
+   */
+  const XML_DECL = '&lt;?xml version="1.0" standalone="no"?&gt;';
+
+  /**
+   * The beginning of the XML doctype declaration.
+   */
+  const DOCTYPE_START = `&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
+
+  /**
+   * The end of the XML docype declaration.
+   */
+  const DOCTYPE_END = ']&gt;';
+
+  /**
+   * A full header for an SVG XML document.
+   */
+  const SVG_XML_HEADER = `${XML_DECL}
+    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -68918,7 +71198,7 @@ RU5ErkJggg==
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="blog"/><category term="scientific computing"/><category term="matlab"/><category term="pilab"/></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="https://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"/><published>2016-01-05T00:00:00+00:00</published><updated>2026-01-29T18:54:50.228623+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:/cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
+</content><category term="blog"/><category term="scientific computing"/><category term="matlab"/><category term="pilab"/></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="https://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"/><published>2016-01-05T00:00:00+00:00</published><updated>2026-02-10T05:11:41.855345+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:/cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
 work for &lt;a href="http://www.mrc.ac.uk"&gt;an academic institution that takes a dim view of Dropbox and
 other cloud-based solutions&lt;/a&gt;. You are also sure to
 run out of space fast if you use it to sync e.g. neuroimaging data.
@@ -68999,7 +71279,7 @@ unison $fromdir "ssh://"$hostname"/"$todir -auto
 &lt;p&gt;So for instance, my standard usage is &lt;code&gt;unisync ucl j.carlin&lt;/code&gt;, where ucl is
 an alias or shortcut for my full SSH connection stored in ssh/.config, and
 j.carlin is my username which is necessary here because it is different
-from my username on the client.&lt;/p&gt;</content><category term="blog"/><category term="shell"/><category term="scientific computing"/></entry><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="https://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"/><published>2015-12-15T00:00:00+00:00</published><updated>2026-01-29T18:54:50.228623+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
+from my username on the client.&lt;/p&gt;</content><category term="blog"/><category term="shell"/><category term="scientific computing"/></entry><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="https://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"/><published>2015-12-15T00:00:00+00:00</published><updated>2026-02-10T05:11:41.855345+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
 questions than they answer (in fact, many papers seem to answer hardly
 anything at all on close inspection and it doesn't mean they're great). But
 I think this might be one of those papers …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
@@ -69076,7 +71356,7 @@ little behavioural relevance. This is puzzling.&lt;/p&gt;
   doesn't seem to follow if the code were this high-dimensional.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;Reference&lt;/h1&gt;
-&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &amp;amp; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"/><category term="pfc"/><category term="electrophysiology"/><category term="single-unit recording"/><category term="low-rank matrix approximation"/><category term="classification"/><category term="post-publication peer review"/></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="https://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"/><published>2015-12-11T00:00:00+00:00</published><updated>2026-01-29T18:54:50.210624+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:/reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
+&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &amp;amp; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"/><category term="pfc"/><category term="electrophysiology"/><category term="single-unit recording"/><category term="low-rank matrix approximation"/><category term="classification"/><category term="post-publication peer review"/></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="https://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"/><published>2015-12-11T00:00:00+00:00</published><updated>2026-02-10T05:11:41.837344+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:/reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
 complicated. In this post I describe how I use a conda to keep a
 reproducible record of the packages I use.&lt;/p&gt;
 &lt;p&gt;In the past, I have usually hacked together my own developing environment
