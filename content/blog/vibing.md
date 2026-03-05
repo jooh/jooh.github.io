@@ -58,12 +58,4 @@ There is something extremely compelling about being able to fire off a task from
 
 In a way, the small-task model that Codex Web steers you toward helps. You get an idea for something minor, you send it off to Codex, and when you come back later it is usually done. That cadence fits well into real life.
 
-## Where this is heading next
-
-Now that the blog is set up with a CMS, the next focus is on making it easier to actually write and publish posts.
-
-With the Sveltia-based CMS in place, I no longer need to manually write a Markdown file and commit it to the repository. I can just type directly into the CMS. And I'm hoping to do less typing overall in fact.
-
-The plan is to lean heavily on dictation. This very post was drafted using ChatGPT’s dictation feature. I record posts by rambling away, have ChatGPT clean up and generate the corresponding Markdown, and then copy-paste that straight into the CMS for final manual editing.
-
 Overall, this has been a lot of fun and I think it's going to mean more updates here! Famous last words.
