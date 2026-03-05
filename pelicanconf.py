@@ -69,9 +69,11 @@ GIT_COMMIT_URL = f"{GITHUB_REPO_URL}/commit/{GIT_COMMIT_HASH}"
 # Blogroll
 LINKS = (
     ("code", "https://github.com/jooh"),
-    ("rants", "https://twitter.com/johancarlin"),
+    ("rants", "https://bsky.app/profile/johancarlin.com"),
     ("publications", "https://scholar.google.com/citations?user=hybIdeIAAAAJ"),
 )
+
+DISPLAY_CATEGORIES_ON_MENU = False
 
 # Social widget
 SOCIAL = ()
