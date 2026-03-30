@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="https://www.johancarlin.com/" rel="alternate"/><link href="https://www.johancarlin.com/feeds/all.atom.xml" rel="self"/><id>https://www.johancarlin.com/</id><updated>2026-03-26T18:06:17.417033+00:00</updated><entry><title>Vibing this blog back to life</title><link href="https://www.johancarlin.com/vibing-this-blog-back-to-life.html" rel="alternate"/><published>2026-01-21T17:18:00+00:00</published><updated>2026-03-26T18:06:17.417033+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2026-01-21:/vibing-this-blog-back-to-life.html</id><summary type="html">&lt;p&gt;Codex Web is clunky yet strangely addictive, as I learned when vibing a blog refresh from a sun lounger over the holidays&lt;/p&gt;</summary><content type="html">&lt;p&gt;I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Johan Carlin</title><link href="https://www.johancarlin.com/" rel="alternate"/><link href="https://www.johancarlin.com/feeds/all.atom.xml" rel="self"/><id>https://www.johancarlin.com/</id><updated>2026-03-30T19:58:32.949039+01:00</updated><entry><title>Vibing this blog back to life</title><link href="https://www.johancarlin.com/vibing-this-blog-back-to-life.html" rel="alternate"/><published>2026-01-21T17:18:00+00:00</published><updated>2026-03-30T19:58:32.949039+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2026-01-21:/vibing-this-blog-back-to-life.html</id><summary type="html">&lt;p&gt;Codex Web is clunky yet strangely addictive, as I learned when vibing a blog refresh from a sun lounger over the holidays&lt;/p&gt;</summary><content type="html">&lt;p&gt;I’ve been rebooting this blog. What started as a vague intention to clean things up a bit turned into a more interesting experiment in agentic development, vibe coding, and finding the strengths and limitations of Codex Web, ChatGPT's browser-based tool for vibing code.&lt;/p&gt;
 &lt;h2&gt;What’s changed so far&lt;/h2&gt;
 &lt;p&gt;Using Codex Web (formerly Codex Cloud) I’ve managed to modernise the blog quite a bit, without touching a computer keyboard. Pretty much all this work got done on my phone from a sun lounger in Mexico, whenever I had 5 minutes to myself. Here's what changed:&lt;/p&gt;
 &lt;ul&gt;
@@ -39,9 +39,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -58,34 +58,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -100,12 +100,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -120,9 +120,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -139,34 +139,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -181,12 +181,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -7950,15 +7950,15 @@ a.anchor-link {
 &lt;div class="jp-InputPrompt jp-InputArea-prompt"&gt;In [1]:&lt;/div&gt;
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;warnings&lt;/span&gt;
+&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;numpy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;warnings&lt;/span&gt;
 &lt;span class="c1"&gt;# TF maintainers need to update their Numpy&lt;/span&gt;
 &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;warnings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;catch_warnings&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;warnings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filterwarnings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"ignore"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ne"&gt;FutureWarning&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tensorflow&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;tf&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;skimage.data&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;gwp&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;tensorflow&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;tf&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;skimage.data&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;gwp&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'image'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cmap&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'gray'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;tf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enable_eager_execution&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -8495,7 +8495,7 @@ a.anchor-link {
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# energy at each level of the pyramid&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;model_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pyramid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;model_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pyramid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;pyramid_energy_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
     &lt;span class="n"&gt;pyramid_energy_orient&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;this_frequency&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this_bank&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pyramid&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -8533,7 +8533,7 @@ a.anchor-link {
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# visualise model responses&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;response_visualise&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pyramid_energy_map&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pyramid_energy_orient&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;response_visualise&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pyramid_energy_map&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pyramid_energy_orient&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;fig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;figsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="n"&gt;absmax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this_energy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;this_energy&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pyramid_energy_map&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;()])&lt;/span&gt;
     &lt;span class="n"&gt;orimax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this_energy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;this_energy&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pyramid_energy_orient&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;()])&lt;/span&gt;
@@ -8731,9 +8731,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -8750,34 +8750,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -8792,12 +8792,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -8812,9 +8812,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -8831,34 +8831,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -8873,12 +8873,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -16642,12 +16642,12 @@ a.anchor-link {
 &lt;div class="jp-InputPrompt jp-InputArea-prompt"&gt;In [ ]:&lt;/div&gt;
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;scipy.stats&lt;/span&gt;
+&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;numpy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;scipy.stats&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;config&lt;/span&gt; InlineBackend.figure_format = 'retina'
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;make_plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_binned&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_binned&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;binlabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;highlight&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;metric&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'eccentricity'&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;make_plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_binned&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_binned&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;binlabel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;highlight&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;metric&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'eccentricity'&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax_scatter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subplots&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;figsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
     &lt;span class="c1"&gt;# plot x against y, overlay the (circular) y bins&lt;/span&gt;
     &lt;span class="n"&gt;ax_scatter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'.'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'voxels'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -16873,9 +16873,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -16892,34 +16892,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -16934,12 +16934,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -16954,9 +16954,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -16973,34 +16973,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -17015,12 +17015,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -24785,12 +24785,12 @@ a.anchor-link {
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# imports&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;joblib&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;statsmodels.stats.power&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;altair&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;alt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;numpy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;scipy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;pandas&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;joblib&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;statsmodels.stats.power&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;altair&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;alt&lt;/span&gt;
 &lt;span class="c1"&gt;# render as svg to avoid embedding full data&lt;/span&gt;
 &lt;span class="c1"&gt;# (standard vega-lite behavior)&lt;/span&gt;
 &lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;renderers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'altair_saver'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fmts&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'svg'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;method&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'node'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -24925,7 +24925,7 @@ required N (power=80%): 34
 &lt;div class="jp-InputPrompt jp-InputArea-prompt"&gt;In [14]:&lt;/div&gt;
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;simulate_iteration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d_pop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alternative&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;alternative&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;simulate_iteration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d_pop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alternative&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;alternative&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# we can simulate a mean difference by drawing from a Gaussian with d_pop offset&lt;/span&gt;
     &lt;span class="n"&gt;ttest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ttest_1samp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;d_pop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;dz&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ttest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;statistic&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -24997,7 +24997,7 @@ N_hat (80% power): 17
 &lt;span class="n"&gt;n_iter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5000&lt;/span&gt;
 
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;simulate_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_sim&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;d_pop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;simulate_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_sim&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;d_pop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;joblib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parallel_backend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"threading"&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;joblib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Parallel&lt;/span&gt;&lt;span class="p"&gt;()(&lt;/span&gt;
             &lt;span class="n"&gt;joblib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delayed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;simulate_iteration&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="n"&gt;d_pop&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_sim&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -25020,7 +25020,7 @@ N_hat (80% power): 17
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# visualise with a histogram&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;histogram&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dz_sim&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_axis&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color_significance&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;histogram&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dz_sim&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x_axis&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color_significance&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""Plot frequency histogram."""&lt;/span&gt;
 
     &lt;span class="n"&gt;color_arg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
@@ -25034,7 +25034,7 @@ N_hat (80% power): 17
     &lt;span class="p"&gt;)&lt;/span&gt;
 
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;gridlines&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dz_q&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;".0%"&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;gridlines&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dz_q&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;".0%"&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""add dashed vertical lines to plot. Label the lines in a second panel &lt;/span&gt;
 &lt;span class="sd"&gt;    with a second right axis."""&lt;/span&gt;
     &lt;span class="c1"&gt;# overlay vertical lines at particular percentiles&lt;/span&gt;
@@ -25060,7 +25060,7 @@ N_hat (80% power): 17
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;vlines&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;vlabels&lt;/span&gt;
 
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;style_chart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;handle&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;style_chart&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;handle&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="sd"&gt;"""Make the final chart pretty."""&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
         &lt;span class="n"&gt;handle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;configure_axis&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -25168,7 +25168,7 @@ N_hat (80% power): 17
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Gibbons et al approximation&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;dz_std&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;dz_std&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
 
@@ -25695,9 +25695,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -25714,34 +25714,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -25756,12 +25756,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -25776,9 +25776,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -25795,34 +25795,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -25837,12 +25837,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -33614,13 +33614,13 @@ a.anchor-link {
 &lt;div class="jp-InputPrompt jp-InputArea-prompt"&gt;In [1]:&lt;/div&gt;
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;numpy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;plt&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ion&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;config&lt;/span&gt; InlineBackend.figure_format = 'retina'
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib&lt;/span&gt;
 &lt;span class="n"&gt;matplotlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rcParams&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'figure.figsize'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.core.debugger&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;set_trace&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;IPython.core.debugger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;set_trace&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -33653,7 +33653,7 @@ a.anchor-link {
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# functions&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;spearmanbrown&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rho&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;spearmanbrown&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rho&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""adjust the correlation coefficient r for test length by scaling by k, which&lt;/span&gt;
 &lt;span class="sd"&gt;  defines the full length (e.g., if the full length is twice of what r was &lt;/span&gt;
 &lt;span class="sd"&gt;  calculated for, k=2)."""&lt;/span&gt;
@@ -33662,7 +33662,7 @@ a.anchor-link {
   &lt;span class="n"&gt;thisr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;thisr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;thisr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;thisr&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;splitter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;splitter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""split the data NFold, leaving out one element of b (first dim) each time.&lt;/span&gt;
 &lt;span class="sd"&gt;  Returns the mean over the training split (axis=1) and the test split."""&lt;/span&gt;
   &lt;span class="n"&gt;nsplit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -33671,15 +33671,15 @@ a.anchor-link {
     &lt;span class="n"&gt;trainind&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setdiff1d&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;allind&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;testind&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;yield&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="n"&gt;trainind&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="n"&gt;testind&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;r&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;r&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""correlation coefficient without obnoxious matrix return"""&lt;/span&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;corrcoef&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;rz&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;rz&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""fisher Z-transformed correlation between vectors b1 and b2."""&lt;/span&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arctanh&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;rsaceiling&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;rsaceiling&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""calculate RSA noise ceiling by running KFold splits on b."""&lt;/span&gt;
   &lt;span class="c1"&gt;# lower ceiling is just KFold CV&lt;/span&gt;
   &lt;span class="n"&gt;lower&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;rz&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;train&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;splitter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
@@ -33688,7 +33688,7 @@ a.anchor-link {
   &lt;span class="c1"&gt;# return to correlation coefficient units after averaging&lt;/span&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tanh&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tanh&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sbceiling&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;sbceiling&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""calculate SB noise ceiling by running odd-even splits (plus averaging) on b."""&lt;/span&gt;
   &lt;span class="c1"&gt;# odd-even split&lt;/span&gt;
   &lt;span class="n"&gt;btrain&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -33696,7 +33696,7 @@ a.anchor-link {
   &lt;span class="n"&gt;thisr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;btrain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;btest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;spearmanbrown&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;thisr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;thisr&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sbceiling_comparable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;sbceiling_comparable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""calculate SB noise ceiling without averaging - just get all the unique n x n&lt;/span&gt;
 &lt;span class="sd"&gt;  correlations, correct those and get the estimate."""&lt;/span&gt;
   &lt;span class="c1"&gt;# let's just correlate everything without averaging&lt;/span&gt;
@@ -33710,7 +33710,7 @@ a.anchor-link {
   &lt;span class="c1"&gt;# Z-transform, average, and back to original units&lt;/span&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tanh&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nanmean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arctanh&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rvec_sb&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;simulation&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;simulation&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""cook data and run one iteration of the simulation."""&lt;/span&gt;
   &lt;span class="n"&gt;signal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;standard_normal&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;ncon&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;signallev&lt;/span&gt;
   &lt;span class="n"&gt;thisb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;signal&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;standard_normal&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;ncon&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nrun&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -33719,7 +33719,7 @@ a.anchor-link {
   &lt;span class="n"&gt;sbcomp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sbceiling_comparable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;thisb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rsalow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;rsahigh&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rawr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;sbcomp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;thisb&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;plotresults&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res_rsa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res_rb&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;plotresults&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res_rsa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res_rb&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="sd"&gt;"""scatter of noise ceilings over iterations, draw unity line."""&lt;/span&gt;
   &lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subplots&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="n"&gt;ph&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res_rb&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;res_rsa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'-o'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -34019,9 +34019,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -34038,34 +34038,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -34080,12 +34080,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -34100,9 +34100,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -34119,34 +34119,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -34161,12 +34161,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -41932,13 +41932,13 @@ a.anchor-link {
 &lt;div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline"&gt;
 &lt;div class="cm-editor cm-s-jupyter"&gt;
 &lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# imports&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;matplotlib&lt;/span&gt;
 &lt;span class="n"&gt;font&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'size'&lt;/span&gt;   &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="n"&gt;matplotlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'font'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;numpy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;np&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;config&lt;/span&gt; InlineBackend.figure_format = 'retina'
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;statsmodels.stats&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;power&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;statsmodels.stats&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;power&lt;/span&gt;
 &lt;span class="n"&gt;ttest_paired&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TTestPower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -42079,7 +42079,7 @@ a.anchor-link {
 &lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# we can also visualise the scenario with a pie chart like so:&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;power_pie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;prevalence&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;power_pie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;prevalence&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# we can either 'hit' or 'miss' true positives&lt;/span&gt;
     &lt;span class="n"&gt;hits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;power&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;prevalence&lt;/span&gt;
     &lt;span class="n"&gt;misses&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;prevalence&lt;/span&gt;
@@ -42405,7 +42405,7 @@ really 'should' work often won't.&lt;/li&gt;
 &lt;span class="n"&gt;effect&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;
 
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;panel_prevalence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this_ax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this_power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this_alpha&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;panel_prevalence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this_ax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this_power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;this_alpha&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;this_ppv&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ppv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;this_power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;this_alpha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;prevalence&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;prevalence_rates&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;this_npv&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;npv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;power&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;this_power&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;this_alpha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;prevalence&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;prevalence_rates&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="c1"&gt;# shade range where both ppv and npv are over sweet threshold&lt;/span&gt;
@@ -42589,9 +42589,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -42608,34 +42608,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -42650,12 +42650,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -42670,9 +42670,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -42689,34 +42689,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -42731,12 +42731,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -52893,9 +52893,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -52912,34 +52912,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -52954,12 +52954,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -52974,9 +52974,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -52993,34 +52993,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -53035,12 +53035,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -61945,9 +61945,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -61964,34 +61964,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -62006,12 +62006,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;!DOCTYPE html&gt;
 
 &lt;html lang="en"&gt;
 &lt;head&gt;&lt;meta charset="utf-8"/&gt;
@@ -62026,9 +62026,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .hll { background-color: #ffffcc }
  .highlight pre  { background: #f8f8f8; }
  .highlight pre  .c { color: #3D7B7B; font-style: italic } /* Comment */
- .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .err { border: 1px solid #F00 } /* Error */
  .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
- .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .o { color: #666 } /* Operator */
  .highlight pre  .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
  .highlight pre  .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
  .highlight pre  .cp { color: #9C6500 } /* Comment.Preproc */
@@ -62045,34 +62045,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
  .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
  .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
- .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .gt { color: #04D } /* Generic.Traceback */
  .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
  .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
  .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
  .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
  .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
  .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
- .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .m { color: #666 } /* Literal.Number */
  .highlight pre  .s { color: #BA2121 } /* Literal.String */
  .highlight pre  .na { color: #687822 } /* Name.Attribute */
  .highlight pre  .nb { color: #008000 } /* Name.Builtin */
- .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
- .highlight pre  .no { color: #880000 } /* Name.Constant */
- .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .nc { color: #00F; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #800 } /* Name.Constant */
+ .highlight pre  .nd { color: #A2F } /* Name.Decorator */
  .highlight pre  .ni { color: #717171; font-weight: bold } /* Name.Entity */
  .highlight pre  .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
- .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nf { color: #00F } /* Name.Function */
  .highlight pre  .nl { color: #767600 } /* Name.Label */
- .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nn { color: #00F; font-weight: bold } /* Name.Namespace */
  .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
  .highlight pre  .nv { color: #19177C } /* Name.Variable */
- .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
- .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
- .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
- .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
- .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
- .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
- .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #BBB } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666 } /* Literal.Number.Oct */
  .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
  .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
  .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
@@ -62087,12 +62087,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
  .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
  .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
- .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .fm { color: #00F } /* Name.Function.Magic */
  .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */
+ .highlight pre  .il { color: #666 } /* Literal.Number.Integer.Long */
   &lt;/style&gt;
 &lt;style type="text/css"&gt;
 /*-----------------------------------------------------------------------------
@@ -71194,7 +71194,7 @@ RU5ErkJggg==
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="blog"/><category term="scientific computing"/><category term="matlab"/><category term="pilab"/></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="https://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"/><published>2016-01-05T00:00:00+00:00</published><updated>2026-03-26T18:06:17.417033+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:/cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
+</content><category term="blog"/><category term="scientific computing"/><category term="matlab"/><category term="pilab"/></entry><entry><title>Cloud-free folder syncing with Unison</title><link href="https://www.johancarlin.com/cloud-free-folder-syncing-with-unison.html" rel="alternate"/><published>2016-01-05T00:00:00+00:00</published><updated>2026-03-30T19:58:32.948039+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2016-01-05:/cloud-free-folder-syncing-with-unison.html</id><summary type="html">&lt;p&gt;Syncing folders between computers can be surprisingly complicated if you
 work for &lt;a href="http://www.mrc.ac.uk"&gt;an academic institution that takes a dim view of Dropbox and
 other cloud-based solutions&lt;/a&gt;. You are also sure to
 run out of space fast if you use it to sync e.g. neuroimaging data.
@@ -71275,7 +71275,7 @@ unison $fromdir "ssh://"$hostname"/"$todir -auto
 &lt;p&gt;So for instance, my standard usage is &lt;code&gt;unisync ucl j.carlin&lt;/code&gt;, where ucl is
 an alias or shortcut for my full SSH connection stored in ssh/.config, and
 j.carlin is my username which is necessary here because it is different
-from my username on the client.&lt;/p&gt;</content><category term="blog"/><category term="shell"/><category term="scientific computing"/></entry><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="https://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"/><published>2015-12-15T00:00:00+00:00</published><updated>2026-03-26T18:06:17.416033+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
+from my username on the client.&lt;/p&gt;</content><category term="blog"/><category term="shell"/><category term="scientific computing"/></entry><entry><title>Journal club: Estimating the dimensionality of neuronal representations during cognitive tasks</title><link href="https://www.johancarlin.com/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html" rel="alternate"/><published>2015-12-15T00:00:00+00:00</published><updated>2026-03-30T19:58:32.948039+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-15:/journal-club-estimating-the-dimensionality-of-neuronal-representations-during-cognitive-tasks.html</id><summary type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
 questions than they answer (in fact, many papers seem to answer hardly
 anything at all on close inspection and it doesn't mean they're great). But
 I think this might be one of those papers …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It's a bit of a cliche that the best papers are the ones that raise more
@@ -71352,7 +71352,7 @@ little behavioural relevance. This is puzzling.&lt;/p&gt;
   doesn't seem to follow if the code were this high-dimensional.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;Reference&lt;/h1&gt;
-&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &amp;amp; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"/><category term="pfc"/><category term="electrophysiology"/><category term="single-unit recording"/><category term="low-rank matrix approximation"/><category term="classification"/><category term="post-publication peer review"/></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="https://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"/><published>2015-12-11T00:00:00+00:00</published><updated>2026-03-26T18:06:17.386645+00:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:/reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
+&lt;p&gt;Rigotti, M., Barak, O., Warden, M. R., Wang, X.-J., Daw, N. D., Miller, E. K., &amp;amp; Fusi, S. (2013). The importance of mixed selectivity in complex cognitive tasks. Nature, 497(7451), 585–90. &lt;a href="http://doi.org/10.1038/nature12160"&gt;http://doi.org/10.1038/nature12160&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"/><category term="pfc"/><category term="electrophysiology"/><category term="single-unit recording"/><category term="low-rank matrix approximation"/><category term="classification"/><category term="post-publication peer review"/></entry><entry><title>Reproducible scientific python setup with (Ana) Conda</title><link href="https://www.johancarlin.com/reproducible-scientific-python-setup-with-ana-conda.html" rel="alternate"/><published>2015-12-11T00:00:00+00:00</published><updated>2026-03-30T19:58:32.918557+01:00</updated><author><name>Johan Carlin</name></author><id>tag:www.johancarlin.com,2015-12-11:/reproducible-scientific-python-setup-with-ana-conda.html</id><summary type="html">&lt;p&gt;Getting a scientific python install up and running is still way too
 complicated. In this post I describe how I use a conda to keep a
 reproducible record of the packages I use.&lt;/p&gt;
 &lt;p&gt;In the past, I have usually hacked together my own developing environment
