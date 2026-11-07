@@ -28,3 +28,9 @@ a:link {
 a:visited {
     text-decoration: none !important;
 }
+
+.mermaid {
+    overflow-x: auto;
+    text-align: center;
+    white-space: pre-wrap;
+}

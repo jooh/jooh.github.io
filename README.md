@@ -3,6 +3,11 @@
 
 My personal website.
 
+Mermaid diagrams use standard fenced Markdown blocks with the `mermaid` language.
+The Markdown build preserves them for the browser renderer. Pages containing a
+diagram load Mermaid 12.3.0 from jsDelivr; other pages do not download it. Rendering
+requires JavaScript and access to that CDN.
+
 # Install notes
 * This project uses [uv](https://github.com/astral-sh/uv) for Python environments.
   Bootstrap the virtual environment and install dependencies with:
