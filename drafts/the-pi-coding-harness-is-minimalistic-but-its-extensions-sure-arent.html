@@ -90,7 +90,7 @@ Johan Carlin            </a>
     </span>
           <span class="label label-default">Modified</span>
             <span class="modified">
-                <i class="fa fa-calendar"></i><time datetime="2026-11-08T09:23:07.316744+00:00"> 08 November 2026</time>
+                <i class="fa fa-calendar"></i><time datetime="2026-11-08T09:27:13.802547+00:00"> 08 November 2026</time>
             </span>
 
 
@@ -110,7 +110,7 @@ Johan Carlin            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>Pi is an amazing coding harness. It is delightfully <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">minimalistic</a>. Instead of implementing common harness features like plan mode, subagents, or even web search, it provides an extension system and <a href="https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/extensions.md">extension-authoring documentation</a> that make it incredibly easy to vibe up your own. The developers have gone as far as bundling an <a href="https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions/subagent">"example" subagent extension</a> which is disabled by default, but have stopped short of an official implementation.</p>
+                <p>Pi is an amazing coding harness. It is delightfully <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">minimalistic</a>. Instead of implementing common harness features like plan mode, subagents, or even web search, it provides an extension system and <a href="https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/extensions.md">extension-authoring documentation</a> that make it incredibly easy to vibe up your own.</p>
 <p>There is, however, a delightful irony in all this. Pi's minimalist philosophy is thoroughly trampled by the most popular extensions on the <a href="https://pi.dev/packages">package catalog</a>, which tend to be feature-creeped beyond all recognition. Load up Pi with a few of these and suddenly your lightweight harness is full of bells and whistles, many of which are not well conceived or engineered. There is a useful lesson here about how to checkity check yourself before you wreck yourself with agentic development, so let's explore two popular examples from the catalog.</p>
 <h2>Disclaimer</h2>
 <p>I want to state at the outset that I have a lot of respect for the developers of these extensions that I'm about to lay into. They are popular for a reason. They work well and fill a real need in the community. But at the same time, they are examples of the kind of feature creep that agentic coding invites.</p>
@@ -120,7 +120,7 @@ Johan Carlin            </a>
 <p>This is arguably insane. 99% of use cases are solved by standard text search through an external provider like <a href="https://exa.ai/docs/reference/search">Exa</a>, or by just wiring searches through the Responses API for providers that support this like <a href="https://developers.openai.com/api/docs/guides/tools-web-search">OpenAI</a>. The only search extension I would recommend, <a href="https://github.com/jooh/pi-web-search">pi-web-search</a>, implements only the provider-native search route.</p>
 <p>But in fact, with the recent addition of <a href="https://earendil.com/posts/you-said-no-mcp/">MCP as a native tool</a>, you don't need any extensions at all. Just install Exa MCP and you have search.</p>
 <h2>So you want subagents in pi</h2>
-<p>Subagents are another popular feature the pi developers have <a href="https://github.com/earendil-works/pi/issues/552#issuecomment-3721483648">refused to implement so far</a>. I'm less sympathetic to this call. With the recent addition of <a href="https://earendil.com/posts/you-said-no-mcp/#what-is-codemode">codemode</a>, you can now orchestrate tool calls like MCP in blocks of JavaScript. That puts us tantalisingly close to having a capable subagent implementation if the developers would just add that tool as well...</p>
+<p>Subagents are another popular feature the pi developers have <a href="https://github.com/earendil-works/pi/issues/552#issuecomment-3721483648">refused to implement so far</a>. The developers have gone as far as bundling an <a href="https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions/subagent">"example" subagent extension</a> which is disabled by default, but have stopped short of an official implementation. I'm less sympathetic to this call. With the recent addition of <a href="https://earendil.com/posts/you-said-no-mcp/#what-is-codemode">codemode</a>, you can now orchestrate tool calls like MCP in blocks of JavaScript. That puts us tantalisingly close to having a capable subagent implementation if the developers would just add that tool as well...</p>
 <p>Anyway, subagents is a somewhat complicated extension to DIY so you probably reach for <a href="https://github.com/nicobailon/pi-subagents">pi-subagents</a> instead. It looks reasonably lightweight at 23 MiB extra size and a mere 7 npm packages. But the feature set is anything but, because you end up with a full-on software factory. You get:</p>
 <ul>
 <li>Several pre-defined agents with somewhat nebulous roles</li>
@@ -216,7 +216,7 @@ Johan Carlin            </a>
          <div class="col-xs-10">&copy; 2026 Johan Carlin
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/ac88cbb">ac88cbb</a></small></p>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/fae3fe1">fae3fe1</a></small></p>
          </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
