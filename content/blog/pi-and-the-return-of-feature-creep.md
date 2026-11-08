@@ -31,7 +31,7 @@ Subagents are another popular feature the pi developers have [refused to impleme
 Anyway, subagents is a somewhat complicated extension to DIY so you probably reach for [pi-subagents](https://github.com/nicobailon/pi-subagents) instead. It looks reasonably lightweight at 23 MiB extra size and a mere 7 npm packages. But the feature set is anything but, because you end up with a full-on software factory. You get:
 
 * Several pre-defined agents with somewhat nebulous roles
-* Several workflows (basically skills that instruct the agent to run sub agents in a particular pattern)
+* Several workflows (basically scripts that instruct the agent to run sub agents in a particular pattern)
 * A watchdog (basically a sub agent that reviews each change by the main agent)
 * Missions, runs and records (basically attempts to manage overall project state natively within the extension)
 * Scheduling of runs
