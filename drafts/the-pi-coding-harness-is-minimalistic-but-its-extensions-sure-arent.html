@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Pi and the return of feature creep - Johan Carlin</title>
+    <title>The pi coding harness is minimalistic but its extensions sure aren't - Johan Carlin</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,17 +9,17 @@
 
 
 
-<link rel="canonical" href="https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html">
+<link rel="canonical" href="https://www.johancarlin.com/drafts/the-pi-coding-harness-is-minimalistic-but-its-extensions-sure-arent.html">
 
         <meta name="author" content="Johan Carlin" />
         <meta name="keywords" content="ai,pi,agents,vibe coding" />
-        <meta name="description" content="Minimalist foundations, maximalist extensions, and the measured weight of adding web search, subagents, and planning to Pi." />
+        <meta name="description" content="Exploring the tension between a minimalistic harness and the feature-creeped extensions that popped up to fill the gap" />
 
         <meta property="og:site_name" content="Johan Carlin" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Pi and the return of feature creep"/>
-        <meta property="og:url" content="https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html"/>
-        <meta property="og:description" content="Minimalist foundations, maximalist extensions, and the measured weight of adding web search, subagents, and planning to Pi."/>
+        <meta property="og:title" content="The pi coding harness is minimalistic but its extensions sure aren&#39;t"/>
+        <meta property="og:url" content="https://www.johancarlin.com/drafts/the-pi-coding-harness-is-minimalistic-but-its-extensions-sure-arent.html"/>
+        <meta property="og:description" content="Exploring the tension between a minimalistic harness and the feature-creeped extensions that popped up to fill the gap"/>
         <meta property="article:published_time" content="2026-11-08" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="ai" />
@@ -73,10 +73,10 @@ Johan Carlin            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html"
+                    <a href="https://www.johancarlin.com/drafts/the-pi-coding-harness-is-minimalistic-but-its-extensions-sure-arent.html"
                        rel="bookmark"
-                       title="Permalink to Pi and the return of feature creep">
-                        Pi and the return of feature creep
+                       title="Permalink to The pi coding harness is minimalistic but its extensions sure aren't">
+                        The pi coding harness is minimalistic but its extensions sure aren't
                     </a>
                 </h1>
             </header>
@@ -90,7 +90,7 @@ Johan Carlin            </a>
     </span>
           <span class="label label-default">Modified</span>
             <span class="modified">
-                <i class="fa fa-calendar"></i><time datetime="2026-11-08T07:37:20.149724+00:00"> 08 November 2026</time>
+                <i class="fa fa-calendar"></i><time datetime="2026-11-08T08:48:24.571111+00:00"> 08 November 2026</time>
             </span>
 
 
@@ -110,123 +110,31 @@ Johan Carlin            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <h2>Thesis: minimalism stops at the core</h2>
+                <p>Pi is an amazing coding harness. It is delightfully <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">minimalistic</a>. Instead of implementing common harness features like plan mode, subagents, or even web search it provides an extension system and a skill (CODEX: LINK TO THIS SKILL ON EG PI'S GH) that makes it incredibly easy to vibe up your own.</p>
+<p>There is however a delightful irony in all this. Pi's minimalist philosophy is thoroughly trampled by the most popular extensions on the marketplace (CODEX: LINK TO THE PI EXTENSION MARKETPLACE THING HERE AND MAKE SURE I USE THE RIGHT TERM FOR IT), which tend to be feature creeped beyond all recognition. Load up Pi with a few of these and suddenly your lightweight harness is full off bells and whistles, many of which are not well conceived or engineered. There is a useful lesson here about how to checkity check yourself before you wreck yourself with agentic development, so let's explore two popular examples from the marketplace.</p>
+<h2>Disclaimer</h2>
+<p>I want to state at the outset that I have a lot of respect for the developers of these extensions that I'm about to lay into. They are popular for a reason. They work well and fill a real need in the community. But at the same time, they are examples of the kind of feature creep that agentic coding invites.</p>
+<h2>So you want to search the web in pi</h2>
+<p>Pi's stubborn refusal to add web search (CODEX: LINK TO RELEVANT GH ISSUE ON PI REPO) is frustrating but understandable. Web search is a really useful way to enable your agent to work with code that is too new or obscure to feature in the training data. But there are many search providers and the whole Pi philosophy is to avoid making decisions for the user.</p>
+<p>So what do you get if you instead install the by-far most popular extension for this, <a href="https://github.com/nicobailon/pi-web-access">pi-web-access</a>? Well, you add 88 MiB to your pi install and 211 npm packages. For this, you get X search providers (CODEX: GIVE ME THE EXACT UP TO DATE NUMBER), with a complex set of built-in fallback behaviours if one is unavailable. You get custom behaviour for github (repos get checked out and searched over locally), PDF content extraction, YouTube video content analysis, and so on.</p>
+<p>This is arguably insane. 99% of the use case is solved by standard text search through an external provider like Exa (CODEX: LINK), or by just wiring searches through the Responses API for providers that support this like OpenAI (CODEX: LINK TO SOURCE FOR THIS WAY OF SEARCHING). The only search extension I would recommend (CODEX: FIND THE EXTENSION, IT'S ONE I HAVE FORKED TO MY PERSONAL GITHUB) implements only the provider-native search route.</p>
+<p>But in fact, with the recent addition of MCP as a native tool (CODEX: LINK TO BLOG POST ON THIS FROM EARENDIL), you don't need any extensions at all. Just install Exa MCP and you have search.</p>
+<h2>So you want subagents in pi</h2>
+<p>Subagents is another popular feature the pi developers have refused to implement so far (CODEX: LINK TO GH ISSUE FOR THIS). I'm less sympathetic to this call. With the recent addition of codemode (CODEX: FIND LINK TO THIS FROM DEVELOPER BLOG OR RELEASE NOTES), you can now orchestrate tool calls like MCP in blocks of typescript. That puts us tantalisingly close to having a capable subagent implementation if the developers would just add that tool as well...</p>
+<p>Anyway, subagents is a somewhat complicated extension to DIY so you probably reach for <a href="https://github.com/nicobailon/pi-subagents">pi-subagents</a> instead. It looks reasonably lightweight at 23 MiB extra size and a merge 7 npm packages. But the feature set is anything but, because you end up with a full-on software factory. You get</p>
 <ul>
-<li><a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">Pi's philosophy</a>: deliberate restraint.</li>
-<li>Subagents and planning: delegated to extensions.</li>
-<li>Minimalist foundation; maximalist additions.</li>
-<li>Vibe coding makes additions cheap.</li>
-<li>Restraint remains expensive.</li>
+<li>Several pre-defined agents with somewhat nebulous roles</li>
+<li>Several workflows (basically skills that instruct the agent to run sub agents in a particular pattern)</li>
+<li>A watchdog (basically a sub agent that reviews each change by the main agent)</li>
+<li>Missions, runs and records (basically attempts to manage overall project state natively within in the extension)</li>
+<li>Scheduling of runs</li>
 </ul>
-<h2>Example: "I just wanted web search"</h2>
-<h3><a href="https://github.com/nicobailon/pi-web-access">pi-web-access</a></h3>
-<ul>
-<li>Search becomes content-processing infrastructure.</li>
-<li>Multiple providers; elaborate fallback chains.</li>
-<li>GitHub cloning; PDF extraction.</li>
-<li>YouTube and local-video analysis.</li>
-<li>Browser-cookie authentication; curator UI.</li>
-<li>Optional ffmpeg, yt-dlp, Git, gh.</li>
-<li><strong>Adds 88 MiB; 211 npm packages.</strong></li>
-</ul>
-<h2>Example: "I just wanted another agent"</h2>
-<h3><a href="https://github.com/nicobailon/pi-subagents">pi-subagents</a></h3>
-<ul>
-<li>Delegation becomes workflow orchestration.</li>
-<li>Saved workflows; repeated review loops.</li>
-<li>Fleet dashboard; transcript inspection.</li>
-<li>Watchdog reviews; acceptance gates.</li>
-<li>Durable missions; recurring schedules.</li>
-<li>An extension with extension APIs.</li>
-<li><strong>Adds 23 MiB; seven npm packages.</strong></li>
-<li>Broad scope; modest dependency footprint.</li>
-</ul>
-<h2>Example: "I just wanted planning before editing"</h2>
-<h3><a href="https://github.com/backnotprop/plannotator/tree/main/apps/pi-extension">Plannotator</a></h3>
-<ul>
-<li>Planning becomes a review workspace.</li>
-<li>Plans, code, documents, agent messages.</li>
-<li>Live HTML annotation; inbox integration.</li>
-<li>Browser terminal stack; diagram rendering.</li>
-<li><strong>Adds 214 MiB; 71 npm packages.</strong></li>
-<li>More than doubles Pi's footprint.</li>
-</ul>
-<h3>What arrives with planning?</h3>
-<ul>
-<li>Native pseudoterminal addon: <code>node-pty</code>.</li>
-<li>Linux install requires native compilation.</li>
-<li>Python, make, C++ compiler.</li>
-<li>Windows binaries shipped on Linux.</li>
-<li>Icon-package files: <strong>35 MiB</strong>.</li>
-<li>Two browser interfaces: <strong>40 MiB</strong>.</li>
-<li>Bun needed only for source builds.</li>
-</ul>
-<h2>Measuring the accumulated weight</h2>
-<p>Clean npm installations; Linux x86-64; Node 24.22.1; measured 8 November 2026.</p>
-<table>
-<thead>
-<tr>
-<th>Installation</th>
-<th style="text-align: right;">Total disk</th>
-<th style="text-align: right;">Added disk</th>
-<th style="text-align: right;">Added npm packages</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Pi 1.5.0 alone</td>
-<td style="text-align: right;">157.6 MiB</td>
-<td style="text-align: right;">—</td>
-<td style="text-align: right;">—</td>
-</tr>
-<tr>
-<td>+ Web access 0.47.0</td>
-<td style="text-align: right;">245.8 MiB</td>
-<td style="text-align: right;">88.1 MiB</td>
-<td style="text-align: right;">211</td>
-</tr>
-<tr>
-<td>+ Subagents 0.87.0</td>
-<td style="text-align: right;">180.2 MiB</td>
-<td style="text-align: right;">22.6 MiB</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr>
-<td>+ Plannotator 0.28.51</td>
-<td style="text-align: right;">371.1 MiB</td>
-<td style="text-align: right;">213.5 MiB</td>
-<td style="text-align: right;">71</td>
-</tr>
-<tr>
-<td>+ All three</td>
-<td style="text-align: right;">472.9 MiB</td>
-<td style="text-align: right;">315.3 MiB</td>
-<td style="text-align: right;">287</td>
-</tr>
-</tbody>
-</table>
-<p><em>Allocated disk space; excludes Node/npm, caches, and system tools. Package counts include each extension and transitive dependencies. Pi alone contains 123 packages; combined installation shares some dependencies.</em></p>
-<h2>The batteries-included impression</h2>
-<h3><a href="https://github.com/can1357/oh-my-pi">oh-my-pi</a></h3>
-<ul>
-<li>Separate fork; distinct product choices.</li>
-<li>LSP, debugger, browser, desktop control.</li>
-<li>Image generation; speech; memory systems.</li>
-<li>Easy to mistake the bundle for Pi.</li>
-<li>Attribute complexity to the installation.</li>
-<li>Comparative bug claims need evidence.</li>
-</ul>
-<h2>Conclusions: minimalism requires continuing decisions</h2>
-<ul>
-<li>Extension boundaries don't enforce restraint.</li>
-<li>Optional features still ship dependencies.</li>
-<li>Packaging overhead also matters.</li>
-<li>Disk size doesn't establish bad design.</li>
-<li>Feature scope doesn't predict package count.</li>
-<li>Cheap implementation; continuing maintenance costs.</li>
-<li>Pi preserves the choice to stay small.</li>
-<li>Installing everything defeats that advantage.</li>
-</ul>
+<p>In fairness, not all of this is enabled by default, but enough of it is added to the agent's prompt that you will see some exciting dynamic behaviors if you so much as utter the word "sub agents" in one of your prompts.</p>
+<p>I don't want to be negative! A lot of these features sound cool and might be really useful! But did they all need to get bundled in the same extension?</p>
+<p>So what should you use for subagents instead? Honestly I'm not sure. If anyone has found a well-designed yet minimalistic extension for this let me know! I live in hope that the pi maintainers eventually will provide a basic ˋsubagentˋ tool with a native TUI.</p>
+<h2>What have we learned about agentic engineering today</h2>
+<p>The point of all this isn't to pick on these specific developers. It's just that these extensions show so clearly what can happen to a codebase when the next feature is a prompt away. People talk a lot about a comprehension gap that results when the developer loses grip on the code, but if you take this far enough you also end up with products that have so many features that the <em>end user</em> struggles to reason effectively about what the program's behaviour and capabilities are. I struggle with this myself constantly at ˋ$day_jobˋ and I wish I could talk more about those experiences here.</p>
+<p>Agents are not good at designing modular solutions with loose coupling between the components. Agents are not good at creating new functionality as the combination of a set of modular tools. Agents are never going to respond to your latest prompt with a YAGNI (CODEX: LINK WIKI HERE). The only way to stave off full agentic psychosis is to build tastefully. That might mean coding a lot less and researching and thinking a lot more than we're used to as developers.</p>
             </div>
             <!-- /.entry-content -->
     <hr/>
@@ -241,8 +149,8 @@ Johan Carlin            </a>
             var disqus_config = function () {
                 this.language = "en";
 
-                        this.page.identifier = '2026-11-08-pi-and-the-return-of-feature-creep';
-                        this.page.url = 'https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html';
+                        this.page.identifier = '2026-11-08-the-pi-coding-harness-is-minimalistic-but-its-extensions-sure-arent';
+                        this.page.url = 'https://www.johancarlin.com/drafts/the-pi-coding-harness-is-minimalistic-but-its-extensions-sure-arent.html';
             };
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -308,7 +216,7 @@ Johan Carlin            </a>
          <div class="col-xs-10">&copy; 2026 Johan Carlin
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/daf38e2">daf38e2</a></small></p>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/37defc5">37defc5</a></small></p>
          </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
