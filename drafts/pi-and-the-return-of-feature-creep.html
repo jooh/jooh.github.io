@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Pi and the return of feature creep - Johan Carlin</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html">
+
+        <meta name="author" content="Johan Carlin" />
+        <meta name="keywords" content="ai,pi,agents,vibe coding" />
+        <meta name="description" content="Minimalist foundations, maximalist extensions, and the measured weight of adding web search, subagents, and planning to Pi." />
+
+        <meta property="og:site_name" content="Johan Carlin" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Pi and the return of feature creep"/>
+        <meta property="og:url" content="https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html"/>
+        <meta property="og:description" content="Minimalist foundations, maximalist extensions, and the measured weight of adding web search, subagents, and planning to Pi."/>
+        <meta property="article:published_time" content="2026-11-08" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="ai" />
+            <meta property="article:tag" content="pi" />
+            <meta property="article:tag" content="agents" />
+            <meta property="article:tag" content="vibe coding" />
+            <meta property="article:author" content="Johan Carlin" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://www.johancarlin.com/theme/css/bootstrap.lumen.min.css" type="text/css"/>
+    <link href="https://www.johancarlin.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://www.johancarlin.com/theme/css/pygments/solarized-light.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.johancarlin.com/theme/css/style.css" type="text/css"/>
+        <link href="https://www.johancarlin.com/custom.css" rel="stylesheet">
+
+        <link href="https://www.johancarlin.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Johan Carlin ATOM Feed"/>
+
+        <link href="https://www.johancarlin.com/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Johan Carlin blog ATOM Feed"/>
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="https://www.johancarlin.com/" class="navbar-brand">
+Johan Carlin            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html"
+                       rel="bookmark"
+                       title="Permalink to Pi and the return of feature creep">
+                        Pi and the return of feature creep
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2026-11-08T00:00:00+00:00"> 08 November 2026</time>
+    </span>
+          <span class="label label-default">Modified</span>
+            <span class="modified">
+                <i class="fa fa-calendar"></i><time datetime="2026-11-08T06:32:14.500470+00:00"> 08 November 2026</time>
+            </span>
+
+
+            <span class="label label-default">By</span>
+            <a href="https://www.johancarlin.com/author/johan-carlin.html"><i class="fa fa-user"></i> Johan Carlin</a>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://www.johancarlin.com/tag/ai.html">ai</a>
+        /
+	<a href="https://www.johancarlin.com/tag/pi.html">pi</a>
+        /
+	<a href="https://www.johancarlin.com/tag/agents.html">agents</a>
+        /
+	<a href="https://www.johancarlin.com/tag/vibe-coding.html">vibe coding</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2>Thesis: minimalism stops at the core</h2>
+<ul>
+<li><a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">Pi's philosophy</a>: deliberate restraint.</li>
+<li>Subagents and planning: delegated to extensions.</li>
+<li>Minimalist foundation; maximalist additions.</li>
+<li>Vibe coding makes additions cheap.</li>
+<li>Restraint remains expensive.</li>
+</ul>
+<h2>Example: "I just wanted web search"</h2>
+<h3><a href="https://github.com/nicobailon/pi-web-access">pi-web-access</a></h3>
+<ul>
+<li>Search becomes content-processing infrastructure.</li>
+<li>Multiple providers; elaborate fallback chains.</li>
+<li>GitHub cloning; PDF extraction.</li>
+<li>YouTube and local-video analysis.</li>
+<li>Browser-cookie authentication; curator UI.</li>
+<li>Optional ffmpeg, yt-dlp, Git, gh.</li>
+<li><strong>Adds 88 MiB; 211 npm packages.</strong></li>
+</ul>
+<h2>Example: "I just wanted another agent"</h2>
+<h3><a href="https://github.com/nicobailon/pi-subagents">pi-subagents</a></h3>
+<ul>
+<li>Delegation becomes workflow orchestration.</li>
+<li>Saved workflows; repeated review loops.</li>
+<li>Fleet dashboard; transcript inspection.</li>
+<li>Watchdog reviews; acceptance gates.</li>
+<li>Durable missions; recurring schedules.</li>
+<li>An extension with extension APIs.</li>
+<li><strong>Adds 23 MiB; seven npm packages.</strong></li>
+<li>Broad scope; modest dependency footprint.</li>
+</ul>
+<h2>Example: "I just wanted planning before editing"</h2>
+<h3><a href="https://github.com/backnotprop/plannotator/tree/main/apps/pi-extension">Plannotator</a></h3>
+<ul>
+<li>Planning becomes a review workspace.</li>
+<li>Plans, code, documents, agent messages.</li>
+<li>Live HTML annotation; inbox integration.</li>
+<li>Browser terminal stack; diagram rendering.</li>
+<li><strong>Adds 214 MiB; 71 npm packages.</strong></li>
+<li>More than doubles Pi's footprint.</li>
+</ul>
+<h3>What arrives with planning?</h3>
+<ul>
+<li>Native pseudoterminal addon: <code>node-pty</code>.</li>
+<li>Linux install requires native compilation.</li>
+<li>Python, make, C++ compiler.</li>
+<li>Windows binaries shipped on Linux.</li>
+<li>Icon-package files: <strong>35 MiB</strong>.</li>
+<li>Two browser interfaces: <strong>40 MiB</strong>.</li>
+<li>Bun needed only for source builds.</li>
+</ul>
+<h2>Measuring the accumulated weight</h2>
+<p>Clean npm installations; Linux x86-64; Node 24.22.1; measured 8 November 2026.</p>
+<table>
+<thead>
+<tr>
+<th>Installation</th>
+<th style="text-align: right;">Total disk</th>
+<th style="text-align: right;">Added disk</th>
+<th style="text-align: right;">Added npm packages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pi 1.5.0 alone</td>
+<td style="text-align: right;">157.6 MiB</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>+ Web access 0.47.0</td>
+<td style="text-align: right;">245.8 MiB</td>
+<td style="text-align: right;">88.1 MiB</td>
+<td style="text-align: right;">211</td>
+</tr>
+<tr>
+<td>+ Subagents 0.87.0</td>
+<td style="text-align: right;">180.2 MiB</td>
+<td style="text-align: right;">22.6 MiB</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>+ Plannotator 0.28.51</td>
+<td style="text-align: right;">371.1 MiB</td>
+<td style="text-align: right;">213.5 MiB</td>
+<td style="text-align: right;">71</td>
+</tr>
+<tr>
+<td>+ All three</td>
+<td style="text-align: right;">472.9 MiB</td>
+<td style="text-align: right;">315.3 MiB</td>
+<td style="text-align: right;">287</td>
+</tr>
+</tbody>
+</table>
+<p><em>Allocated disk space; excludes Node/npm, caches, and system tools. Package counts include each extension and transitive dependencies. Pi alone contains 123 packages; combined installation shares some dependencies.</em></p>
+<h2>The batteries-included impression</h2>
+<h3><a href="https://github.com/can1357/oh-my-pi">oh-my-pi</a></h3>
+<ul>
+<li>Separate fork; distinct product choices.</li>
+<li>LSP, debugger, browser, desktop control.</li>
+<li>Image generation; speech; memory systems.</li>
+<li>Easy to mistake the bundle for Pi.</li>
+<li>Attribute complexity to the installation.</li>
+<li>Comparative bug claims need evidence.</li>
+</ul>
+<h2>Conclusions: minimalism requires continuing decisions</h2>
+<ul>
+<li>Extension boundaries don't enforce restraint.</li>
+<li>Optional features still ship dependencies.</li>
+<li>Packaging overhead also matters.</li>
+<li>Disk size doesn't establish bad design.</li>
+<li>Feature scope doesn't predict package count.</li>
+<li>Cheap implementation; continuing maintenance costs.</li>
+<li>Pi preserves the choice to stay small.</li>
+<li>Installing everything defeats that advantage.</li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'johancarlin'; // required: replace example with your forum shortname
+
+            var disqus_config = function () {
+                this.language = "en";
+
+                        this.page.identifier = '2026-11-08-pi-and-the-return-of-feature-creep';
+                        this.page.url = 'https://www.johancarlin.com/drafts/pi-and-the-return-of-feature-creep.html';
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="https://www.johancarlin.com/images/brain.png"/>
+        </p>
+    <p>
+      <strong>About Johan Carlin</strong><br/>
+        I am a data engineer based in Stockholm, Sweden. I was once a neuroscientist.
+    </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="https://github.com/jooh" target="_blank">code</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://bsky.app/profile/johancarlin.com" target="_blank">rants</a>
+    </li>
+    <li class="list-group-item">
+      <a href="https://scholar.google.com/citations?user=hybIdeIAAAAJ" target="_blank">publications</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2026 Johan Carlin
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/5936af4">5936af4</a></small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://www.johancarlin.com/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://www.johancarlin.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://www.johancarlin.com/theme/js/respond.min.js"></script>
+
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'johancarlin'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-33066815-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
