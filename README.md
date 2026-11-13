@@ -5,8 +5,18 @@ My personal website.
 
 Mermaid diagrams use standard fenced Markdown blocks with the `mermaid` language.
 The Markdown build preserves them for the browser renderer. Pages containing a
-diagram load Mermaid 12.3.0 from jsDelivr; other pages do not download it. Rendering
-requires JavaScript and access to that CDN.
+diagram load the vendored Mermaid 12.3.0 browser bundle from the site itself.
+Rendering requires JavaScript. Pelican copies the bundle as static files, so a
+site build needs only the existing Python toolchain.
+
+To update Mermaid, download the pinned `mermaid` package from the npm registry
+and verify the tarball against its `dist.integrity` value. Copy `LICENSE`,
+`dist/mermaid.esm.min.mjs`, and all `.mjs` files under
+`dist/chunks/mermaid.esm.min/` into a new version directory under
+`content/extra/vendor/mermaid/`. Keep the `chunks/mermaid.esm.min/` layout next
+to the entry module so Mermaid can load diagram types on demand. Update the
+version in the template, integration test, and this README, and remove the old
+version directory.
 
 # Install notes
 * This project uses [uv](https://github.com/astral-sh/uv) for Python environments.

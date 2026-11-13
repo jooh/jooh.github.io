@@ -118,6 +118,7 @@ STATIC_PATHS = [
     "extra/custom.css",
     "extra/admin/index.html",
     "extra/admin/config.yml",
+    "extra/vendor/mermaid",
 ]
 EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},

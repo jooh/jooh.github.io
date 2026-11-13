@@ -1,15 +1,25 @@
+import shutil
 from pathlib import Path
 
+import pytest
 from bs4 import BeautifulSoup
 from pelican import Pelican
 from pelican.settings import read_settings
 
 
-def test_mermaid_draft_with_production_theme(tmp_path: Path) -> None:
+@pytest.mark.parametrize(
+    ("config", "site_url"),
+    [("pelicanconf.py", ".."), ("publishconf.py", "https://www.johancarlin.com")],
+)
+def test_mermaid_draft_with_site_theme(
+    tmp_path: Path, config: str, site_url: str
+) -> None:
     """Preserve diagram source and code highlighting in a themed draft page."""
     repo_root = Path(__file__).resolve().parents[1]
     content_dir = tmp_path / "content"
     content_dir.mkdir()
+    vendor_path = Path("extra/vendor/mermaid/12.3.0")
+    shutil.copytree(repo_root / "content" / vendor_path, content_dir / vendor_path)
     (content_dir / "diagram.md").write_text(
         "Title: Diagram\nDate: 2026-11-07\nStatus: draft\n\n"
         "```mermaid\nflowchart TD\n    review -->|P1 & above| fix\n"
@@ -19,13 +29,12 @@ def test_mermaid_draft_with_production_theme(tmp_path: Path) -> None:
     )
     output_dir = tmp_path / "output"
     settings = read_settings(
-        path=str(repo_root / "publishconf.py"),
+        path=str(repo_root / config),
         override={
             "PATH": str(content_dir),
             "OUTPUT_PATH": str(output_dir),
             "THEME": str(repo_root / "pelican-themes" / "pelican-bootstrap3"),
             "THEME_TEMPLATES_OVERRIDES": [str(repo_root / "templates")],
-            "STATIC_PATHS": [],
             "PLUGINS": [],
         },
     )
@@ -43,5 +52,10 @@ def test_mermaid_draft_with_production_theme(tmp_path: Path) -> None:
     assert page.select_one("footer") is not None
     renderer = page.find("script", attrs={"type": "module"})
     assert renderer is not None
-    assert "mermaid@12.3.0" in renderer.get_text()
+    module_path = vendor_path / "mermaid.esm.min.mjs"
+    assert "if (document.querySelector('.mermaid'))" in renderer.get_text()
+    assert f'import("{site_url}/{module_path.as_posix()}")' in renderer.get_text()
+    assert (output_dir / module_path).is_file()
+    assert list((output_dir / vendor_path / "chunks").rglob("flowDiagram-*.mjs"))
+    assert (output_dir / vendor_path / "LICENSE").is_file()
     assert not (output_dir / "diagram.html").exists()
