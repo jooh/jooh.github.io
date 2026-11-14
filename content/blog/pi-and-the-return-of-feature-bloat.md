@@ -37,9 +37,11 @@ flowchart TD
     R -->|"Optional page fetch"| F{"Source type?"}
     A -->|"Direct fetch"| F
     F -->|GitHub| G["Clone, CLI, or API"]
-    F -->|YouTube| Y["Video or summary"]
-    F -->|PDF| K["To Markdown"]
-    F -->|"Web page"| W["HTTP or fallback"]
+    F -->|"YouTube, if enabled"| Y["Video or summary"]
+    F -->|Otherwise| W["HTTP extraction"]
+    G -->|"No specialized result"| W
+    W -->|PDF| K["Convert to Markdown"]
+    W -->|"Recoverable failure"| H["Try eligible fetch fallbacks"]
 ```
 
 This is arguably excessive. 99% of use cases are solved by standard text search through an external provider like [Exa](https://exa.ai/docs/reference/search), or by just wiring searches through the Responses API for providers that support this like [OpenAI](https://developers.openai.com/api/docs/guides/tools-web-search). The latter approach is the one taken by the only search extension I would recommend, [pi-web-search](https://github.com/jooh/pi-web-search).
