@@ -1,7 +1,7 @@
 ---
 Title: Feature bloat in pi extensions
-Date: 2026-11-14 17:07
-Status: draft
+Date: 2026-11-14 17:19
+Status: published
 Tags: ai, pi, agents, vibe coding
 Summary: Pi is a coding harness with a minimalist philosophy. Its most popular extensions take a rather different approach
 ---
@@ -50,9 +50,9 @@ But in fact, with the recent addition of [MCP as a native tool](https://earendil
 
 ## So you want subagents in pi
 
-Subagents are another popular feature the pi developers have [refused to implement so far](https://github.com/earendil-works/pi/issues/552#issuecomment-3721483648) (they do offer an ["example" subagent extension](https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions/subagent), which is disabled by default and lacks basic functionality). I'm less sympathetic to this call. With the recent addition of [codemode](https://earendil.com/posts/you-said-no-mcp/#what-is-codemode), pi can now orchestrate tool calls like MCP in blocks of JavaScript. That puts us tantalisingly close to having a capable subagent implementation if the developers would just add that tool as well...
+Subagents is another popular feature the pi developers have [refused to implement so far](https://github.com/earendil-works/pi/issues/552#issuecomment-3721483648) (they do offer an ["example" subagent extension](https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions/subagent), which is disabled by default and lacks basic functionality). I'm less sympathetic to this call. With the recent addition of [codemode](https://earendil.com/posts/you-said-no-mcp/#what-is-codemode), pi can now orchestrate tool calls like MCP in blocks of JavaScript. That puts us tantalisingly close to having a capable subagent implementation if the developers would just add that tool as well...
 
-Anyway, subagents is a somewhat complicated extension to DIY so you probably reach for [pi-subagents](https://github.com/nicobailon/pi-subagents) instead. It looks reasonably lightweight at 23 MiB extra size and a mere 7 npm packages. But the feature set is anything but, because you end up with a full-on software factory. You get:
+Anyway, subagents is a complicated extension to DIY so you probably reach for [pi-subagents](https://github.com/nicobailon/pi-subagents) instead. It looks reasonably lightweight at 23 MiB extra size and a mere 7 npm packages. But the feature set is anything but, because you end up with a full-on software factory. You get:
 
 * Several predefined agents with somewhat nebulous roles
 * Several workflows (basically scripts that instruct the agent to run subagents in a particular pattern)
