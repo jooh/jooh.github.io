@@ -34,3 +34,8 @@ a:visited {
     text-align: center;
     white-space: pre-wrap;
 }
+
+.mermaid .node > rect {
+    rx: 6px;
+    ry: 6px;
+}

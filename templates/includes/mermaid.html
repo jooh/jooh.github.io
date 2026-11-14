@@ -1,7 +1,23 @@
 <script type="module">
     if (document.querySelector('.mermaid')) {
         const { default: mermaid } = await import({{ (SITEURL ~ '/extra/vendor/mermaid/12.3.0/mermaid.esm.min.mjs') | tojson }});
-        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' });
+        mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: 'strict',
+            theme: 'base',
+            look: 'classic',
+            themeVariables: {
+                fontFamily: '"Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
+                background: '#ffffff',
+                primaryColor: '#f8f8f8',
+                primaryTextColor: '#555555',
+                primaryBorderColor: '#aaaaaa',
+                secondaryColor: '#eeeeee',
+                tertiaryColor: '#fafafa',
+                lineColor: '#777777',
+                edgeLabelBackground: '#ffffff',
+            },
+        });
         await mermaid.run({ querySelector: '.mermaid' });
     }
 </script>

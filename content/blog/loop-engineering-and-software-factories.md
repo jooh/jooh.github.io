@@ -39,15 +39,6 @@ Skills make it possible to kick this abstraction up another level. Instead of pr
 ```mermaid
 ---
 config:
-  theme: base
-  look: classic
-  themeVariables:
-    fontFamily: "Helvetica Neue, Arial, sans-serif"
-    primaryColor: "#F0F5FA"
-    primaryTextColor: "#1F2937"
-    primaryBorderColor: "#8DA6BB"
-    lineColor: "#607487"
-    edgeLabelBackground: "#FFFFFF"
   flowchart:
     curve: linear
     rankSpacing: 30
