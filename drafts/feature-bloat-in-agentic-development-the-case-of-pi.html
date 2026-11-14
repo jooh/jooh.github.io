@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>'Feature creep in agentic development: the case of Pi' - Johan Carlin</title>
+    <title>'Feature bloat in agentic development: the case of Pi' - Johan Carlin</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,17 +9,17 @@
 
 
 
-<link rel="canonical" href="https://www.johancarlin.com/drafts/feature-creep-in-agentic-development-the-case-of-pi.html">
+<link rel="canonical" href="https://www.johancarlin.com/drafts/feature-bloat-in-agentic-development-the-case-of-pi.html">
 
         <meta name="author" content="Johan Carlin" />
         <meta name="keywords" content="ai,pi,agents,vibe coding" />
-        <meta name="description" content="Exploring the tension between a minimalistic harness and the feature-creeped extensions that popped up to fill the gap" />
+        <meta name="description" content="Exploring the tension between a minimalistic harness and the feature-bloated extensions that popped up to fill the gap" />
 
         <meta property="og:site_name" content="Johan Carlin" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="&#39;Feature creep in agentic development: the case of Pi&#39;"/>
-        <meta property="og:url" content="https://www.johancarlin.com/drafts/feature-creep-in-agentic-development-the-case-of-pi.html"/>
-        <meta property="og:description" content="Exploring the tension between a minimalistic harness and the feature-creeped extensions that popped up to fill the gap"/>
+        <meta property="og:title" content="&#39;Feature bloat in agentic development: the case of Pi&#39;"/>
+        <meta property="og:url" content="https://www.johancarlin.com/drafts/feature-bloat-in-agentic-development-the-case-of-pi.html"/>
+        <meta property="og:description" content="Exploring the tension between a minimalistic harness and the feature-bloated extensions that popped up to fill the gap"/>
         <meta property="article:published_time" content="2026-11-08" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="ai" />
@@ -73,10 +73,10 @@ Johan Carlin            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://www.johancarlin.com/drafts/feature-creep-in-agentic-development-the-case-of-pi.html"
+                    <a href="https://www.johancarlin.com/drafts/feature-bloat-in-agentic-development-the-case-of-pi.html"
                        rel="bookmark"
-                       title="Permalink to 'Feature creep in agentic development: the case of Pi'">
-                        'Feature creep in agentic development: the case of Pi'
+                       title="Permalink to 'Feature bloat in agentic development: the case of Pi'">
+                        'Feature bloat in agentic development: the case of Pi'
                     </a>
                 </h1>
             </header>
@@ -90,7 +90,7 @@ Johan Carlin            </a>
     </span>
           <span class="label label-default">Modified</span>
             <span class="modified">
-                <i class="fa fa-calendar"></i><time datetime="2026-11-14T12:49:47.771103+00:00"> 14 November 2026</time>
+                <i class="fa fa-calendar"></i><time datetime="2026-11-14T16:00:16.100992+00:00"> 14 November 2026</time>
             </span>
 
 
@@ -111,25 +111,44 @@ Johan Carlin            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>Pi is an amazing coding harness. It is delightfully <a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">minimalistic</a>. Instead of implementing common harness features like plan mode, subagents, or even web search, it provides an extension system and <a href="https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/extensions.md">extension-authoring documentation</a> that make it incredibly easy to vibe up your own.</p>
-<p>There is, however, a delightful irony in all this. Pi's minimalist philosophy is thoroughly trampled by the most popular extensions on the <a href="https://pi.dev/packages">package catalog</a>, which tend to be feature-creeped beyond all recognition. Load up Pi with a few of these and suddenly your lightweight harness is full of bells and whistles, many of which are not well conceived. There is a useful lesson here about how to checkity check yourself before you wreck yourself with agentic development, so let's explore two popular examples from the catalog.</p>
+<p>There is, however, a delightful irony in all this. Pi's minimalist philosophy is thoroughly trampled by the most popular extensions on the <a href="https://pi.dev/packages">package catalog</a>, which tend to be feature-bloated beyond all recognition. Load up Pi with a few of these and suddenly your lightweight harness is full of bells and whistles, many of which are not well conceived. There is a useful lesson here about how to checkity check yourself before you wreck yourself with agentic development, so let's explore two popular examples from the catalog.</p>
 <h2>Disclaimer</h2>
-<p>I want to state at the outset that I have a lot of respect for the developers of these extensions that I'm about to lay into. They are popular for a reason. They work as intended and fill a real need in the community. But at the same time, they are examples of the kind of feature creep that agentic coding invites.</p>
+<p>I want to state at the outset that I have a lot of respect for the developers of these extensions that I'm about to lay into. They are popular for a reason. They work as intended and fill a real need in the community. But at the same time, they are examples of the kind of feature bloat that agentic coding invites.</p>
 <h2>So you want to search the web in pi</h2>
 <p>Pi's <a href="https://github.com/earendil-works/pi/issues/709#issuecomment-3747162632">stubborn refusal to add web search</a> is frustrating but understandable. Web search is a really useful way to enable your agent to work with code that is too new or obscure to feature in the training data. But there are many search providers and the whole Pi philosophy is to avoid making decisions for the user.</p>
 <p>So what do you get if you instead install by far the most popular extension for this, <a href="https://github.com/nicobailon/pi-web-access">pi-web-access</a>? Well, you add 88 MiB to your pi install and 211 npm packages. For this, you get <a href="https://github.com/nicobailon/pi-web-access/blob/7efa701c1fdee4f8eb41f86b08aa50bcd6c2283d/gemini-search.ts#L65">46 search-provider integrations</a> (as of 8 November 2026), with a complex set of built-in fallback behaviours if one is unavailable. You get custom behaviour for GitHub (repos get checked out and searched over locally), PDF content extraction, YouTube video content analysis, and so on.</p>
+<div class="mermaid">flowchart TD
+    A(["pi-web-access"])
+    A --&gt;|Search| B{"Search mode?"}
+    B --&gt;|Named| N["One provider"]
+    B --&gt;|"all or list"| P["Parallel providers"]
+    B --&gt;|"Auto or ordered route"| T["Try next eligible provider"]
+    T --&gt; D{"Provider outcome?"}
+    D --&gt;|"Skip or retry"| T
+    D --&gt;|"Route exhausted"| E["Saved weak result or error"]
+    D --&gt;|Accepted| R["Search results"]
+    N --&gt; R
+    P --&gt;|Merge| R
+    P -.-&gt;|"Eligible default-list failure"| T
+    R --&gt;|"Optional page fetch"| F{"Source type?"}
+    A --&gt;|"Direct fetch"| F
+    F --&gt;|GitHub| G["Clone, CLI, or API"]
+    F --&gt;|YouTube| Y["Video or summary"]
+    F --&gt;|PDF| K["To Markdown"]
+    F --&gt;|"Web page"| W["HTTP or fallback"]</div>
 <p>This is arguably excessive. 99% of use cases are solved by standard text search through an external provider like <a href="https://exa.ai/docs/reference/search">Exa</a>, or by just wiring searches through the Responses API for providers that support this like <a href="https://developers.openai.com/api/docs/guides/tools-web-search">OpenAI</a>. The latter approach is the one taken by the only search extension I would recommend, <a href="https://github.com/jooh/pi-web-search">pi-web-search</a>.</p>
 <p>But in fact, with the recent addition of <a href="https://earendil.com/posts/you-said-no-mcp/">MCP as a native tool</a>, you don't need any extensions at all. Just install Exa MCP and you have search.</p>
 <h2>So you want subagents in pi</h2>
 <p>Subagents are another popular feature the pi developers have <a href="https://github.com/earendil-works/pi/issues/552#issuecomment-3721483648">refused to implement so far</a>. The developers have gone as far as bundling an <a href="https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions/subagent">"example" subagent extension</a> which is disabled by default, but have stopped short of an official implementation. I'm less sympathetic to this call. With the recent addition of <a href="https://earendil.com/posts/you-said-no-mcp/#what-is-codemode">codemode</a>, you can now orchestrate tool calls like MCP in blocks of JavaScript. That puts us tantalisingly close to having a capable subagent implementation if the developers would just add that tool as well...</p>
 <p>Anyway, subagents is a somewhat complicated extension to DIY so you probably reach for <a href="https://github.com/nicobailon/pi-subagents">pi-subagents</a> instead. It looks reasonably lightweight at 23 MiB extra size and a mere 7 npm packages. But the feature set is anything but, because you end up with a full-on software factory. You get:</p>
 <ul>
-<li>Several pre-defined agents with somewhat nebulous roles</li>
-<li>Several workflows (basically scripts that instruct the agent to run sub agents in a particular pattern)</li>
-<li>A watchdog (basically a sub agent that reviews each change by the main agent)</li>
+<li>Several predefined agents with somewhat nebulous roles</li>
+<li>Several workflows (basically scripts that instruct the agent to run subagents in a particular pattern)</li>
+<li>A watchdog (basically a subagent that reviews each change by the main agent)</li>
 <li>Missions, runs and records (basically attempts to manage overall project state natively within the extension)</li>
 <li>Scheduling of runs</li>
 </ul>
-<p>In fairness, not all of this is enabled by default, but enough of it is added to the agent's prompt that you may see some exciting dynamic behaviors if you so much as utter the word "sub agents" in one of your prompts. If you use the associated skill things really go off the rails.</p>
+<p>In fairness, not all of this is enabled by default, but enough of it is added to the agent's prompt that you may see some exciting dynamic behaviors if you so much as utter the word "subagents" in one of your prompts. If you use the associated skill things really go off the rails.</p>
 <p>I don't want to be negative! A lot of these features sound cool and might be really useful! But did they all need to get bundled in the same extension?</p>
 <p>So what should you use for subagents instead? Honestly, I'm not sure. If anyone has found a well-designed yet minimalistic extension for this, let me know! I live in hope that the pi maintainers eventually will provide a basic <code>subagent</code> tool with a native TUI.</p>
 <h2>What have we learned about agentic engineering today?</h2>
@@ -149,8 +168,8 @@ Johan Carlin            </a>
             var disqus_config = function () {
                 this.language = "en";
 
-                        this.page.identifier = '2026-11-08-feature-creep-in-agentic-development-the-case-of-pi';
-                        this.page.url = 'https://www.johancarlin.com/drafts/feature-creep-in-agentic-development-the-case-of-pi.html';
+                        this.page.identifier = '2026-11-08-feature-bloat-in-agentic-development-the-case-of-pi';
+                        this.page.url = 'https://www.johancarlin.com/drafts/feature-bloat-in-agentic-development-the-case-of-pi.html';
             };
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -216,7 +235,7 @@ Johan Carlin            </a>
          <div class="col-xs-10">&copy; 2026 Johan Carlin
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/2e24164">2e24164</a></small></p>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>version <a href="https://github.com/jooh/jooh.github.io/commit/afb3519">afb3519</a></small></p>
          </div>
          <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
@@ -270,6 +289,7 @@ Johan Carlin            </a>
             securityLevel: 'strict',
             theme: 'base',
             look: 'classic',
+            htmlLabels: false,
             themeVariables: {
                 fontFamily: '"Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
                 background: '#ffffff',
