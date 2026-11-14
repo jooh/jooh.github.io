@@ -28,3 +28,14 @@ a:link {
 a:visited {
     text-decoration: none !important;
 }
+
+.mermaid {
+    overflow-x: auto;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+.mermaid .node > rect {
+    rx: 14px;
+    ry: 14px;
+}
