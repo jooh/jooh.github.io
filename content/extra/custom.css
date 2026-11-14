@@ -39,3 +39,13 @@ a:visited {
     rx: 14px;
     ry: 14px;
 }
+
+.mermaid svg.flowchart {
+    min-width: 640px;
+}
+
+@media (max-width: 767px) {
+    .mermaid {
+        text-align: left;
+    }
+}
