@@ -37,6 +37,22 @@ At this level you might find yourself adopting shorthand prompts that act almost
 Skills make it possible to kick this abstraction up another level. Instead of prompting a couple of times per feature, maybe we can just put all the instructions in a single skill and tell the agent to use it. For example, an `Orchestrate.md` skill might describe this workflow:
 
 ```mermaid
+---
+config:
+  theme: base
+  look: classic
+  themeVariables:
+    fontFamily: "Helvetica Neue, Arial, sans-serif"
+    primaryColor: "#F0F5FA"
+    primaryTextColor: "#1F2937"
+    primaryBorderColor: "#8DA6BB"
+    lineColor: "#607487"
+    edgeLabelBackground: "#FFFFFF"
+  flowchart:
+    curve: linear
+    rankSpacing: 30
+    nodeSpacing: 25
+---
 flowchart TD
     plan[Plan] --> build[Build with subagents]
     build --> review[Independent review]
