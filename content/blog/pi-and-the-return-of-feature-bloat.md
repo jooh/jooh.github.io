@@ -44,7 +44,7 @@ flowchart TD
     W -->|"Recoverable failure"| H["Try eligible fetch fallbacks"]
 ```
 
-This is arguably excessive. 99% of use cases are solved by standard text search through an external provider like [Exa](https://exa.ai/docs/reference/search), or by just wiring searches through the Responses API for providers that support this like [OpenAI](https://developers.openai.com/api/docs/guides/tools-web-search). The latter approach is the one taken by the alternative search extension I would recommend, [pi-web-search](https://github.com/jooh/pi-web-search).
+This is arguably excessive. 99% of use cases are solved by standard text search through an external provider like [Exa](https://exa.ai/docs/reference/search), or by just wiring searches through the Responses API for providers that support this like [OpenAI](https://developers.openai.com/api/docs/guides/tools-web-search). The latter approach is the one taken by the alternative search extension I would recommend, [pi-web-search](https://github.com/ttttmr/pi-web-search).
 
 But in fact, with the recent addition of [MCP as a native tool](https://earendil.com/posts/you-said-no-mcp/), you don't need any extensions at all. Just install Exa MCP and you have search.
 
