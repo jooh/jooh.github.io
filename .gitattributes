@@ -2,3 +2,5 @@
 *.ipynb	diff=jupyternotebook
 
 *.ipynb	merge=jupyternotebook
+
+content/extra/vendor/mermaid/**/*.mjs -text -whitespace linguist-vendored=true linguist-generated=true

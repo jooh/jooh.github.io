@@ -7,6 +7,7 @@ from pathlib import Path
 
 from nbconvert.exporters import HTMLExporter
 from pelican_jupyter import markup as nb_markup
+from pymdownx.superfences import fence_div_format
 
 IGNORE_FILES = [".ipynb_checkpoints"]
 AUTHOR = "Johan Carlin"
@@ -26,6 +27,19 @@ BOOTSTRAP_THEME = "lumen"
 PLUGIN_PATHS = ["./pelican-plugins"]
 PLUGINS = ["pelican_gist", nb_markup]
 MARKUP = ("md", "ipynb")
+MARKDOWN = {
+    "extension_configs": {
+        "markdown.extensions.codehilite": {"css_class": "highlight"},
+        "markdown.extensions.extra": {},
+        "markdown.extensions.meta": {},
+        "pymdownx.superfences": {
+            "custom_fences": [
+                {"name": "mermaid", "class": "mermaid", "format": fence_div_format}
+            ]
+        },
+    },
+    "output_format": "html5",
+}
 PYGMENTS_STYLE = "solarized-light"
 ABOUT_ME = "I am a data engineer based in Stockholm, Sweden. I was once a neuroscientist."
 AVATAR = "images/brain.png"
@@ -104,6 +118,7 @@ STATIC_PATHS = [
     "extra/custom.css",
     "extra/admin/index.html",
     "extra/admin/config.yml",
+    "extra/vendor/mermaid",
 ]
 EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},

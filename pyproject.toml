@@ -20,6 +20,7 @@ dependencies = [
   "pelican",
   "pelican-gist",
   "pelican-jupyter",
+  "pymdown-extensions>=12.3",
   "pytest",
   "scipy",
   "seaborn",
