@@ -36,6 +36,6 @@ a:visited {
 }
 
 .mermaid .node > rect {
-    rx: 6px;
-    ry: 6px;
+    rx: 14px;
+    ry: 14px;
 }

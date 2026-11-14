@@ -1,4 +1,44 @@
 <script type="module">
+    function roundDecisionDiamonds(id) {
+        const diagram = document.getElementById(id);
+        if (!diagram?.classList.contains('flowchart')) {
+            return;
+        }
+
+        for (const polygon of diagram.querySelectorAll('.node > polygon.label-container')) {
+            const points = Array.from(polygon.points);
+            if (points.length !== 4) {
+                continue;
+            }
+
+            const [bottom, right, top, left] = points;
+            if (bottom.x !== top.x || right.y !== left.y || top.y >= bottom.y || left.x >= right.x) {
+                continue;
+            }
+
+            const inset = (corner, neighbor) => {
+                const length = Math.hypot(neighbor.x - corner.x, neighbor.y - corner.y);
+                const fraction = Math.min(14 / length, 0.5);
+                return [corner.x + (neighbor.x - corner.x) * fraction,
+                        corner.y + (neighbor.y - corner.y) * fraction].join(' ');
+            };
+            const outline = points.map((corner, index) => {
+                const previous = points[(index + 3) % 4];
+                const next = points[(index + 1) % 4];
+                const command = index === 0 ? 'M' : 'L';
+                return `${command} ${inset(corner, previous)} Q ${corner.x} ${corner.y} ${inset(corner, next)}`;
+            });
+            const path = document.createElementNS(polygon.namespaceURI, 'path');
+            for (const { name, value } of polygon.attributes) {
+                if (name !== 'points') {
+                    path.setAttribute(name, value);
+                }
+            }
+            path.setAttribute('d', `${outline.join(' ')} Z`);
+            polygon.replaceWith(path);
+        }
+    }
+
     if (document.querySelector('.mermaid')) {
         const { default: mermaid } = await import({{ (SITEURL ~ '/extra/vendor/mermaid/12.3.0/mermaid.esm.min.mjs') | tojson }});
         mermaid.initialize({
@@ -14,10 +54,11 @@
                 primaryBorderColor: '#aaaaaa',
                 secondaryColor: '#eeeeee',
                 tertiaryColor: '#fafafa',
-                lineColor: '#777777',
+                lineColor: '#555555',
+                arrowheadColor: '#555555',
                 edgeLabelBackground: '#ffffff',
             },
         });
-        await mermaid.run({ querySelector: '.mermaid' });
+        await mermaid.run({ querySelector: '.mermaid', postRenderCallback: roundDecisionDiamonds });
     }
 </script>
