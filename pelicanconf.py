@@ -112,6 +112,7 @@ ARTICLE_EXCLUDES = ["extra"]
 PAGE_EXCLUDES = ["extra"]
 
 STATIC_PATHS = [
+    "extra/site-brand",
     "extra/CNAME",
     "extra/favicon.ico",
     "images",

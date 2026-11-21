@@ -39,3 +39,12 @@ version directory.
 * cairosvg is a useful tool for converting Altair SVGs to PDF for keynotes
 * nbdime makes it possible to diff notebooks. It should be registered as a git diff
   plugin in the repo.
+# Shared site styling
+
+`content/extra/site-brand/` owns the shared Lumen colors, typography, header styles,
+and locally bundled Source Sans Pro fonts (Fontsource 5.3.0; SIL license included).
+The blog loads it through `custom.css`; the devcontainer-rs guide vendors a copy.
+Keep Bootstrap-specific selectors in `custom.css` and mdBook-specific selectors
+in the documentation theme. After changing the shared assets, commit them here,
+then run `node build/sync-site-brand.js <website-commit>` in devcontainer-rs and
+review its documentation preview before updating the pinned copy.
