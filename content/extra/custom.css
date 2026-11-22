@@ -29,6 +29,48 @@ pre {
 .navbar-default .navbar-nav > li > a:focus { color: var(--site-nav-text); }
 .navbar-default .navbar-nav > li > a[href="/"] { font-weight: 700; }
 
+@media (max-width: 767px) {
+    .navbar > .container {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        min-height: 50px;
+    }
+    .navbar > .container::before,
+    .navbar > .container::after,
+    .navbar-toggle { display: none; }
+    .navbar > .container > .navbar-header {
+        margin: 0;
+        flex-shrink: 0;
+    }
+    .navbar-default .navbar-brand {
+        display: block;
+        float: none;
+        height: auto;
+        padding: 0;
+        font-size: 16px;
+    }
+    .navbar > .container > .navbar-collapse {
+        display: flex !important;
+        height: auto !important;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        overflow: visible !important;
+    }
+    .navbar-nav {
+        display: flex;
+        gap: 16px;
+        margin: 0;
+    }
+    .navbar-default .navbar-nav > li > a {
+        padding: 0;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
+
 /* ugly fix for table header issues. */
 thead th {
     display: table-cell !important;
