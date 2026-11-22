@@ -1,3 +1,28 @@
+@import url("extra/site-brand/site-brand.css");
+
+body {
+    font-family: var(--site-font);
+    font-size: 16px;
+    color: var(--site-text);
+    background: var(--site-bg);
+}
+h1, h2, h3, h4, h5, h6 { color: var(--site-heading); }
+a, a:hover, a:focus { color: var(--site-link); }
+pre, code { font-family: var(--site-mono-font); }
+pre {
+    color: var(--site-code-text);
+    background: var(--site-code-bg);
+    border-color: var(--site-code-border);
+    border-radius: var(--site-code-radius);
+    font-size: 14px;
+}
+.navbar-default {
+    background: var(--site-nav-bg);
+    border-color: var(--site-border);
+}
+.navbar-default .navbar-brand { color: var(--site-heading); }
+.navbar-default .navbar-nav > li > a { color: var(--site-nav-text); }
+
 /* ugly fix for table header issues. */
 thead th {
     display: table-cell !important;

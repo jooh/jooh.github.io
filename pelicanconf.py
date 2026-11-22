@@ -88,6 +88,10 @@ LINKS = (
 )
 
 DISPLAY_CATEGORIES_ON_MENU = False
+MENUITEMS = (
+    ("Blog", "/"),
+    ("devcontainer-rs", "/devcontainer-rs/"),
+)
 
 # Social widget
 SOCIAL = ()
@@ -112,6 +116,7 @@ ARTICLE_EXCLUDES = ["extra"]
 PAGE_EXCLUDES = ["extra"]
 
 STATIC_PATHS = [
+    "extra/site-brand",
     "extra/CNAME",
     "extra/favicon.ico",
     "images",
