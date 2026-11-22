@@ -92,7 +92,9 @@ div.text_cell_render {
 }
 
 /* hide prompt to bring code cells in line with text */
-.prompt {
+.prompt,
+.jp-InputPrompt,
+.jp-OutputPrompt {
     padding: 0em !important;
     display: none !important;
 }
