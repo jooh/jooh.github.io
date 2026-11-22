@@ -6,6 +6,7 @@ body {
     color: var(--site-text);
     background: var(--site-bg);
 }
+body.jp-Notebook { padding: 70px 0 0; }
 h1, h2, h3, h4, h5, h6 { color: var(--site-heading); }
 a, a:hover, a:focus { color: var(--site-link); }
 :is(h1, h2, h3, h4, h5, h6) a,
