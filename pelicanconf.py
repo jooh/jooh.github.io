@@ -41,7 +41,7 @@ MARKDOWN = {
     "output_format": "html5",
 }
 PYGMENTS_STYLE = "solarized-light"
-ABOUT_ME = "I am a data engineer based in Stockholm, Sweden. I was once a neuroscientist."
+ABOUT_ME = "I am a software developer based in Stockholm, Sweden. I was once a neuroscientist."
 AVATAR = "images/brain.png"
 DISPLAY_TAGS_ON_SIDEBAR = False
 
