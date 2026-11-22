@@ -38,6 +38,8 @@ pre {
     }
     .navbar > .container::before,
     .navbar > .container::after,
+    .navbar-nav::before,
+    .navbar-nav::after,
     .navbar-toggle { display: none; }
     .navbar > .container > .navbar-header {
         margin: 0;
