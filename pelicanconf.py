@@ -110,7 +110,7 @@ IPYNB_EXPORT_TEMPLATE = str(
     Path(HTMLExporter().template_paths[0]) / "index.html.j2"
 )
 
-CUSTOM_CSS = 'custom.css'
+CUSTOM_CSS = f"custom.css?v={GIT_COMMIT_HASH}"
 
 ARTICLE_EXCLUDES = ["extra"]
 PAGE_EXCLUDES = ["extra"]
