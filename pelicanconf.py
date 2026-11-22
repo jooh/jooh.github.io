@@ -88,6 +88,10 @@ LINKS = (
 )
 
 DISPLAY_CATEGORIES_ON_MENU = False
+MENUITEMS = (
+    ("Blog", "/"),
+    ("devcontainer-rs", "/devcontainer-rs/"),
+)
 
 # Social widget
 SOCIAL = ()
