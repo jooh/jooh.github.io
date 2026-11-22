@@ -43,7 +43,8 @@ pre {
         margin: 0;
         flex-shrink: 0;
     }
-    .navbar-default .navbar-brand {
+    .navbar > .container .navbar-brand {
+        margin: 0;
         display: block;
         float: none;
         height: auto;
@@ -65,7 +66,7 @@ pre {
         margin: 0;
     }
     .navbar-default .navbar-nav > li > a {
-        padding: 0;
+        padding: 12px 0;
         font-size: 14px;
         white-space: nowrap;
     }
