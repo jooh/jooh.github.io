@@ -8,9 +8,10 @@ body {
 }
 h1, h2, h3, h4, h5, h6 { color: var(--site-heading); }
 a, a:hover, a:focus { color: var(--site-link); }
-article > h2 > a,
-article > h2 > a:hover,
-article > h2 > a:focus { color: var(--site-heading); }
+:is(h1, h2, h3, h4, h5, h6) a,
+:is(h1, h2, h3, h4, h5, h6) a:hover,
+:is(h1, h2, h3, h4, h5, h6) a:focus,
+:is(h1, h2, h3, h4, h5, h6) a:visited { color: var(--site-heading); }
 pre, code { font-family: var(--site-mono-font); }
 pre {
     color: var(--site-code-text);
