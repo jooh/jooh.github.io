@@ -8,6 +8,9 @@ body {
 }
 h1, h2, h3, h4, h5, h6 { color: var(--site-heading); }
 a, a:hover, a:focus { color: var(--site-link); }
+article > h2 > a,
+article > h2 > a:hover,
+article > h2 > a:focus { color: var(--site-heading); }
 pre, code { font-family: var(--site-mono-font); }
 pre {
     color: var(--site-code-text);
@@ -21,7 +24,55 @@ pre {
     border-color: var(--site-border);
 }
 .navbar-default .navbar-brand { color: var(--site-heading); }
-.navbar-default .navbar-nav > li > a { color: var(--site-nav-text); }
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus { color: var(--site-nav-text); }
+.navbar-default .navbar-nav > li > a[href="/"] { font-weight: 700; }
+
+@media (max-width: 767px) {
+    .navbar > .container {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        min-height: 50px;
+    }
+    .navbar > .container::before,
+    .navbar > .container::after,
+    .navbar-nav::before,
+    .navbar-nav::after,
+    .navbar-toggle { display: none; }
+    .navbar > .container > .navbar-header {
+        margin: 0;
+        flex-shrink: 0;
+    }
+    .navbar > .container .navbar-brand {
+        margin: 0;
+        display: block;
+        float: none;
+        height: auto;
+        padding: 0;
+        font-size: 16px;
+    }
+    .navbar > .container > .navbar-collapse {
+        display: flex !important;
+        height: auto !important;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        overflow: visible !important;
+    }
+    .navbar-nav {
+        display: flex;
+        gap: 16px;
+        margin: 0;
+    }
+    .navbar-default .navbar-nav > li > a {
+        padding: 12px 0;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+}
 
 /* ugly fix for table header issues. */
 thead th {
